@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.AddressPhoneMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.AddressPhone" >
+    <id column="WPAN8" property="wpan8" jdbcType="INTEGER" />
+    <id column="WPPHTP" property="wpphtp" jdbcType="VARCHAR" />
+    <result column="WPRCK7" property="wprck7" jdbcType="INTEGER" />
+    <result column="WPPH1" property="wpph1" jdbcType="NVARCHAR" />
+    <result column="JDE_UpdateDate" property="jdeUpdatedate" jdbcType="TIMESTAMP" />
+    <result column="KT_ProcessDate" property="ktProcessdate" jdbcType="TIMESTAMP" />
+    <result column="KT_FailDate" property="ktFaildate" jdbcType="TIMESTAMP" />
+    <result column="KT_RetryTimes" property="ktRetrytimes" jdbcType="INTEGER" />
+    <result column="KT_ErrorLog" property="ktErrorlog" jdbcType="VARCHAR" />
+    <result column="fms_process_date" property="fmsProcessDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WPAN8, WPPHTP, WPRCK7, WPPH1, JDE_UpdateDate, KT_ProcessDate, KT_FailDate, KT_RetryTimes, 
+    KT_ErrorLog, fms_process_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.AddressPhoneExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Address_Phone
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.AddressPhoneKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from Address_Phone
+    where WPAN8 = #{wpan8,jdbcType=INTEGER}
+      and WPPHTP = #{wpphtp,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.tup.mssql.model.AddressPhoneKey" >
+    delete from Address_Phone
+    where WPAN8 = #{wpan8,jdbcType=INTEGER}
+      and WPPHTP = #{wpphtp,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.AddressPhoneExample" >
+    delete from Address_Phone
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.AddressPhone" >
+    insert into Address_Phone (WPAN8, WPPHTP, WPRCK7, 
+      WPPH1, JDE_UpdateDate, KT_ProcessDate, 
+      KT_FailDate, KT_RetryTimes, KT_ErrorLog, 
+      fms_process_date)
+    values (#{wpan8,jdbcType=INTEGER}, #{wpphtp,jdbcType=VARCHAR}, #{wprck7,jdbcType=INTEGER}, 
+      #{wpph1,jdbcType=NVARCHAR}, #{jdeUpdatedate,jdbcType=TIMESTAMP}, #{ktProcessdate,jdbcType=TIMESTAMP}, 
+      #{ktFaildate,jdbcType=TIMESTAMP}, #{ktRetrytimes,jdbcType=INTEGER}, #{ktErrorlog,jdbcType=VARCHAR}, 
+      #{fmsProcessDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.AddressPhone" >
+    insert into Address_Phone
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wpan8 != null" >
+        WPAN8,
+      </if>
+      <if test="wpphtp != null" >
+        WPPHTP,
+      </if>
+      <if test="wprck7 != null" >
+        WPRCK7,
+      </if>
+      <if test="wpph1 != null" >
+        WPPH1,
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate,
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate,
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate,
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes,
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog,
+      </if>
+      <if test="fmsProcessDate != null" >
+        fms_process_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wpan8 != null" >
+        #{wpan8,jdbcType=INTEGER},
+      </if>
+      <if test="wpphtp != null" >
+        #{wpphtp,jdbcType=VARCHAR},
+      </if>
+      <if test="wprck7 != null" >
+        #{wprck7,jdbcType=INTEGER},
+      </if>
+      <if test="wpph1 != null" >
+        #{wpph1,jdbcType=NVARCHAR},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktProcessdate != null" >
+        #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="fmsProcessDate != null" >
+        #{fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.AddressPhoneExample" resultType="java.lang.Integer" >
+    select count(*) from Address_Phone
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update Address_Phone
+    <set >
+      <if test="record.wpan8 != null" >
+        WPAN8 = #{record.wpan8,jdbcType=INTEGER},
+      </if>
+      <if test="record.wpphtp != null" >
+        WPPHTP = #{record.wpphtp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wprck7 != null" >
+        WPRCK7 = #{record.wprck7,jdbcType=INTEGER},
+      </if>
+      <if test="record.wpph1 != null" >
+        WPPH1 = #{record.wpph1,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.jdeUpdatedate != null" >
+        JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktProcessdate != null" >
+        KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktFaildate != null" >
+        KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktRetrytimes != null" >
+        KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.ktErrorlog != null" >
+        KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fmsProcessDate != null" >
+        fms_process_date = #{record.fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update Address_Phone
+    set WPAN8 = #{record.wpan8,jdbcType=INTEGER},
+      WPPHTP = #{record.wpphtp,jdbcType=VARCHAR},
+      WPRCK7 = #{record.wprck7,jdbcType=INTEGER},
+      WPPH1 = #{record.wpph1,jdbcType=NVARCHAR},
+      JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR},
+      fms_process_date = #{record.fmsProcessDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.AddressPhone" >
+    update Address_Phone
+    <set >
+      <if test="wprck7 != null" >
+        WPRCK7 = #{wprck7,jdbcType=INTEGER},
+      </if>
+      <if test="wpph1 != null" >
+        WPPH1 = #{wpph1,jdbcType=NVARCHAR},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="fmsProcessDate != null" >
+        fms_process_date = #{fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where WPAN8 = #{wpan8,jdbcType=INTEGER}
+      and WPPHTP = #{wpphtp,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.AddressPhone" >
+    update Address_Phone
+    set WPRCK7 = #{wprck7,jdbcType=INTEGER},
+      WPPH1 = #{wpph1,jdbcType=NVARCHAR},
+      JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR},
+      fms_process_date = #{fmsProcessDate,jdbcType=TIMESTAMP}
+    where WPAN8 = #{wpan8,jdbcType=INTEGER}
+      and WPPHTP = #{wpphtp,jdbcType=VARCHAR}
+  </update>
+</mapper>

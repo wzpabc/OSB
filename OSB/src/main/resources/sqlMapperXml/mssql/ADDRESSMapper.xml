@@ -1,0 +1,1192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.ADDRESSMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.ADDRESS" >
+    <id column="ABAN8" property="aban8" jdbcType="INTEGER" />
+    <result column="ABALKY" property="abalky" jdbcType="VARCHAR" />
+    <result column="ABALPH" property="abalph" jdbcType="NVARCHAR" />
+    <result column="MAPA8" property="mapa8" jdbcType="INTEGER" />
+    <result column="ABMCU" property="abmcu" jdbcType="VARCHAR" />
+    <result column="ALCTY1" property="alcty1" jdbcType="NVARCHAR" />
+    <result column="ALADD1" property="aladd1" jdbcType="NVARCHAR" />
+    <result column="ALADD2" property="aladd2" jdbcType="NVARCHAR" />
+    <result column="ALADD3" property="aladd3" jdbcType="NVARCHAR" />
+    <result column="ALADD4" property="aladd4" jdbcType="NVARCHAR" />
+    <result column="ALADDZ" property="aladdz" jdbcType="INTEGER" />
+    <result column="ABUSER" property="abuser" jdbcType="VARCHAR" />
+    <result column="ABUPMJ" property="abupmj" jdbcType="TIMESTAMP" />
+    <result column="AIACL" property="aiacl" jdbcType="NUMERIC" />
+    <result column="AITXA1" property="aitxa1" jdbcType="VARCHAR" />
+    <result column="WWMLNM" property="wwmlnm" jdbcType="NVARCHAR" />
+    <result column="ABAT1" property="abat1" jdbcType="VARCHAR" />
+    <result column="ABEFTB" property="abeftb" jdbcType="DATE" />
+    <result column="ABAC01" property="abac01" jdbcType="VARCHAR" />
+    <result column="ABAC02" property="abac02" jdbcType="VARCHAR" />
+    <result column="ABAC03" property="abac03" jdbcType="VARCHAR" />
+    <result column="ABAC04" property="abac04" jdbcType="VARCHAR" />
+    <result column="ABAC05" property="abac05" jdbcType="VARCHAR" />
+    <result column="ABAC06" property="abac06" jdbcType="VARCHAR" />
+    <result column="ABAC07" property="abac07" jdbcType="VARCHAR" />
+    <result column="ABAC08" property="abac08" jdbcType="VARCHAR" />
+    <result column="ABAC09" property="abac09" jdbcType="VARCHAR" />
+    <result column="ABAC10" property="abac10" jdbcType="VARCHAR" />
+    <result column="ABAC11" property="abac11" jdbcType="VARCHAR" />
+    <result column="ABAC12" property="abac12" jdbcType="VARCHAR" />
+    <result column="ABAC13" property="abac13" jdbcType="VARCHAR" />
+    <result column="ABAC14" property="abac14" jdbcType="VARCHAR" />
+    <result column="ABAC15" property="abac15" jdbcType="VARCHAR" />
+    <result column="ABAC16" property="abac16" jdbcType="VARCHAR" />
+    <result column="ABAC17" property="abac17" jdbcType="VARCHAR" />
+    <result column="ABAC18" property="abac18" jdbcType="VARCHAR" />
+    <result column="ABAC19" property="abac19" jdbcType="VARCHAR" />
+    <result column="ABAC20" property="abac20" jdbcType="VARCHAR" />
+    <result column="ABAC21" property="abac21" jdbcType="VARCHAR" />
+    <result column="ABAC22" property="abac22" jdbcType="VARCHAR" />
+    <result column="ABAC23" property="abac23" jdbcType="VARCHAR" />
+    <result column="ABAC24" property="abac24" jdbcType="VARCHAR" />
+    <result column="ABAC25" property="abac25" jdbcType="VARCHAR" />
+    <result column="ABAC26" property="abac26" jdbcType="VARCHAR" />
+    <result column="ABAC27" property="abac27" jdbcType="VARCHAR" />
+    <result column="ABAC28" property="abac28" jdbcType="VARCHAR" />
+    <result column="ABAC29" property="abac29" jdbcType="VARCHAR" />
+    <result column="ABAC30" property="abac30" jdbcType="VARCHAR" />
+    <result column="AICUSTS" property="aicusts" jdbcType="VARCHAR" />
+    <result column="JDE_UpdateDate" property="jdeUpdatedate" jdbcType="TIMESTAMP" />
+    <result column="KT_ProcessDate" property="ktProcessdate" jdbcType="TIMESTAMP" />
+    <result column="KT_FailDate" property="ktFaildate" jdbcType="TIMESTAMP" />
+    <result column="KT_RetryTimes" property="ktRetrytimes" jdbcType="INTEGER" />
+    <result column="KT_ErrorLog" property="ktErrorlog" jdbcType="VARCHAR" />
+    <result column="fms_process_date" property="fmsProcessDate" jdbcType="TIMESTAMP" />
+    <result column="TAX" property="tax" jdbcType="NVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ABAN8, ABALKY, ABALPH, MAPA8, ABMCU, ALCTY1, ALADD1, ALADD2, ALADD3, ALADD4, ALADDZ, 
+    ABUSER, ABUPMJ, AIACL, AITXA1, WWMLNM, ABAT1, ABEFTB, ABAC01, ABAC02, ABAC03, ABAC04, 
+    ABAC05, ABAC06, ABAC07, ABAC08, ABAC09, ABAC10, ABAC11, ABAC12, ABAC13, ABAC14, ABAC15, 
+    ABAC16, ABAC17, ABAC18, ABAC19, ABAC20, ABAC21, ABAC22, ABAC23, ABAC24, ABAC25, ABAC26, 
+    ABAC27, ABAC28, ABAC29, ABAC30, AICUSTS, JDE_UpdateDate, KT_ProcessDate, KT_FailDate, 
+    KT_RetryTimes, KT_ErrorLog, fms_process_date, TAX
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.ADDRESSExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from Address
+    where ABAN8 = #{aban8,jdbcType=INTEGER}
+  </select>
+  
+   <select id="selectByMapParam" resultMap="BaseResultMap" parameterType="Map" >
+    select  
+    <include refid="Base_Column_List" />
+    from Address WHERE 1=1
+      <if test="aban8 != null" >
+         and ABAN8 = #{aban8,jdbcType=INTEGER}
+      </if>
+      <if test="abalky != null" >
+         and ABALKY = #{abalky,jdbcType=VARCHAR}
+      </if>
+      <if test="abalph != null" >
+         and ABALPH = #{abalph,jdbcType=NVARCHAR}
+      </if>
+      <if test="mapa8 != null" >
+         and MAPA8 = #{mapa8,jdbcType=INTEGER}
+      </if>
+      <if test="abmcu != null" >
+         and ABMCU = #{abmcu,jdbcType=VARCHAR}
+      </if>
+      <if test="alcty1 != null" >
+         and ALCTY1 = #{alcty1,jdbcType=NVARCHAR}
+      </if>
+      <if test="aladd1 != null" >
+         and ALADD1 = #{aladd1,jdbcType=NVARCHAR}
+      </if>
+      <if test="aladd2 != null" >
+         and ALADD2 = #{aladd2,jdbcType=NVARCHAR}
+      </if>
+      <if test="aladd3 != null" >
+         and ALADD3 = #{aladd3,jdbcType=NVARCHAR}
+      </if>
+      <if test="aladd4 != null" >
+         and ALADD4 = #{aladd4,jdbcType=NVARCHAR}
+      </if>
+      <if test="aladdz != null" >
+         and ALADDZ = #{aladdz,jdbcType=INTEGER}
+      </if>
+      <if test="abuser != null" >
+         and ABUSER = #{abuser,jdbcType=VARCHAR}
+      </if>
+      <if test="abupmj != null" >
+         and ABUPMJ = #{abupmj,jdbcType=TIMESTAMP}
+      </if>
+      <if test="aiacl != null" >
+         and AIACL = #{aiacl,jdbcType=NUMERIC}
+      </if>
+      <if test="aitxa1 != null" >
+         and AITXA1 = #{aitxa1,jdbcType=VARCHAR}
+      </if>
+      <if test="wwmlnm != null" >
+         and WWMLNM = #{wwmlnm,jdbcType=NVARCHAR}
+      </if>
+      <if test="abat1 != null" >
+         and ABAT1 = #{abat1,jdbcType=VARCHAR}
+      </if>
+      <if test="abeftb != null" >
+         and ABEFTB = #{abeftb,jdbcType=DATE}
+      </if>
+      <if test="abac01 != null" >
+         and ABAC01 = #{abac01,jdbcType=VARCHAR}
+      </if>
+      <if test="abac02 != null" >
+         and ABAC02 = #{abac02,jdbcType=VARCHAR}
+      </if>
+      <if test="abac03 != null" >
+         and ABAC03 = #{abac03,jdbcType=VARCHAR}
+      </if>
+      <if test="abac04 != null" >
+         and ABAC04 = #{abac04,jdbcType=VARCHAR}
+      </if>
+      <if test="abac05 != null" >
+         and ABAC05 = #{abac05,jdbcType=VARCHAR}
+      </if>
+      <if test="abac06 != null" >
+         and ABAC06 = #{abac06,jdbcType=VARCHAR}
+      </if>
+      <if test="abac07 != null" >
+         and ABAC07 = #{abac07,jdbcType=VARCHAR}
+      </if>
+      <if test="abac08 != null" >
+         and ABAC08 = #{abac08,jdbcType=VARCHAR}
+      </if>
+      <if test="abac09 != null" >
+         and ABAC09 = #{abac09,jdbcType=VARCHAR}
+      </if>
+      <if test="abac10 != null" >
+         and ABAC10 = #{abac10,jdbcType=VARCHAR}
+      </if>
+      <if test="abac11 != null" >
+         and ABAC11 = #{abac11,jdbcType=VARCHAR}
+      </if>
+      <if test="abac12 != null" >
+         and ABAC12 = #{abac12,jdbcType=VARCHAR}
+      </if>
+      <if test="abac13 != null" >
+         and ABAC13 = #{abac13,jdbcType=VARCHAR}
+      </if>
+      <if test="abac14 != null" >
+         and ABAC14 = #{abac14,jdbcType=VARCHAR}
+      </if>
+      <if test="abac15 != null" >
+         and ABAC15 = #{abac15,jdbcType=VARCHAR}
+      </if>
+      <if test="abac16 != null" >
+         and ABAC16 = #{abac16,jdbcType=VARCHAR}
+      </if>
+      <if test="abac17 != null" >
+         and ABAC17 = #{abac17,jdbcType=VARCHAR}
+      </if>
+      <if test="abac18 != null" >
+         and ABAC18 = #{abac18,jdbcType=VARCHAR}
+      </if>
+      <if test="abac19 != null" >
+         and ABAC19 = #{abac19,jdbcType=VARCHAR}
+      </if>
+      <if test="abac20 != null" >
+         and ABAC20 = #{abac20,jdbcType=VARCHAR}
+      </if>
+      <if test="abac21 != null" >
+         and ABAC21 = #{abac21,jdbcType=VARCHAR}
+      </if>
+      <if test="abac22 != null" >
+         and ABAC22 = #{abac22,jdbcType=VARCHAR}
+      </if>
+      <if test="abac23 != null" >
+         and ABAC23 = #{abac23,jdbcType=VARCHAR}
+      </if>
+      <if test="abac24 != null" >
+         and ABAC24 = #{abac24,jdbcType=VARCHAR}
+      </if>
+      <if test="abac25 != null" >
+         and ABAC25 = #{abac25,jdbcType=VARCHAR}
+      </if>
+      <if test="abac26 != null" >
+         and ABAC26 = #{abac26,jdbcType=VARCHAR}
+      </if>
+      <if test="abac27 != null" >
+         and ABAC27 = #{abac27,jdbcType=VARCHAR}
+      </if>
+      <if test="abac28 != null" >
+         and ABAC28 = #{abac28,jdbcType=VARCHAR}
+      </if>
+      <if test="abac29 != null" >
+         and ABAC29 = #{abac29,jdbcType=VARCHAR}
+      </if>
+      <if test="abac30 != null" >
+         and ABAC30 = #{abac30,jdbcType=VARCHAR}
+      </if>
+      <if test="aicusts != null" >
+         and AICUSTS = #{aicusts,jdbcType=VARCHAR}
+      </if>
+      <if test="jdeUpdatedate != null" >
+         and JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ktProcessdate != null" >
+         and KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ktFaildate != null" >
+         and KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ktRetrytimes != null" >
+         and KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER}
+      </if>
+      <if test="ktErrorlog != null" >
+         and KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR}
+      </if>
+      <if test="fmsProcessDate != null" >
+         and fms_process_date = #{fmsProcessDate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="tax != null" >
+         and TAX = #{tax,jdbcType=NVARCHAR}
+      </if>
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from Address
+    where ABAN8 = #{aban8,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.ADDRESSExample" >
+    delete from Address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.ADDRESS" >
+    insert into Address (ABAN8, ABALKY, ABALPH, 
+      MAPA8, ABMCU, ALCTY1, 
+      ALADD1, ALADD2, ALADD3, 
+      ALADD4, ALADDZ, ABUSER, 
+      ABUPMJ, AIACL, AITXA1, 
+      WWMLNM, ABAT1, ABEFTB, 
+      ABAC01, ABAC02, ABAC03, 
+      ABAC04, ABAC05, ABAC06, 
+      ABAC07, ABAC08, ABAC09, 
+      ABAC10, ABAC11, ABAC12, 
+      ABAC13, ABAC14, ABAC15, 
+      ABAC16, ABAC17, ABAC18, 
+      ABAC19, ABAC20, ABAC21, 
+      ABAC22, ABAC23, ABAC24, 
+      ABAC25, ABAC26, ABAC27, 
+      ABAC28, ABAC29, ABAC30, 
+      AICUSTS, JDE_UpdateDate, KT_ProcessDate, 
+      KT_FailDate, KT_RetryTimes, KT_ErrorLog, 
+      fms_process_date, TAX)
+    values (#{aban8,jdbcType=INTEGER}, #{abalky,jdbcType=VARCHAR}, #{abalph,jdbcType=NVARCHAR}, 
+      #{mapa8,jdbcType=INTEGER}, #{abmcu,jdbcType=VARCHAR}, #{alcty1,jdbcType=NVARCHAR}, 
+      #{aladd1,jdbcType=NVARCHAR}, #{aladd2,jdbcType=NVARCHAR}, #{aladd3,jdbcType=NVARCHAR}, 
+      #{aladd4,jdbcType=NVARCHAR}, #{aladdz,jdbcType=INTEGER}, #{abuser,jdbcType=VARCHAR}, 
+      #{abupmj,jdbcType=TIMESTAMP}, #{aiacl,jdbcType=NUMERIC}, #{aitxa1,jdbcType=VARCHAR}, 
+      #{wwmlnm,jdbcType=NVARCHAR}, #{abat1,jdbcType=VARCHAR}, #{abeftb,jdbcType=DATE}, 
+      #{abac01,jdbcType=VARCHAR}, #{abac02,jdbcType=VARCHAR}, #{abac03,jdbcType=VARCHAR}, 
+      #{abac04,jdbcType=VARCHAR}, #{abac05,jdbcType=VARCHAR}, #{abac06,jdbcType=VARCHAR}, 
+      #{abac07,jdbcType=VARCHAR}, #{abac08,jdbcType=VARCHAR}, #{abac09,jdbcType=VARCHAR}, 
+      #{abac10,jdbcType=VARCHAR}, #{abac11,jdbcType=VARCHAR}, #{abac12,jdbcType=VARCHAR}, 
+      #{abac13,jdbcType=VARCHAR}, #{abac14,jdbcType=VARCHAR}, #{abac15,jdbcType=VARCHAR}, 
+      #{abac16,jdbcType=VARCHAR}, #{abac17,jdbcType=VARCHAR}, #{abac18,jdbcType=VARCHAR}, 
+      #{abac19,jdbcType=VARCHAR}, #{abac20,jdbcType=VARCHAR}, #{abac21,jdbcType=VARCHAR}, 
+      #{abac22,jdbcType=VARCHAR}, #{abac23,jdbcType=VARCHAR}, #{abac24,jdbcType=VARCHAR}, 
+      #{abac25,jdbcType=VARCHAR}, #{abac26,jdbcType=VARCHAR}, #{abac27,jdbcType=VARCHAR}, 
+      #{abac28,jdbcType=VARCHAR}, #{abac29,jdbcType=VARCHAR}, #{abac30,jdbcType=VARCHAR}, 
+      #{aicusts,jdbcType=VARCHAR}, #{jdeUpdatedate,jdbcType=TIMESTAMP}, #{ktProcessdate,jdbcType=TIMESTAMP}, 
+      #{ktFaildate,jdbcType=TIMESTAMP}, #{ktRetrytimes,jdbcType=INTEGER}, #{ktErrorlog,jdbcType=VARCHAR}, 
+      #{fmsProcessDate,jdbcType=TIMESTAMP}, #{tax,jdbcType=NVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.ADDRESS" >
+    insert into Address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aban8 != null" >
+        ABAN8,
+      </if>
+      <if test="abalky != null" >
+        ABALKY,
+      </if>
+      <if test="abalph != null" >
+        ABALPH,
+      </if>
+      <if test="mapa8 != null" >
+        MAPA8,
+      </if>
+      <if test="abmcu != null" >
+        ABMCU,
+      </if>
+      <if test="alcty1 != null" >
+        ALCTY1,
+      </if>
+      <if test="aladd1 != null" >
+        ALADD1,
+      </if>
+      <if test="aladd2 != null" >
+        ALADD2,
+      </if>
+      <if test="aladd3 != null" >
+        ALADD3,
+      </if>
+      <if test="aladd4 != null" >
+        ALADD4,
+      </if>
+      <if test="aladdz != null" >
+        ALADDZ,
+      </if>
+      <if test="abuser != null" >
+        ABUSER,
+      </if>
+      <if test="abupmj != null" >
+        ABUPMJ,
+      </if>
+      <if test="aiacl != null" >
+        AIACL,
+      </if>
+      <if test="aitxa1 != null" >
+        AITXA1,
+      </if>
+      <if test="wwmlnm != null" >
+        WWMLNM,
+      </if>
+      <if test="abat1 != null" >
+        ABAT1,
+      </if>
+      <if test="abeftb != null" >
+        ABEFTB,
+      </if>
+      <if test="abac01 != null" >
+        ABAC01,
+      </if>
+      <if test="abac02 != null" >
+        ABAC02,
+      </if>
+      <if test="abac03 != null" >
+        ABAC03,
+      </if>
+      <if test="abac04 != null" >
+        ABAC04,
+      </if>
+      <if test="abac05 != null" >
+        ABAC05,
+      </if>
+      <if test="abac06 != null" >
+        ABAC06,
+      </if>
+      <if test="abac07 != null" >
+        ABAC07,
+      </if>
+      <if test="abac08 != null" >
+        ABAC08,
+      </if>
+      <if test="abac09 != null" >
+        ABAC09,
+      </if>
+      <if test="abac10 != null" >
+        ABAC10,
+      </if>
+      <if test="abac11 != null" >
+        ABAC11,
+      </if>
+      <if test="abac12 != null" >
+        ABAC12,
+      </if>
+      <if test="abac13 != null" >
+        ABAC13,
+      </if>
+      <if test="abac14 != null" >
+        ABAC14,
+      </if>
+      <if test="abac15 != null" >
+        ABAC15,
+      </if>
+      <if test="abac16 != null" >
+        ABAC16,
+      </if>
+      <if test="abac17 != null" >
+        ABAC17,
+      </if>
+      <if test="abac18 != null" >
+        ABAC18,
+      </if>
+      <if test="abac19 != null" >
+        ABAC19,
+      </if>
+      <if test="abac20 != null" >
+        ABAC20,
+      </if>
+      <if test="abac21 != null" >
+        ABAC21,
+      </if>
+      <if test="abac22 != null" >
+        ABAC22,
+      </if>
+      <if test="abac23 != null" >
+        ABAC23,
+      </if>
+      <if test="abac24 != null" >
+        ABAC24,
+      </if>
+      <if test="abac25 != null" >
+        ABAC25,
+      </if>
+      <if test="abac26 != null" >
+        ABAC26,
+      </if>
+      <if test="abac27 != null" >
+        ABAC27,
+      </if>
+      <if test="abac28 != null" >
+        ABAC28,
+      </if>
+      <if test="abac29 != null" >
+        ABAC29,
+      </if>
+      <if test="abac30 != null" >
+        ABAC30,
+      </if>
+      <if test="aicusts != null" >
+        AICUSTS,
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate,
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate,
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate,
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes,
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog,
+      </if>
+      <if test="fmsProcessDate != null" >
+        fms_process_date,
+      </if>
+      <if test="tax != null" >
+        TAX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aban8 != null" >
+        #{aban8,jdbcType=INTEGER},
+      </if>
+      <if test="abalky != null" >
+        #{abalky,jdbcType=VARCHAR},
+      </if>
+      <if test="abalph != null" >
+        #{abalph,jdbcType=NVARCHAR},
+      </if>
+      <if test="mapa8 != null" >
+        #{mapa8,jdbcType=INTEGER},
+      </if>
+      <if test="abmcu != null" >
+        #{abmcu,jdbcType=VARCHAR},
+      </if>
+      <if test="alcty1 != null" >
+        #{alcty1,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd1 != null" >
+        #{aladd1,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd2 != null" >
+        #{aladd2,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd3 != null" >
+        #{aladd3,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd4 != null" >
+        #{aladd4,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladdz != null" >
+        #{aladdz,jdbcType=INTEGER},
+      </if>
+      <if test="abuser != null" >
+        #{abuser,jdbcType=VARCHAR},
+      </if>
+      <if test="abupmj != null" >
+        #{abupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aiacl != null" >
+        #{aiacl,jdbcType=NUMERIC},
+      </if>
+      <if test="aitxa1 != null" >
+        #{aitxa1,jdbcType=VARCHAR},
+      </if>
+      <if test="wwmlnm != null" >
+        #{wwmlnm,jdbcType=NVARCHAR},
+      </if>
+      <if test="abat1 != null" >
+        #{abat1,jdbcType=VARCHAR},
+      </if>
+      <if test="abeftb != null" >
+        #{abeftb,jdbcType=DATE},
+      </if>
+      <if test="abac01 != null" >
+        #{abac01,jdbcType=VARCHAR},
+      </if>
+      <if test="abac02 != null" >
+        #{abac02,jdbcType=VARCHAR},
+      </if>
+      <if test="abac03 != null" >
+        #{abac03,jdbcType=VARCHAR},
+      </if>
+      <if test="abac04 != null" >
+        #{abac04,jdbcType=VARCHAR},
+      </if>
+      <if test="abac05 != null" >
+        #{abac05,jdbcType=VARCHAR},
+      </if>
+      <if test="abac06 != null" >
+        #{abac06,jdbcType=VARCHAR},
+      </if>
+      <if test="abac07 != null" >
+        #{abac07,jdbcType=VARCHAR},
+      </if>
+      <if test="abac08 != null" >
+        #{abac08,jdbcType=VARCHAR},
+      </if>
+      <if test="abac09 != null" >
+        #{abac09,jdbcType=VARCHAR},
+      </if>
+      <if test="abac10 != null" >
+        #{abac10,jdbcType=VARCHAR},
+      </if>
+      <if test="abac11 != null" >
+        #{abac11,jdbcType=VARCHAR},
+      </if>
+      <if test="abac12 != null" >
+        #{abac12,jdbcType=VARCHAR},
+      </if>
+      <if test="abac13 != null" >
+        #{abac13,jdbcType=VARCHAR},
+      </if>
+      <if test="abac14 != null" >
+        #{abac14,jdbcType=VARCHAR},
+      </if>
+      <if test="abac15 != null" >
+        #{abac15,jdbcType=VARCHAR},
+      </if>
+      <if test="abac16 != null" >
+        #{abac16,jdbcType=VARCHAR},
+      </if>
+      <if test="abac17 != null" >
+        #{abac17,jdbcType=VARCHAR},
+      </if>
+      <if test="abac18 != null" >
+        #{abac18,jdbcType=VARCHAR},
+      </if>
+      <if test="abac19 != null" >
+        #{abac19,jdbcType=VARCHAR},
+      </if>
+      <if test="abac20 != null" >
+        #{abac20,jdbcType=VARCHAR},
+      </if>
+      <if test="abac21 != null" >
+        #{abac21,jdbcType=VARCHAR},
+      </if>
+      <if test="abac22 != null" >
+        #{abac22,jdbcType=VARCHAR},
+      </if>
+      <if test="abac23 != null" >
+        #{abac23,jdbcType=VARCHAR},
+      </if>
+      <if test="abac24 != null" >
+        #{abac24,jdbcType=VARCHAR},
+      </if>
+      <if test="abac25 != null" >
+        #{abac25,jdbcType=VARCHAR},
+      </if>
+      <if test="abac26 != null" >
+        #{abac26,jdbcType=VARCHAR},
+      </if>
+      <if test="abac27 != null" >
+        #{abac27,jdbcType=VARCHAR},
+      </if>
+      <if test="abac28 != null" >
+        #{abac28,jdbcType=VARCHAR},
+      </if>
+      <if test="abac29 != null" >
+        #{abac29,jdbcType=VARCHAR},
+      </if>
+      <if test="abac30 != null" >
+        #{abac30,jdbcType=VARCHAR},
+      </if>
+      <if test="aicusts != null" >
+        #{aicusts,jdbcType=VARCHAR},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktProcessdate != null" >
+        #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="fmsProcessDate != null" >
+        #{fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tax != null" >
+        #{tax,jdbcType=NVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.ADDRESSExample" resultType="java.lang.Integer" >
+    select count(*) from Address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update Address
+    <set >
+      <if test="record.aban8 != null" >
+        ABAN8 = #{record.aban8,jdbcType=INTEGER},
+      </if>
+      <if test="record.abalky != null" >
+        ABALKY = #{record.abalky,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abalph != null" >
+        ABALPH = #{record.abalph,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.mapa8 != null" >
+        MAPA8 = #{record.mapa8,jdbcType=INTEGER},
+      </if>
+      <if test="record.abmcu != null" >
+        ABMCU = #{record.abmcu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.alcty1 != null" >
+        ALCTY1 = #{record.alcty1,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.aladd1 != null" >
+        ALADD1 = #{record.aladd1,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.aladd2 != null" >
+        ALADD2 = #{record.aladd2,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.aladd3 != null" >
+        ALADD3 = #{record.aladd3,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.aladd4 != null" >
+        ALADD4 = #{record.aladd4,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.aladdz != null" >
+        ALADDZ = #{record.aladdz,jdbcType=INTEGER},
+      </if>
+      <if test="record.abuser != null" >
+        ABUSER = #{record.abuser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abupmj != null" >
+        ABUPMJ = #{record.abupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.aiacl != null" >
+        AIACL = #{record.aiacl,jdbcType=NUMERIC},
+      </if>
+      <if test="record.aitxa1 != null" >
+        AITXA1 = #{record.aitxa1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wwmlnm != null" >
+        WWMLNM = #{record.wwmlnm,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.abat1 != null" >
+        ABAT1 = #{record.abat1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abeftb != null" >
+        ABEFTB = #{record.abeftb,jdbcType=DATE},
+      </if>
+      <if test="record.abac01 != null" >
+        ABAC01 = #{record.abac01,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac02 != null" >
+        ABAC02 = #{record.abac02,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac03 != null" >
+        ABAC03 = #{record.abac03,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac04 != null" >
+        ABAC04 = #{record.abac04,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac05 != null" >
+        ABAC05 = #{record.abac05,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac06 != null" >
+        ABAC06 = #{record.abac06,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac07 != null" >
+        ABAC07 = #{record.abac07,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac08 != null" >
+        ABAC08 = #{record.abac08,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac09 != null" >
+        ABAC09 = #{record.abac09,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac10 != null" >
+        ABAC10 = #{record.abac10,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac11 != null" >
+        ABAC11 = #{record.abac11,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac12 != null" >
+        ABAC12 = #{record.abac12,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac13 != null" >
+        ABAC13 = #{record.abac13,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac14 != null" >
+        ABAC14 = #{record.abac14,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac15 != null" >
+        ABAC15 = #{record.abac15,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac16 != null" >
+        ABAC16 = #{record.abac16,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac17 != null" >
+        ABAC17 = #{record.abac17,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac18 != null" >
+        ABAC18 = #{record.abac18,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac19 != null" >
+        ABAC19 = #{record.abac19,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac20 != null" >
+        ABAC20 = #{record.abac20,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac21 != null" >
+        ABAC21 = #{record.abac21,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac22 != null" >
+        ABAC22 = #{record.abac22,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac23 != null" >
+        ABAC23 = #{record.abac23,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac24 != null" >
+        ABAC24 = #{record.abac24,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac25 != null" >
+        ABAC25 = #{record.abac25,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac26 != null" >
+        ABAC26 = #{record.abac26,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac27 != null" >
+        ABAC27 = #{record.abac27,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac28 != null" >
+        ABAC28 = #{record.abac28,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac29 != null" >
+        ABAC29 = #{record.abac29,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abac30 != null" >
+        ABAC30 = #{record.abac30,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aicusts != null" >
+        AICUSTS = #{record.aicusts,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jdeUpdatedate != null" >
+        JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktProcessdate != null" >
+        KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktFaildate != null" >
+        KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktRetrytimes != null" >
+        KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.ktErrorlog != null" >
+        KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fmsProcessDate != null" >
+        fms_process_date = #{record.fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.tax != null" >
+        TAX = #{record.tax,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update Address
+    set ABAN8 = #{record.aban8,jdbcType=INTEGER},
+      ABALKY = #{record.abalky,jdbcType=VARCHAR},
+      ABALPH = #{record.abalph,jdbcType=NVARCHAR},
+      MAPA8 = #{record.mapa8,jdbcType=INTEGER},
+      ABMCU = #{record.abmcu,jdbcType=VARCHAR},
+      ALCTY1 = #{record.alcty1,jdbcType=NVARCHAR},
+      ALADD1 = #{record.aladd1,jdbcType=NVARCHAR},
+      ALADD2 = #{record.aladd2,jdbcType=NVARCHAR},
+      ALADD3 = #{record.aladd3,jdbcType=NVARCHAR},
+      ALADD4 = #{record.aladd4,jdbcType=NVARCHAR},
+      ALADDZ = #{record.aladdz,jdbcType=INTEGER},
+      ABUSER = #{record.abuser,jdbcType=VARCHAR},
+      ABUPMJ = #{record.abupmj,jdbcType=TIMESTAMP},
+      AIACL = #{record.aiacl,jdbcType=NUMERIC},
+      AITXA1 = #{record.aitxa1,jdbcType=VARCHAR},
+      WWMLNM = #{record.wwmlnm,jdbcType=NVARCHAR},
+      ABAT1 = #{record.abat1,jdbcType=VARCHAR},
+      ABEFTB = #{record.abeftb,jdbcType=DATE},
+      ABAC01 = #{record.abac01,jdbcType=VARCHAR},
+      ABAC02 = #{record.abac02,jdbcType=VARCHAR},
+      ABAC03 = #{record.abac03,jdbcType=VARCHAR},
+      ABAC04 = #{record.abac04,jdbcType=VARCHAR},
+      ABAC05 = #{record.abac05,jdbcType=VARCHAR},
+      ABAC06 = #{record.abac06,jdbcType=VARCHAR},
+      ABAC07 = #{record.abac07,jdbcType=VARCHAR},
+      ABAC08 = #{record.abac08,jdbcType=VARCHAR},
+      ABAC09 = #{record.abac09,jdbcType=VARCHAR},
+      ABAC10 = #{record.abac10,jdbcType=VARCHAR},
+      ABAC11 = #{record.abac11,jdbcType=VARCHAR},
+      ABAC12 = #{record.abac12,jdbcType=VARCHAR},
+      ABAC13 = #{record.abac13,jdbcType=VARCHAR},
+      ABAC14 = #{record.abac14,jdbcType=VARCHAR},
+      ABAC15 = #{record.abac15,jdbcType=VARCHAR},
+      ABAC16 = #{record.abac16,jdbcType=VARCHAR},
+      ABAC17 = #{record.abac17,jdbcType=VARCHAR},
+      ABAC18 = #{record.abac18,jdbcType=VARCHAR},
+      ABAC19 = #{record.abac19,jdbcType=VARCHAR},
+      ABAC20 = #{record.abac20,jdbcType=VARCHAR},
+      ABAC21 = #{record.abac21,jdbcType=VARCHAR},
+      ABAC22 = #{record.abac22,jdbcType=VARCHAR},
+      ABAC23 = #{record.abac23,jdbcType=VARCHAR},
+      ABAC24 = #{record.abac24,jdbcType=VARCHAR},
+      ABAC25 = #{record.abac25,jdbcType=VARCHAR},
+      ABAC26 = #{record.abac26,jdbcType=VARCHAR},
+      ABAC27 = #{record.abac27,jdbcType=VARCHAR},
+      ABAC28 = #{record.abac28,jdbcType=VARCHAR},
+      ABAC29 = #{record.abac29,jdbcType=VARCHAR},
+      ABAC30 = #{record.abac30,jdbcType=VARCHAR},
+      AICUSTS = #{record.aicusts,jdbcType=VARCHAR},
+      JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR},
+      fms_process_date = #{record.fmsProcessDate,jdbcType=TIMESTAMP},
+      TAX = #{record.tax,jdbcType=NVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.ADDRESS" >
+    update Address
+    <set >
+      <if test="abalky != null" >
+        ABALKY = #{abalky,jdbcType=VARCHAR},
+      </if>
+      <if test="abalph != null" >
+        ABALPH = #{abalph,jdbcType=NVARCHAR},
+      </if>
+      <if test="mapa8 != null" >
+        MAPA8 = #{mapa8,jdbcType=INTEGER},
+      </if>
+      <if test="abmcu != null" >
+        ABMCU = #{abmcu,jdbcType=VARCHAR},
+      </if>
+      <if test="alcty1 != null" >
+        ALCTY1 = #{alcty1,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd1 != null" >
+        ALADD1 = #{aladd1,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd2 != null" >
+        ALADD2 = #{aladd2,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd3 != null" >
+        ALADD3 = #{aladd3,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd4 != null" >
+        ALADD4 = #{aladd4,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladdz != null" >
+        ALADDZ = #{aladdz,jdbcType=INTEGER},
+      </if>
+      <if test="abuser != null" >
+        ABUSER = #{abuser,jdbcType=VARCHAR},
+      </if>
+      <if test="abupmj != null" >
+        ABUPMJ = #{abupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="aiacl != null" >
+        AIACL = #{aiacl,jdbcType=NUMERIC},
+      </if>
+      <if test="aitxa1 != null" >
+        AITXA1 = #{aitxa1,jdbcType=VARCHAR},
+      </if>
+      <if test="wwmlnm != null" >
+        WWMLNM = #{wwmlnm,jdbcType=NVARCHAR},
+      </if>
+      <if test="abat1 != null" >
+        ABAT1 = #{abat1,jdbcType=VARCHAR},
+      </if>
+      <if test="abeftb != null" >
+        ABEFTB = #{abeftb,jdbcType=DATE},
+      </if>
+      <if test="abac01 != null" >
+        ABAC01 = #{abac01,jdbcType=VARCHAR},
+      </if>
+      <if test="abac02 != null" >
+        ABAC02 = #{abac02,jdbcType=VARCHAR},
+      </if>
+      <if test="abac03 != null" >
+        ABAC03 = #{abac03,jdbcType=VARCHAR},
+      </if>
+      <if test="abac04 != null" >
+        ABAC04 = #{abac04,jdbcType=VARCHAR},
+      </if>
+      <if test="abac05 != null" >
+        ABAC05 = #{abac05,jdbcType=VARCHAR},
+      </if>
+      <if test="abac06 != null" >
+        ABAC06 = #{abac06,jdbcType=VARCHAR},
+      </if>
+      <if test="abac07 != null" >
+        ABAC07 = #{abac07,jdbcType=VARCHAR},
+      </if>
+      <if test="abac08 != null" >
+        ABAC08 = #{abac08,jdbcType=VARCHAR},
+      </if>
+      <if test="abac09 != null" >
+        ABAC09 = #{abac09,jdbcType=VARCHAR},
+      </if>
+      <if test="abac10 != null" >
+        ABAC10 = #{abac10,jdbcType=VARCHAR},
+      </if>
+      <if test="abac11 != null" >
+        ABAC11 = #{abac11,jdbcType=VARCHAR},
+      </if>
+      <if test="abac12 != null" >
+        ABAC12 = #{abac12,jdbcType=VARCHAR},
+      </if>
+      <if test="abac13 != null" >
+        ABAC13 = #{abac13,jdbcType=VARCHAR},
+      </if>
+      <if test="abac14 != null" >
+        ABAC14 = #{abac14,jdbcType=VARCHAR},
+      </if>
+      <if test="abac15 != null" >
+        ABAC15 = #{abac15,jdbcType=VARCHAR},
+      </if>
+      <if test="abac16 != null" >
+        ABAC16 = #{abac16,jdbcType=VARCHAR},
+      </if>
+      <if test="abac17 != null" >
+        ABAC17 = #{abac17,jdbcType=VARCHAR},
+      </if>
+      <if test="abac18 != null" >
+        ABAC18 = #{abac18,jdbcType=VARCHAR},
+      </if>
+      <if test="abac19 != null" >
+        ABAC19 = #{abac19,jdbcType=VARCHAR},
+      </if>
+      <if test="abac20 != null" >
+        ABAC20 = #{abac20,jdbcType=VARCHAR},
+      </if>
+      <if test="abac21 != null" >
+        ABAC21 = #{abac21,jdbcType=VARCHAR},
+      </if>
+      <if test="abac22 != null" >
+        ABAC22 = #{abac22,jdbcType=VARCHAR},
+      </if>
+      <if test="abac23 != null" >
+        ABAC23 = #{abac23,jdbcType=VARCHAR},
+      </if>
+      <if test="abac24 != null" >
+        ABAC24 = #{abac24,jdbcType=VARCHAR},
+      </if>
+      <if test="abac25 != null" >
+        ABAC25 = #{abac25,jdbcType=VARCHAR},
+      </if>
+      <if test="abac26 != null" >
+        ABAC26 = #{abac26,jdbcType=VARCHAR},
+      </if>
+      <if test="abac27 != null" >
+        ABAC27 = #{abac27,jdbcType=VARCHAR},
+      </if>
+      <if test="abac28 != null" >
+        ABAC28 = #{abac28,jdbcType=VARCHAR},
+      </if>
+      <if test="abac29 != null" >
+        ABAC29 = #{abac29,jdbcType=VARCHAR},
+      </if>
+      <if test="abac30 != null" >
+        ABAC30 = #{abac30,jdbcType=VARCHAR},
+      </if>
+      <if test="aicusts != null" >
+        AICUSTS = #{aicusts,jdbcType=VARCHAR},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="fmsProcessDate != null" >
+        fms_process_date = #{fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tax != null" >
+        TAX = #{tax,jdbcType=NVARCHAR},
+      </if>
+    </set>
+    where ABAN8 = #{aban8,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.ADDRESS" >
+    update Address
+    set ABALKY = #{abalky,jdbcType=VARCHAR},
+      ABALPH = #{abalph,jdbcType=NVARCHAR},
+      MAPA8 = #{mapa8,jdbcType=INTEGER},
+      ABMCU = #{abmcu,jdbcType=VARCHAR},
+      ALCTY1 = #{alcty1,jdbcType=NVARCHAR},
+      ALADD1 = #{aladd1,jdbcType=NVARCHAR},
+      ALADD2 = #{aladd2,jdbcType=NVARCHAR},
+      ALADD3 = #{aladd3,jdbcType=NVARCHAR},
+      ALADD4 = #{aladd4,jdbcType=NVARCHAR},
+      ALADDZ = #{aladdz,jdbcType=INTEGER},
+      ABUSER = #{abuser,jdbcType=VARCHAR},
+      ABUPMJ = #{abupmj,jdbcType=TIMESTAMP},
+      AIACL = #{aiacl,jdbcType=NUMERIC},
+      AITXA1 = #{aitxa1,jdbcType=VARCHAR},
+      WWMLNM = #{wwmlnm,jdbcType=NVARCHAR},
+      ABAT1 = #{abat1,jdbcType=VARCHAR},
+      ABEFTB = #{abeftb,jdbcType=DATE},
+      ABAC01 = #{abac01,jdbcType=VARCHAR},
+      ABAC02 = #{abac02,jdbcType=VARCHAR},
+      ABAC03 = #{abac03,jdbcType=VARCHAR},
+      ABAC04 = #{abac04,jdbcType=VARCHAR},
+      ABAC05 = #{abac05,jdbcType=VARCHAR},
+      ABAC06 = #{abac06,jdbcType=VARCHAR},
+      ABAC07 = #{abac07,jdbcType=VARCHAR},
+      ABAC08 = #{abac08,jdbcType=VARCHAR},
+      ABAC09 = #{abac09,jdbcType=VARCHAR},
+      ABAC10 = #{abac10,jdbcType=VARCHAR},
+      ABAC11 = #{abac11,jdbcType=VARCHAR},
+      ABAC12 = #{abac12,jdbcType=VARCHAR},
+      ABAC13 = #{abac13,jdbcType=VARCHAR},
+      ABAC14 = #{abac14,jdbcType=VARCHAR},
+      ABAC15 = #{abac15,jdbcType=VARCHAR},
+      ABAC16 = #{abac16,jdbcType=VARCHAR},
+      ABAC17 = #{abac17,jdbcType=VARCHAR},
+      ABAC18 = #{abac18,jdbcType=VARCHAR},
+      ABAC19 = #{abac19,jdbcType=VARCHAR},
+      ABAC20 = #{abac20,jdbcType=VARCHAR},
+      ABAC21 = #{abac21,jdbcType=VARCHAR},
+      ABAC22 = #{abac22,jdbcType=VARCHAR},
+      ABAC23 = #{abac23,jdbcType=VARCHAR},
+      ABAC24 = #{abac24,jdbcType=VARCHAR},
+      ABAC25 = #{abac25,jdbcType=VARCHAR},
+      ABAC26 = #{abac26,jdbcType=VARCHAR},
+      ABAC27 = #{abac27,jdbcType=VARCHAR},
+      ABAC28 = #{abac28,jdbcType=VARCHAR},
+      ABAC29 = #{abac29,jdbcType=VARCHAR},
+      ABAC30 = #{abac30,jdbcType=VARCHAR},
+      AICUSTS = #{aicusts,jdbcType=VARCHAR},
+      JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR},
+      fms_process_date = #{fmsProcessDate,jdbcType=TIMESTAMP},
+      TAX = #{tax,jdbcType=NVARCHAR}
+    where ABAN8 = #{aban8,jdbcType=INTEGER}
+  </update>
+</mapper>

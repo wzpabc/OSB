@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.AddressRegionMapMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.AddressRegionMap" >
+    <id column="ID" property="id" jdbcType="CHAR" />
+    <result column="OldNo" property="oldno" jdbcType="VARCHAR" />
+    <result column="NewNo" property="newno" jdbcType="VARCHAR" />
+    <result column="Name" property="name" jdbcType="VARCHAR" />
+    <result column="OldBU" property="oldbu" jdbcType="VARCHAR" />
+    <result column="NewBU" property="newbu" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, OldNo, NewNo, Name, OldBU, NewBU
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.AddressRegionMapExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Address_RegionMap
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Address_RegionMap
+    where ID = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Address_RegionMap
+    where ID = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.AddressRegionMapExample" >
+    delete from Address_RegionMap
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.AddressRegionMap" >
+    insert into Address_RegionMap (ID, OldNo, NewNo, 
+      Name, OldBU, NewBU)
+    values (#{id,jdbcType=CHAR}, #{oldno,jdbcType=VARCHAR}, #{newno,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{oldbu,jdbcType=VARCHAR}, #{newbu,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.AddressRegionMap" >
+    insert into Address_RegionMap
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="oldno != null" >
+        OldNo,
+      </if>
+      <if test="newno != null" >
+        NewNo,
+      </if>
+      <if test="name != null" >
+        Name,
+      </if>
+      <if test="oldbu != null" >
+        OldBU,
+      </if>
+      <if test="newbu != null" >
+        NewBU,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="oldno != null" >
+        #{oldno,jdbcType=VARCHAR},
+      </if>
+      <if test="newno != null" >
+        #{newno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="oldbu != null" >
+        #{oldbu,jdbcType=VARCHAR},
+      </if>
+      <if test="newbu != null" >
+        #{newbu,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.AddressRegionMapExample" resultType="java.lang.Integer" >
+    select count(*) from Address_RegionMap
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update Address_RegionMap
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=CHAR},
+      </if>
+      <if test="record.oldno != null" >
+        OldNo = #{record.oldno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newno != null" >
+        NewNo = #{record.newno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        Name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.oldbu != null" >
+        OldBU = #{record.oldbu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.newbu != null" >
+        NewBU = #{record.newbu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update Address_RegionMap
+    set ID = #{record.id,jdbcType=CHAR},
+      OldNo = #{record.oldno,jdbcType=VARCHAR},
+      NewNo = #{record.newno,jdbcType=VARCHAR},
+      Name = #{record.name,jdbcType=VARCHAR},
+      OldBU = #{record.oldbu,jdbcType=VARCHAR},
+      NewBU = #{record.newbu,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.AddressRegionMap" >
+    update Address_RegionMap
+    <set >
+      <if test="oldno != null" >
+        OldNo = #{oldno,jdbcType=VARCHAR},
+      </if>
+      <if test="newno != null" >
+        NewNo = #{newno,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        Name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="oldbu != null" >
+        OldBU = #{oldbu,jdbcType=VARCHAR},
+      </if>
+      <if test="newbu != null" >
+        NewBU = #{newbu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.AddressRegionMap" >
+    update Address_RegionMap
+    set OldNo = #{oldno,jdbcType=VARCHAR},
+      NewNo = #{newno,jdbcType=VARCHAR},
+      Name = #{name,jdbcType=VARCHAR},
+      OldBU = #{oldbu,jdbcType=VARCHAR},
+      NewBU = #{newbu,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.ItemPriceMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.ItemPrice" >
+    <id column="BPITM" property="bpitm" jdbcType="INTEGER" />
+    <id column="BPMCU" property="bpmcu" jdbcType="VARCHAR" />
+    <id column="BPLOCN" property="bplocn" jdbcType="VARCHAR" />
+    <id column="BPUOM" property="bpuom" jdbcType="VARCHAR" />
+    <id column="BPEXDJ" property="bpexdj" jdbcType="DATE" />
+    <result column="BPLITM" property="bplitm" jdbcType="VARCHAR" />
+    <result column="BPUPRC" property="bpuprc" jdbcType="NUMERIC" />
+    <result column="BPEFTJ" property="bpeftj" jdbcType="DATE" />
+    <result column="BPUSER" property="bpuser" jdbcType="VARCHAR" />
+    <result column="BPUPMJ" property="bpupmj" jdbcType="TIMESTAMP" />
+    <result column="JDE_UpdateDate" property="jdeUpdatedate" jdbcType="TIMESTAMP" />
+    <result column="IsProcessed" property="isprocessed" jdbcType="BIT" />
+    <result column="KT_ProcessDate" property="ktProcessdate" jdbcType="TIMESTAMP" />
+    <result column="KT_FailDate" property="ktFaildate" jdbcType="TIMESTAMP" />
+    <result column="KT_RetryTimes" property="ktRetrytimes" jdbcType="INTEGER" />
+    <result column="KT_ErrorLog" property="ktErrorlog" jdbcType="VARCHAR" />
+    <result column="fms_process_date" property="fmsProcessDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    BPITM, BPMCU, BPLOCN, BPUOM, BPEXDJ, BPLITM, BPUPRC, BPEFTJ, BPUSER, BPUPMJ, JDE_UpdateDate, 
+    IsProcessed, KT_ProcessDate, KT_FailDate, KT_RetryTimes, KT_ErrorLog, fms_process_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.ItemPriceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from ItemPrice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.ItemPriceKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from ItemPrice
+    where BPITM = #{bpitm,jdbcType=INTEGER}
+      and BPMCU = #{bpmcu,jdbcType=VARCHAR}
+      and BPLOCN = #{bplocn,jdbcType=VARCHAR}
+      and BPUOM = #{bpuom,jdbcType=VARCHAR}
+      and BPEXDJ = #{bpexdj,jdbcType=DATE}
+  </select>
+  
+  
+   <select id="selectByMapParam" resultMap="BaseResultMap" parameterType="Map" >
+    select  
+    <include refid="Base_Column_List" />
+    from ItemPrice WHERE 1=1
+      <if test="bpitm != null" >
+         and  BPITM = #{bpitm,jdbcType=INTEGER}
+      </if>
+      <if test="bpmcu != null" >
+         and  BPMCU = #{bpmcu,jdbcType=VARCHAR}
+      </if>
+      <if test="bplocn != null" >
+         and  BPLOCN = #{bplocn,jdbcType=VARCHAR}
+      </if>
+      <if test="bpuom != null" >
+         and  BPUOM = #{bpuom,jdbcType=VARCHAR}
+      </if>
+      <if test="bpexdj != null" >
+         and  BPEXDJ = #{bpexdj,jdbcType=DATE}
+      </if>
+      <if test="bplitm != null" >
+         and  BPLITM = #{bplitm,jdbcType=VARCHAR}
+      </if>
+      <if test="bpuprc != null" >
+         and  BPUPRC = #{bpuprc,jdbcType=NUMERIC}
+      </if>
+      <if test="bpeftj != null" >
+         and  BPEFTJ = #{bpeftj,jdbcType=DATE}
+      </if>
+      <if test="bpuser != null" >
+         and  BPUSER = #{bpuser,jdbcType=VARCHAR}
+      </if>
+      <if test="bpupmj != null" >
+         and  BPUPMJ = #{bpupmj,jdbcType=TIMESTAMP}
+      </if>
+      <if test="jdeUpdatedate != null" >
+         and  JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="isprocessed != null" >
+         and  IsProcessed = #{isprocessed,jdbcType=BIT}
+      </if>
+      <if test="ktProcessdate != null" >
+         and  KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ktFaildate != null" >
+         and  KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ktRetrytimes != null" >
+         and  KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER}
+      </if>
+      <if test="ktErrorlog != null" >
+         and  KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR}
+      </if>
+      <if test="fmsProcessDate != null" >
+         and  fms_process_date = #{fmsProcessDate,jdbcType=TIMESTAMP}
+      </if>
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="com.tup.mssql.model.ItemPriceKey" >
+    delete from ItemPrice
+    where BPITM = #{bpitm,jdbcType=INTEGER}
+      and BPMCU = #{bpmcu,jdbcType=VARCHAR}
+      and BPLOCN = #{bplocn,jdbcType=VARCHAR}
+      and BPUOM = #{bpuom,jdbcType=VARCHAR}
+      and BPEXDJ = #{bpexdj,jdbcType=DATE}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.ItemPriceExample" >
+    delete from ItemPrice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.ItemPrice" >
+    insert into ItemPrice (BPITM, BPMCU, BPLOCN, 
+      BPUOM, BPEXDJ, BPLITM, 
+      BPUPRC, BPEFTJ, BPUSER, 
+      BPUPMJ, JDE_UpdateDate, IsProcessed, 
+      KT_ProcessDate, KT_FailDate, KT_RetryTimes, 
+      KT_ErrorLog, fms_process_date)
+    values (#{bpitm,jdbcType=INTEGER}, #{bpmcu,jdbcType=VARCHAR}, #{bplocn,jdbcType=VARCHAR}, 
+      #{bpuom,jdbcType=VARCHAR}, #{bpexdj,jdbcType=DATE}, #{bplitm,jdbcType=VARCHAR}, 
+      #{bpuprc,jdbcType=NUMERIC}, #{bpeftj,jdbcType=DATE}, #{bpuser,jdbcType=VARCHAR}, 
+      #{bpupmj,jdbcType=TIMESTAMP}, #{jdeUpdatedate,jdbcType=TIMESTAMP}, #{isprocessed,jdbcType=BIT}, 
+      #{ktProcessdate,jdbcType=TIMESTAMP}, #{ktFaildate,jdbcType=TIMESTAMP}, #{ktRetrytimes,jdbcType=INTEGER}, 
+      #{ktErrorlog,jdbcType=VARCHAR}, #{fmsProcessDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.ItemPrice" >
+    insert into ItemPrice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bpitm != null" >
+        BPITM,
+      </if>
+      <if test="bpmcu != null" >
+        BPMCU,
+      </if>
+      <if test="bplocn != null" >
+        BPLOCN,
+      </if>
+      <if test="bpuom != null" >
+        BPUOM,
+      </if>
+      <if test="bpexdj != null" >
+        BPEXDJ,
+      </if>
+      <if test="bplitm != null" >
+        BPLITM,
+      </if>
+      <if test="bpuprc != null" >
+        BPUPRC,
+      </if>
+      <if test="bpeftj != null" >
+        BPEFTJ,
+      </if>
+      <if test="bpuser != null" >
+        BPUSER,
+      </if>
+      <if test="bpupmj != null" >
+        BPUPMJ,
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate,
+      </if>
+      <if test="isprocessed != null" >
+        IsProcessed,
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate,
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate,
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes,
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog,
+      </if>
+      <if test="fmsProcessDate != null" >
+        fms_process_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bpitm != null" >
+        #{bpitm,jdbcType=INTEGER},
+      </if>
+      <if test="bpmcu != null" >
+        #{bpmcu,jdbcType=VARCHAR},
+      </if>
+      <if test="bplocn != null" >
+        #{bplocn,jdbcType=VARCHAR},
+      </if>
+      <if test="bpuom != null" >
+        #{bpuom,jdbcType=VARCHAR},
+      </if>
+      <if test="bpexdj != null" >
+        #{bpexdj,jdbcType=DATE},
+      </if>
+      <if test="bplitm != null" >
+        #{bplitm,jdbcType=VARCHAR},
+      </if>
+      <if test="bpuprc != null" >
+        #{bpuprc,jdbcType=NUMERIC},
+      </if>
+      <if test="bpeftj != null" >
+        #{bpeftj,jdbcType=DATE},
+      </if>
+      <if test="bpuser != null" >
+        #{bpuser,jdbcType=VARCHAR},
+      </if>
+      <if test="bpupmj != null" >
+        #{bpupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isprocessed != null" >
+        #{isprocessed,jdbcType=BIT},
+      </if>
+      <if test="ktProcessdate != null" >
+        #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="fmsProcessDate != null" >
+        #{fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.ItemPriceExample" resultType="java.lang.Integer" >
+    select count(*) from ItemPrice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ItemPrice
+    <set >
+      <if test="record.bpitm != null" >
+        BPITM = #{record.bpitm,jdbcType=INTEGER},
+      </if>
+      <if test="record.bpmcu != null" >
+        BPMCU = #{record.bpmcu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bplocn != null" >
+        BPLOCN = #{record.bplocn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bpuom != null" >
+        BPUOM = #{record.bpuom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bpexdj != null" >
+        BPEXDJ = #{record.bpexdj,jdbcType=DATE},
+      </if>
+      <if test="record.bplitm != null" >
+        BPLITM = #{record.bplitm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bpuprc != null" >
+        BPUPRC = #{record.bpuprc,jdbcType=NUMERIC},
+      </if>
+      <if test="record.bpeftj != null" >
+        BPEFTJ = #{record.bpeftj,jdbcType=DATE},
+      </if>
+      <if test="record.bpuser != null" >
+        BPUSER = #{record.bpuser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bpupmj != null" >
+        BPUPMJ = #{record.bpupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.jdeUpdatedate != null" >
+        JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isprocessed != null" >
+        IsProcessed = #{record.isprocessed,jdbcType=BIT},
+      </if>
+      <if test="record.ktProcessdate != null" >
+        KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktFaildate != null" >
+        KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktRetrytimes != null" >
+        KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.ktErrorlog != null" >
+        KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fmsProcessDate != null" >
+        fms_process_date = #{record.fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ItemPrice
+    set BPITM = #{record.bpitm,jdbcType=INTEGER},
+      BPMCU = #{record.bpmcu,jdbcType=VARCHAR},
+      BPLOCN = #{record.bplocn,jdbcType=VARCHAR},
+      BPUOM = #{record.bpuom,jdbcType=VARCHAR},
+      BPEXDJ = #{record.bpexdj,jdbcType=DATE},
+      BPLITM = #{record.bplitm,jdbcType=VARCHAR},
+      BPUPRC = #{record.bpuprc,jdbcType=NUMERIC},
+      BPEFTJ = #{record.bpeftj,jdbcType=DATE},
+      BPUSER = #{record.bpuser,jdbcType=VARCHAR},
+      BPUPMJ = #{record.bpupmj,jdbcType=TIMESTAMP},
+      JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      IsProcessed = #{record.isprocessed,jdbcType=BIT},
+      KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR},
+      fms_process_date = #{record.fmsProcessDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.ItemPrice" >
+    update ItemPrice
+    <set >
+      <if test="bplitm != null" >
+        BPLITM = #{bplitm,jdbcType=VARCHAR},
+      </if>
+      <if test="bpuprc != null" >
+        BPUPRC = #{bpuprc,jdbcType=NUMERIC},
+      </if>
+      <if test="bpeftj != null" >
+        BPEFTJ = #{bpeftj,jdbcType=DATE},
+      </if>
+      <if test="bpuser != null" >
+        BPUSER = #{bpuser,jdbcType=VARCHAR},
+      </if>
+      <if test="bpupmj != null" >
+        BPUPMJ = #{bpupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isprocessed != null" >
+        IsProcessed = #{isprocessed,jdbcType=BIT},
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="fmsProcessDate != null" >
+        fms_process_date = #{fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where BPITM = #{bpitm,jdbcType=INTEGER}
+      and BPMCU = #{bpmcu,jdbcType=VARCHAR}
+      and BPLOCN = #{bplocn,jdbcType=VARCHAR}
+      and BPUOM = #{bpuom,jdbcType=VARCHAR}
+      and BPEXDJ = #{bpexdj,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.ItemPrice" >
+    update ItemPrice
+    set BPLITM = #{bplitm,jdbcType=VARCHAR},
+      BPUPRC = #{bpuprc,jdbcType=NUMERIC},
+      BPEFTJ = #{bpeftj,jdbcType=DATE},
+      BPUSER = #{bpuser,jdbcType=VARCHAR},
+      BPUPMJ = #{bpupmj,jdbcType=TIMESTAMP},
+      JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      IsProcessed = #{isprocessed,jdbcType=BIT},
+      KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR},
+      fms_process_date = #{fmsProcessDate,jdbcType=TIMESTAMP}
+    where BPITM = #{bpitm,jdbcType=INTEGER}
+      and BPMCU = #{bpmcu,jdbcType=VARCHAR}
+      and BPLOCN = #{bplocn,jdbcType=VARCHAR}
+      and BPUOM = #{bpuom,jdbcType=VARCHAR}
+      and BPEXDJ = #{bpexdj,jdbcType=DATE}
+  </update>
+</mapper>

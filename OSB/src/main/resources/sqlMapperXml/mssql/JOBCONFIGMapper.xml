@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.JOBCONFIGMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.JOBCONFIG" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CONFIG_CODE" property="configCode" jdbcType="VARCHAR" />
+    <result column="CONFIG_NAME" property="configName" jdbcType="VARCHAR" />
+    <result column="FREQ" property="freq" jdbcType="INTEGER" />
+    <result column="RETRY_TIME" property="retryTime" jdbcType="INTEGER" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="CONFIG_STATUS" property="configStatus" jdbcType="CHAR" />
+    <result column="KTR_NAME" property="ktrName" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="run_status" property="runStatus" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, CONFIG_CODE, CONFIG_NAME, FREQ, RETRY_TIME, EMAIL, CONFIG_STATUS, KTR_NAME, REMARK, 
+    CREATE_TIME, UPDATE_TIME, run_status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.JOBCONFIGExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from JOB_CONFIG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from JOB_CONFIG
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from JOB_CONFIG
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.JOBCONFIGExample" >
+    delete from JOB_CONFIG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.JOBCONFIG" >
+    insert into JOB_CONFIG (ID, CONFIG_CODE, CONFIG_NAME, 
+      FREQ, RETRY_TIME, EMAIL, 
+      CONFIG_STATUS, KTR_NAME, REMARK, 
+      CREATE_TIME, UPDATE_TIME, run_status
+      )
+    values (#{id,jdbcType=INTEGER}, #{configCode,jdbcType=VARCHAR}, #{configName,jdbcType=VARCHAR}, 
+      #{freq,jdbcType=INTEGER}, #{retryTime,jdbcType=INTEGER}, #{email,jdbcType=VARCHAR}, 
+      #{configStatus,jdbcType=CHAR}, #{ktrName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{runStatus,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.JOBCONFIG" >
+    insert into JOB_CONFIG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="configCode != null" >
+        CONFIG_CODE,
+      </if>
+      <if test="configName != null" >
+        CONFIG_NAME,
+      </if>
+      <if test="freq != null" >
+        FREQ,
+      </if>
+      <if test="retryTime != null" >
+        RETRY_TIME,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="configStatus != null" >
+        CONFIG_STATUS,
+      </if>
+      <if test="ktrName != null" >
+        KTR_NAME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="runStatus != null" >
+        run_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="configCode != null" >
+        #{configCode,jdbcType=VARCHAR},
+      </if>
+      <if test="configName != null" >
+        #{configName,jdbcType=VARCHAR},
+      </if>
+      <if test="freq != null" >
+        #{freq,jdbcType=INTEGER},
+      </if>
+      <if test="retryTime != null" >
+        #{retryTime,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="configStatus != null" >
+        #{configStatus,jdbcType=CHAR},
+      </if>
+      <if test="ktrName != null" >
+        #{ktrName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="runStatus != null" >
+        #{runStatus,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.JOBCONFIGExample" resultType="java.lang.Integer" >
+    select count(*) from JOB_CONFIG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update JOB_CONFIG
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.configCode != null" >
+        CONFIG_CODE = #{record.configCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.configName != null" >
+        CONFIG_NAME = #{record.configName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.freq != null" >
+        FREQ = #{record.freq,jdbcType=INTEGER},
+      </if>
+      <if test="record.retryTime != null" >
+        RETRY_TIME = #{record.retryTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.email != null" >
+        EMAIL = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.configStatus != null" >
+        CONFIG_STATUS = #{record.configStatus,jdbcType=CHAR},
+      </if>
+      <if test="record.ktrName != null" >
+        KTR_NAME = #{record.ktrName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.runStatus != null" >
+        run_status = #{record.runStatus,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update JOB_CONFIG
+    set ID = #{record.id,jdbcType=INTEGER},
+      CONFIG_CODE = #{record.configCode,jdbcType=VARCHAR},
+      CONFIG_NAME = #{record.configName,jdbcType=VARCHAR},
+      FREQ = #{record.freq,jdbcType=INTEGER},
+      RETRY_TIME = #{record.retryTime,jdbcType=INTEGER},
+      EMAIL = #{record.email,jdbcType=VARCHAR},
+      CONFIG_STATUS = #{record.configStatus,jdbcType=CHAR},
+      KTR_NAME = #{record.ktrName,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      run_status = #{record.runStatus,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.JOBCONFIG" >
+    update JOB_CONFIG
+    <set >
+      <if test="configCode != null" >
+        CONFIG_CODE = #{configCode,jdbcType=VARCHAR},
+      </if>
+      <if test="configName != null" >
+        CONFIG_NAME = #{configName,jdbcType=VARCHAR},
+      </if>
+      <if test="freq != null" >
+        FREQ = #{freq,jdbcType=INTEGER},
+      </if>
+      <if test="retryTime != null" >
+        RETRY_TIME = #{retryTime,jdbcType=INTEGER},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="configStatus != null" >
+        CONFIG_STATUS = #{configStatus,jdbcType=CHAR},
+      </if>
+      <if test="ktrName != null" >
+        KTR_NAME = #{ktrName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="runStatus != null" >
+        run_status = #{runStatus,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.JOBCONFIG" >
+    update JOB_CONFIG
+    set CONFIG_CODE = #{configCode,jdbcType=VARCHAR},
+      CONFIG_NAME = #{configName,jdbcType=VARCHAR},
+      FREQ = #{freq,jdbcType=INTEGER},
+      RETRY_TIME = #{retryTime,jdbcType=INTEGER},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      CONFIG_STATUS = #{configStatus,jdbcType=CHAR},
+      KTR_NAME = #{ktrName,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      run_status = #{runStatus,jdbcType=CHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

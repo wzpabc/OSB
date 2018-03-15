@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tup.mssql.mapper.ReportsByTimeMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.tup.mssql.model.ReportsByTime">
+		<id column="PK" property="pk" />
+		<result column="organ_no" property="organNo" />
+		<result column="hjmpTS" property="hjmpts" />
+		<result column="createdTS" property="createdts" />
+		<result column="modifiedTS" property="modifiedts" />
+		<result column="TypePkString" property="typepkstring" />
+		<result column="OwnerPkString" property="ownerpkstring" />
+		<result column="p_customer_id" property="pCustomerId" />
+		<result column="p_report_status" property="pReportStatus" />
+		<result column="p_store_type" property="pStoreType" />
+		<result column="p_year" property="pYear" />
+		<result column="p_month" property="pMonth" />
+		<result column="p_week" property="pWeek" />
+		<result column="p_report_type" property="pReportType" />
+		<result column="p_counter_sale_amts" property="pCounterSaleAmts" />
+		<result column="p_lijia_sales_amts" property="pLijiaSalesAmts" />
+		<result column="p_grpb_sales_amts" property="pGrpbSalesAmts" />
+		<result column="p_customised_sales_amts" property="pCustomisedSalesAmts" />
+		<result column="p_others_sales_amts" property="pOthersSalesAmts" />
+		<result column="p_deal_amts" property="pDealAmts" />
+		<result column="p_total_sales_amts" property="pTotalSalesAmts" />
+		<result column="p_natural_customer_no" property="pNaturalCustomerNo" />
+		<result column="p_comeback_customer_no" property="pComebackCustomerNo" />
+		<result column="p_customised_customer_no" property="pCustomisedCustomerNo" />
+		<result column="p_lijia_customer_no" property="pLijiaCustomerNo" />
+		<result column="p_total_customer_no" property="pTotalCustomerNo" />
+		<result column="p_customised_prstt_times" property="pCustomisedPrsttTimes" />
+		<result column="p_lijia_prstt_times" property="pLijiaPrsttTimes" />
+		<result column="p_imdtly_prstt_times" property="pImdtlyPrsttTimes" />
+		<result column="p_water_purifier_sales_amts" property="pWaterPurifierSalesAmts" />
+		<result column="p_total_prstt_times" property="pTotalPrsttTimes" />
+		<result column="p_com_order_amt" property="pComOrderAmt" />
+		<result column="p_transfer_amt" property="pTransferAmt" />
+		<result column="p_total_order_amt" property="pTotalOrderAmt" />
+		<result column="p_lijia_fulltime_consutant_no" property="pLijiaFulltimeConsutantNo" />
+		<result column="p_weekend_stock_amt" property="pWeekendStockAmt" />
+		<result column="p_is_manager" property="pIsManager" />
+		<result column="p_manager_name" property="pManagerName" />
+		<result column="p_manager_type" property="pManagerType" />
+		<result column="p_report_desc" property="pReportDesc" />
+		<result column="p_decoration_charge" property="pDecorationCharge" />
+		<result column="p_operation_charge" property="pOperationCharge" />
+		<result column="p_labor_charge" property="pLaborCharge" />
+		<result column="p_room_charge" property="pRoomCharge" />
+		<result column="p_light_water_charge" property="pLightWaterCharge" />
+		<result column="p_promo_charge" property="pPromoCharge" />
+		<result column="p_phone_charge" property="pPhoneCharge" />
+		<result column="p_logistical_charge" property="pLogisticalCharge" />
+		<result column="p_tax_charge" property="pTaxCharge" />
+		<result column="p_others_charge" property="pOthersCharge" />
+		<result column="p_psm_charge" property="pPsmCharge" />
+		<result column="p_warehouse_charge" property="pWarehouseCharge" />
+		<result column="p_has_wechat" property="pHasWechat" />
+		<result column="p_wechat_grp_no" property="pWechatGrpNo" />
+		<result column="p_wechat_members_no" property="pWechatMembersNo" />
+		<result column="p_wechat_moments_members_no" property="pWechatMomentsMembersNo" />
+		<result column="p_experice_card_price50_no" property="pExpericeCardPrice50No" />
+		<result column="p_experice_card_price500_no" property="pExpericeCardPrice500No" />
+		<result column="p_lijia_team_course_no" property="pLijiaTeamCourseNo" />
+		<result column="p_hshs_foods_carnival_no" property="pHshsFoodsCarnivalNo" />
+		<result column="p_onlinesaleamt" property="pOnlinesaleamt" />
+		<result column="p_province" property="pProvince" />
+		<result column="p_region" property="pRegion" />
+		<result column="aCLTS" property="aclts" />
+		<result column="propTS" property="propts" />
+		<result column="p_breakevenpoint" property="pBreakevenpoint" />
+		<result column="p_fs" property="pFs" />
+		<result column="p_dm" property="pDm" />
+	</resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        PK, organ_no AS organNo, hjmpTS, createdTS, modifiedTS, TypePkString, OwnerPkString, p_customer_id AS pCustomerId, p_report_status AS pReportStatus, p_store_type AS pStoreType, p_year AS pYear, p_month AS pMonth, p_week AS pWeek, p_report_type AS pReportType, p_counter_sale_amts AS pCounterSaleAmts, p_lijia_sales_amts AS pLijiaSalesAmts, p_grpb_sales_amts AS pGrpbSalesAmts, p_customised_sales_amts AS pCustomisedSalesAmts, p_others_sales_amts AS pOthersSalesAmts, p_deal_amts AS pDealAmts, p_total_sales_amts AS pTotalSalesAmts, p_natural_customer_no AS pNaturalCustomerNo, p_comeback_customer_no AS pComebackCustomerNo, p_customised_customer_no AS pCustomisedCustomerNo, p_lijia_customer_no AS pLijiaCustomerNo, p_total_customer_no AS pTotalCustomerNo, p_customised_prstt_times AS pCustomisedPrsttTimes, p_lijia_prstt_times AS pLijiaPrsttTimes, p_imdtly_prstt_times AS pImdtlyPrsttTimes, p_water_purifier_sales_amts AS pWaterPurifierSalesAmts, p_total_prstt_times AS pTotalPrsttTimes, p_com_order_amt AS pComOrderAmt, p_transfer_amt AS pTransferAmt, p_total_order_amt AS pTotalOrderAmt, p_lijia_fulltime_consutant_no AS pLijiaFulltimeConsutantNo, p_weekend_stock_amt AS pWeekendStockAmt, p_is_manager AS pIsManager, p_manager_name AS pManagerName, p_manager_type AS pManagerType, p_report_desc AS pReportDesc, p_decoration_charge AS pDecorationCharge, p_operation_charge AS pOperationCharge, p_labor_charge AS pLaborCharge, p_room_charge AS pRoomCharge, p_light_water_charge AS pLightWaterCharge, p_promo_charge AS pPromoCharge, p_phone_charge AS pPhoneCharge, p_logistical_charge AS pLogisticalCharge, p_tax_charge AS pTaxCharge, p_others_charge AS pOthersCharge, p_psm_charge AS pPsmCharge, p_warehouse_charge AS pWarehouseCharge, p_has_wechat AS pHasWechat, p_wechat_grp_no AS pWechatGrpNo, p_wechat_members_no AS pWechatMembersNo, p_wechat_moments_members_no AS pWechatMomentsMembersNo, p_experice_card_price50_no AS pExpericeCardPrice50No, p_experice_card_price500_no AS pExpericeCardPrice500No, p_lijia_team_course_no AS pLijiaTeamCourseNo, p_hshs_foods_carnival_no AS pHshsFoodsCarnivalNo, p_onlinesaleamt AS pOnlinesaleamt, p_province AS pProvince, p_region AS pRegion, aCLTS, propTS, p_breakevenpoint AS pBreakevenpoint, p_fs AS pFs, p_dm AS pDm
+    </sql>
+    
+    
+
+<select id="selectByMapParam" resultMap="BaseResultMap" parameterType="Map" >
+    select  
+    	<include refid="Base_Column_List" />
+   	 from reports_by_time WHERE 1=1     
+    	 <if test="pk != null" > and  PK = #{pk} </if> 
+		 <if test="organNo != null" > and  organ_no = #{organNo} </if> 
+		 <if test="hjmpts != null" > and  hjmpTS = #{hjmpts} </if> 
+		 <if test="createdts != null" > and  createdTS = #{createdts} </if> 
+		 <if test="modifiedts != null" > and  modifiedTS = #{modifiedts} </if> 
+		 <if test="typepkstring != null" > and  TypePkString = #{typepkstring} </if> 
+		 <if test="ownerpkstring != null" > and  OwnerPkString = #{ownerpkstring} </if> 
+		 <if test="pCustomerId != null" > and  p_customer_id = #{pCustomerId} </if> 
+		 <if test="pReportStatus != null" > and  p_report_status = #{pReportStatus} </if> 
+		 <if test="pStoreType != null" > and  p_store_type = #{pStoreType} </if> 
+		 <if test="pYear != null" > and  p_year = #{pYear} </if> 
+		 <if test="pMonth != null" > and  p_month = #{pMonth} </if> 
+		 <if test="pWeek != null" > and  p_week = #{pWeek} </if> 
+		 <if test="pReportType != null" > and  p_report_type = #{pReportType} </if> 
+		 <if test="pCounterSaleAmts != null" > and  p_counter_sale_amts = #{pCounterSaleAmts} </if> 
+		 <if test="pLijiaSalesAmts != null" > and  p_lijia_sales_amts = #{pLijiaSalesAmts} </if> 
+		 <if test="pGrpbSalesAmts != null" > and  p_grpb_sales_amts = #{pGrpbSalesAmts} </if> 
+		 <if test="pCustomisedSalesAmts != null" > and  p_customised_sales_amts = #{pCustomisedSalesAmts} </if> 
+		 <if test="pOthersSalesAmts != null" > and  p_others_sales_amts = #{pOthersSalesAmts} </if> 
+		 <if test="pDealAmts != null" > and  p_deal_amts = #{pDealAmts} </if> 
+		 <if test="pTotalSalesAmts != null" > and  p_total_sales_amts = #{pTotalSalesAmts} </if> 
+		 <if test="pNaturalCustomerNo != null" > and  p_natural_customer_no = #{pNaturalCustomerNo} </if> 
+		 <if test="pComebackCustomerNo != null" > and  p_comeback_customer_no = #{pComebackCustomerNo} </if> 
+		 <if test="pCustomisedCustomerNo != null" > and  p_customised_customer_no = #{pCustomisedCustomerNo} </if> 
+		 <if test="pLijiaCustomerNo != null" > and  p_lijia_customer_no = #{pLijiaCustomerNo} </if> 
+		 <if test="pTotalCustomerNo != null" > and  p_total_customer_no = #{pTotalCustomerNo} </if> 
+		 <if test="pCustomisedPrsttTimes != null" > and  p_customised_prstt_times = #{pCustomisedPrsttTimes} </if> 
+		 <if test="pLijiaPrsttTimes != null" > and  p_lijia_prstt_times = #{pLijiaPrsttTimes} </if> 
+		 <if test="pImdtlyPrsttTimes != null" > and  p_imdtly_prstt_times = #{pImdtlyPrsttTimes} </if> 
+		 <if test="pWaterPurifierSalesAmts != null" > and  p_water_purifier_sales_amts = #{pWaterPurifierSalesAmts} </if> 
+		 <if test="pTotalPrsttTimes != null" > and  p_total_prstt_times = #{pTotalPrsttTimes} </if> 
+		 <if test="pComOrderAmt != null" > and  p_com_order_amt = #{pComOrderAmt} </if> 
+		 <if test="pTransferAmt != null" > and  p_transfer_amt = #{pTransferAmt} </if> 
+		 <if test="pTotalOrderAmt != null" > and  p_total_order_amt = #{pTotalOrderAmt} </if> 
+		 <if test="pLijiaFulltimeConsutantNo != null" > and  p_lijia_fulltime_consutant_no = #{pLijiaFulltimeConsutantNo} </if> 
+		 <if test="pWeekendStockAmt != null" > and  p_weekend_stock_amt = #{pWeekendStockAmt} </if> 
+		 <if test="pIsManager != null" > and  p_is_manager = #{pIsManager} </if> 
+		 <if test="pManagerName != null" > and  p_manager_name = #{pManagerName} </if> 
+		 <if test="pManagerType != null" > and  p_manager_type = #{pManagerType} </if> 
+		 <if test="pReportDesc != null" > and  p_report_desc = #{pReportDesc} </if> 
+		 <if test="pDecorationCharge != null" > and  p_decoration_charge = #{pDecorationCharge} </if> 
+		 <if test="pOperationCharge != null" > and  p_operation_charge = #{pOperationCharge} </if> 
+		 <if test="pLaborCharge != null" > and  p_labor_charge = #{pLaborCharge} </if> 
+		 <if test="pRoomCharge != null" > and  p_room_charge = #{pRoomCharge} </if> 
+		 <if test="pLightWaterCharge != null" > and  p_light_water_charge = #{pLightWaterCharge} </if> 
+		 <if test="pPromoCharge != null" > and  p_promo_charge = #{pPromoCharge} </if> 
+		 <if test="pPhoneCharge != null" > and  p_phone_charge = #{pPhoneCharge} </if> 
+		 <if test="pLogisticalCharge != null" > and  p_logistical_charge = #{pLogisticalCharge} </if> 
+		 <if test="pTaxCharge != null" > and  p_tax_charge = #{pTaxCharge} </if> 
+		 <if test="pOthersCharge != null" > and  p_others_charge = #{pOthersCharge} </if> 
+		 <if test="pPsmCharge != null" > and  p_psm_charge = #{pPsmCharge} </if> 
+		 <if test="pWarehouseCharge != null" > and  p_warehouse_charge = #{pWarehouseCharge} </if> 
+		 <if test="pHasWechat != null" > and  p_has_wechat = #{pHasWechat} </if> 
+		 <if test="pWechatGrpNo != null" > and  p_wechat_grp_no = #{pWechatGrpNo} </if> 
+		 <if test="pWechatMembersNo != null" > and  p_wechat_members_no = #{pWechatMembersNo} </if> 
+		 <if test="pWechatMomentsMembersNo != null" > and  p_wechat_moments_members_no = #{pWechatMomentsMembersNo} </if> 
+		 <if test="pExpericeCardPrice50No != null" > and  p_experice_card_price50_no = #{pExpericeCardPrice50No} </if> 
+		 <if test="pExpericeCardPrice500No != null" > and  p_experice_card_price500_no = #{pExpericeCardPrice500No} </if> 
+		 <if test="pLijiaTeamCourseNo != null" > and  p_lijia_team_course_no = #{pLijiaTeamCourseNo} </if> 
+		 <if test="pHshsFoodsCarnivalNo != null" > and  p_hshs_foods_carnival_no = #{pHshsFoodsCarnivalNo} </if> 
+		 <if test="pOnlinesaleamt != null" > and  p_onlinesaleamt = #{pOnlinesaleamt} </if> 
+		 <if test="pProvince != null" > and  p_province = #{pProvince} </if> 
+		 <if test="pRegion != null" > and  p_region = #{pRegion} </if> 
+		 <if test="aclts != null" > and  aCLTS = #{aclts} </if> 
+		 <if test="propts != null" > and  propTS = #{propts} </if> 
+		 <if test="pBreakevenpoint != null" > and  p_breakevenpoint = #{pBreakevenpoint} </if> 
+		 <if test="pFs != null" > and  p_fs = #{pFs} </if> 
+		 <if test="pDm != null" > and  p_dm = #{pDm} </if> 
+	  </select>
+  
+  <select id="selectReportsByTimeList" resultType="ReportsByTime">
+        select
+        <include refid="Base_Column_List"/>
+        from reports_by_time
+        order by ${sort} ${order}
+    </select>
+    
+</mapper>

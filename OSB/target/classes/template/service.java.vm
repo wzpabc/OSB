@@ -1,0 +1,33 @@
+package ${package.Service};
+
+import ${package.Entity}.${entity};
+import com.tup.commons.utils.PageInfo;
+import ${superServiceClassPackage};
+import com.tup.form.${entity}Helper;
+
+import com.tup.commons.utils.DataInfo;
+
+import java.util.List;
+import java.util.Map;
+/**
+ * <p>
+ * ${table.comment}  服务类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
+	 
+	void setHelper(${entity}Helper helper);
+
+	void selectDataGrid(PageInfo pageInfo);
+	
+	
+	void selectDataGrid(DataInfo dataInfo);
+	
+	${entity} getTop1();
+	
+	public List<${entity}> getMapParams(Map<String, String> params) ;
+	
+}

@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.BOMMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.BOM" >
+    <id column="IXTBM" property="ixtbm" jdbcType="VARCHAR" />
+    <id column="IXKIT" property="ixkit" jdbcType="INTEGER" />
+    <id column="IXMMCU" property="ixmmcu" jdbcType="VARCHAR" />
+    <id column="IXCPNB" property="ixcpnb" jdbcType="NUMERIC" />
+    <result column="IXKITL" property="ixkitl" jdbcType="VARCHAR" />
+    <result column="IXITM" property="ixitm" jdbcType="INTEGER" />
+    <result column="IXLITM" property="ixlitm" jdbcType="VARCHAR" />
+    <result column="IXCMCU" property="ixcmcu" jdbcType="VARCHAR" />
+    <result column="IXCPNT" property="ixcpnt" jdbcType="INTEGER" />
+    <result column="IXQNTY" property="ixqnty" jdbcType="INTEGER" />
+    <result column="IXUM" property="ixum" jdbcType="VARCHAR" />
+    <result column="IXEFFF" property="ixefff" jdbcType="DATE" />
+    <result column="IXEFFT" property="ixefft" jdbcType="DATE" />
+    <result column="IXUSER" property="ixuser" jdbcType="VARCHAR" />
+    <result column="IXUPMJ" property="ixupmj" jdbcType="TIMESTAMP" />
+    <result column="JDE_UpdateDate" property="jdeUpdatedate" jdbcType="TIMESTAMP" />
+    <result column="KT_ProcessDate" property="ktProcessdate" jdbcType="TIMESTAMP" />
+    <result column="KT_FailDate" property="ktFaildate" jdbcType="TIMESTAMP" />
+    <result column="KT_RetryTimes" property="ktRetrytimes" jdbcType="INTEGER" />
+    <result column="KT_ErrorLog" property="ktErrorlog" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    IXTBM, IXKIT, IXMMCU, IXCPNB, IXKITL, IXITM, IXLITM, IXCMCU, IXCPNT, IXQNTY, IXUM, 
+    IXEFFF, IXEFFT, IXUSER, IXUPMJ, JDE_UpdateDate, KT_ProcessDate, KT_FailDate, KT_RetryTimes, 
+    KT_ErrorLog
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.BOMExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from BOM
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.BOMKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from BOM
+    where IXTBM = #{ixtbm,jdbcType=VARCHAR}
+      and IXKIT = #{ixkit,jdbcType=INTEGER}
+      and IXMMCU = #{ixmmcu,jdbcType=VARCHAR}
+      and IXCPNB = #{ixcpnb,jdbcType=NUMERIC}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.tup.mssql.model.BOMKey" >
+    delete from BOM
+    where IXTBM = #{ixtbm,jdbcType=VARCHAR}
+      and IXKIT = #{ixkit,jdbcType=INTEGER}
+      and IXMMCU = #{ixmmcu,jdbcType=VARCHAR}
+      and IXCPNB = #{ixcpnb,jdbcType=NUMERIC}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.BOMExample" >
+    delete from BOM
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.BOM" >
+    insert into BOM (IXTBM, IXKIT, IXMMCU, 
+      IXCPNB, IXKITL, IXITM, 
+      IXLITM, IXCMCU, IXCPNT, 
+      IXQNTY, IXUM, IXEFFF, 
+      IXEFFT, IXUSER, IXUPMJ, 
+      JDE_UpdateDate, KT_ProcessDate, KT_FailDate, 
+      KT_RetryTimes, KT_ErrorLog)
+    values (#{ixtbm,jdbcType=VARCHAR}, #{ixkit,jdbcType=INTEGER}, #{ixmmcu,jdbcType=VARCHAR}, 
+      #{ixcpnb,jdbcType=NUMERIC}, #{ixkitl,jdbcType=VARCHAR}, #{ixitm,jdbcType=INTEGER}, 
+      #{ixlitm,jdbcType=VARCHAR}, #{ixcmcu,jdbcType=VARCHAR}, #{ixcpnt,jdbcType=INTEGER}, 
+      #{ixqnty,jdbcType=INTEGER}, #{ixum,jdbcType=VARCHAR}, #{ixefff,jdbcType=DATE}, 
+      #{ixefft,jdbcType=DATE}, #{ixuser,jdbcType=VARCHAR}, #{ixupmj,jdbcType=TIMESTAMP}, 
+      #{jdeUpdatedate,jdbcType=TIMESTAMP}, #{ktProcessdate,jdbcType=TIMESTAMP}, #{ktFaildate,jdbcType=TIMESTAMP}, 
+      #{ktRetrytimes,jdbcType=INTEGER}, #{ktErrorlog,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.BOM" >
+    insert into BOM
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ixtbm != null" >
+        IXTBM,
+      </if>
+      <if test="ixkit != null" >
+        IXKIT,
+      </if>
+      <if test="ixmmcu != null" >
+        IXMMCU,
+      </if>
+      <if test="ixcpnb != null" >
+        IXCPNB,
+      </if>
+      <if test="ixkitl != null" >
+        IXKITL,
+      </if>
+      <if test="ixitm != null" >
+        IXITM,
+      </if>
+      <if test="ixlitm != null" >
+        IXLITM,
+      </if>
+      <if test="ixcmcu != null" >
+        IXCMCU,
+      </if>
+      <if test="ixcpnt != null" >
+        IXCPNT,
+      </if>
+      <if test="ixqnty != null" >
+        IXQNTY,
+      </if>
+      <if test="ixum != null" >
+        IXUM,
+      </if>
+      <if test="ixefff != null" >
+        IXEFFF,
+      </if>
+      <if test="ixefft != null" >
+        IXEFFT,
+      </if>
+      <if test="ixuser != null" >
+        IXUSER,
+      </if>
+      <if test="ixupmj != null" >
+        IXUPMJ,
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate,
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate,
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate,
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes,
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ixtbm != null" >
+        #{ixtbm,jdbcType=VARCHAR},
+      </if>
+      <if test="ixkit != null" >
+        #{ixkit,jdbcType=INTEGER},
+      </if>
+      <if test="ixmmcu != null" >
+        #{ixmmcu,jdbcType=VARCHAR},
+      </if>
+      <if test="ixcpnb != null" >
+        #{ixcpnb,jdbcType=NUMERIC},
+      </if>
+      <if test="ixkitl != null" >
+        #{ixkitl,jdbcType=VARCHAR},
+      </if>
+      <if test="ixitm != null" >
+        #{ixitm,jdbcType=INTEGER},
+      </if>
+      <if test="ixlitm != null" >
+        #{ixlitm,jdbcType=VARCHAR},
+      </if>
+      <if test="ixcmcu != null" >
+        #{ixcmcu,jdbcType=VARCHAR},
+      </if>
+      <if test="ixcpnt != null" >
+        #{ixcpnt,jdbcType=INTEGER},
+      </if>
+      <if test="ixqnty != null" >
+        #{ixqnty,jdbcType=INTEGER},
+      </if>
+      <if test="ixum != null" >
+        #{ixum,jdbcType=VARCHAR},
+      </if>
+      <if test="ixefff != null" >
+        #{ixefff,jdbcType=DATE},
+      </if>
+      <if test="ixefft != null" >
+        #{ixefft,jdbcType=DATE},
+      </if>
+      <if test="ixuser != null" >
+        #{ixuser,jdbcType=VARCHAR},
+      </if>
+      <if test="ixupmj != null" >
+        #{ixupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktProcessdate != null" >
+        #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.BOMExample" resultType="java.lang.Integer" >
+    select count(*) from BOM
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update BOM
+    <set >
+      <if test="record.ixtbm != null" >
+        IXTBM = #{record.ixtbm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ixkit != null" >
+        IXKIT = #{record.ixkit,jdbcType=INTEGER},
+      </if>
+      <if test="record.ixmmcu != null" >
+        IXMMCU = #{record.ixmmcu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ixcpnb != null" >
+        IXCPNB = #{record.ixcpnb,jdbcType=NUMERIC},
+      </if>
+      <if test="record.ixkitl != null" >
+        IXKITL = #{record.ixkitl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ixitm != null" >
+        IXITM = #{record.ixitm,jdbcType=INTEGER},
+      </if>
+      <if test="record.ixlitm != null" >
+        IXLITM = #{record.ixlitm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ixcmcu != null" >
+        IXCMCU = #{record.ixcmcu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ixcpnt != null" >
+        IXCPNT = #{record.ixcpnt,jdbcType=INTEGER},
+      </if>
+      <if test="record.ixqnty != null" >
+        IXQNTY = #{record.ixqnty,jdbcType=INTEGER},
+      </if>
+      <if test="record.ixum != null" >
+        IXUM = #{record.ixum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ixefff != null" >
+        IXEFFF = #{record.ixefff,jdbcType=DATE},
+      </if>
+      <if test="record.ixefft != null" >
+        IXEFFT = #{record.ixefft,jdbcType=DATE},
+      </if>
+      <if test="record.ixuser != null" >
+        IXUSER = #{record.ixuser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ixupmj != null" >
+        IXUPMJ = #{record.ixupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.jdeUpdatedate != null" >
+        JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktProcessdate != null" >
+        KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktFaildate != null" >
+        KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktRetrytimes != null" >
+        KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.ktErrorlog != null" >
+        KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update BOM
+    set IXTBM = #{record.ixtbm,jdbcType=VARCHAR},
+      IXKIT = #{record.ixkit,jdbcType=INTEGER},
+      IXMMCU = #{record.ixmmcu,jdbcType=VARCHAR},
+      IXCPNB = #{record.ixcpnb,jdbcType=NUMERIC},
+      IXKITL = #{record.ixkitl,jdbcType=VARCHAR},
+      IXITM = #{record.ixitm,jdbcType=INTEGER},
+      IXLITM = #{record.ixlitm,jdbcType=VARCHAR},
+      IXCMCU = #{record.ixcmcu,jdbcType=VARCHAR},
+      IXCPNT = #{record.ixcpnt,jdbcType=INTEGER},
+      IXQNTY = #{record.ixqnty,jdbcType=INTEGER},
+      IXUM = #{record.ixum,jdbcType=VARCHAR},
+      IXEFFF = #{record.ixefff,jdbcType=DATE},
+      IXEFFT = #{record.ixefft,jdbcType=DATE},
+      IXUSER = #{record.ixuser,jdbcType=VARCHAR},
+      IXUPMJ = #{record.ixupmj,jdbcType=TIMESTAMP},
+      JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.BOM" >
+    update BOM
+    <set >
+      <if test="ixkitl != null" >
+        IXKITL = #{ixkitl,jdbcType=VARCHAR},
+      </if>
+      <if test="ixitm != null" >
+        IXITM = #{ixitm,jdbcType=INTEGER},
+      </if>
+      <if test="ixlitm != null" >
+        IXLITM = #{ixlitm,jdbcType=VARCHAR},
+      </if>
+      <if test="ixcmcu != null" >
+        IXCMCU = #{ixcmcu,jdbcType=VARCHAR},
+      </if>
+      <if test="ixcpnt != null" >
+        IXCPNT = #{ixcpnt,jdbcType=INTEGER},
+      </if>
+      <if test="ixqnty != null" >
+        IXQNTY = #{ixqnty,jdbcType=INTEGER},
+      </if>
+      <if test="ixum != null" >
+        IXUM = #{ixum,jdbcType=VARCHAR},
+      </if>
+      <if test="ixefff != null" >
+        IXEFFF = #{ixefff,jdbcType=DATE},
+      </if>
+      <if test="ixefft != null" >
+        IXEFFT = #{ixefft,jdbcType=DATE},
+      </if>
+      <if test="ixuser != null" >
+        IXUSER = #{ixuser,jdbcType=VARCHAR},
+      </if>
+      <if test="ixupmj != null" >
+        IXUPMJ = #{ixupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where IXTBM = #{ixtbm,jdbcType=VARCHAR}
+      and IXKIT = #{ixkit,jdbcType=INTEGER}
+      and IXMMCU = #{ixmmcu,jdbcType=VARCHAR}
+      and IXCPNB = #{ixcpnb,jdbcType=NUMERIC}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.BOM" >
+    update BOM
+    set IXKITL = #{ixkitl,jdbcType=VARCHAR},
+      IXITM = #{ixitm,jdbcType=INTEGER},
+      IXLITM = #{ixlitm,jdbcType=VARCHAR},
+      IXCMCU = #{ixcmcu,jdbcType=VARCHAR},
+      IXCPNT = #{ixcpnt,jdbcType=INTEGER},
+      IXQNTY = #{ixqnty,jdbcType=INTEGER},
+      IXUM = #{ixum,jdbcType=VARCHAR},
+      IXEFFF = #{ixefff,jdbcType=DATE},
+      IXEFFT = #{ixefft,jdbcType=DATE},
+      IXUSER = #{ixuser,jdbcType=VARCHAR},
+      IXUPMJ = #{ixupmj,jdbcType=TIMESTAMP},
+      JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR}
+    where IXTBM = #{ixtbm,jdbcType=VARCHAR}
+      and IXKIT = #{ixkit,jdbcType=INTEGER}
+      and IXMMCU = #{ixmmcu,jdbcType=VARCHAR}
+      and IXCPNB = #{ixcpnb,jdbcType=NUMERIC}
+  </update>
+</mapper>

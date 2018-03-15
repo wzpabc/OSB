@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.AddressByDateMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.AddressByDate" >
+    <id column="ALAN8" property="alan8" jdbcType="INTEGER" />
+    <id column="ALEFTB" property="aleftb" jdbcType="DATE" />
+    <result column="ALEFTF" property="aleftf" jdbcType="DATE" />
+    <result column="ALADD1" property="aladd1" jdbcType="NVARCHAR" />
+    <result column="ALADD2" property="aladd2" jdbcType="NVARCHAR" />
+    <result column="ALADD3" property="aladd3" jdbcType="NVARCHAR" />
+    <result column="ALADD4" property="aladd4" jdbcType="NVARCHAR" />
+    <result column="ALADDZ" property="aladdz" jdbcType="VARCHAR" />
+    <result column="ALCTY1" property="alcty1" jdbcType="NVARCHAR" />
+    <result column="ALCOUN" property="alcoun" jdbcType="NVARCHAR" />
+    <result column="ALADDS" property="aladds" jdbcType="VARCHAR" />
+    <result column="ALCRTE" property="alcrte" jdbcType="VARCHAR" />
+    <result column="ALBKML" property="albkml" jdbcType="VARCHAR" />
+    <result column="ALCTR" property="alctr" jdbcType="VARCHAR" />
+    <result column="ALUSER" property="aluser" jdbcType="VARCHAR" />
+    <result column="ALUPMJ" property="alupmj" jdbcType="TIMESTAMP" />
+    <result column="JDE_UpdateDate" property="jdeUpdatedate" jdbcType="TIMESTAMP" />
+    <result column="KT_ProcessDate" property="ktProcessdate" jdbcType="TIMESTAMP" />
+    <result column="KT_FailDate" property="ktFaildate" jdbcType="TIMESTAMP" />
+    <result column="KT_RetryTimes" property="ktRetrytimes" jdbcType="INTEGER" />
+    <result column="KT_ErrorLog" property="ktErrorlog" jdbcType="VARCHAR" />
+    <result column="MSS_ProcessDate" property="mssProcessdate" jdbcType="TIMESTAMP" />
+    <result column="MSS_FailDate" property="mssFaildate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ALAN8, ALEFTB, ALEFTF, ALADD1, ALADD2, ALADD3, ALADD4, ALADDZ, ALCTY1, ALCOUN, ALADDS, 
+    ALCRTE, ALBKML, ALCTR, ALUSER, ALUPMJ, JDE_UpdateDate, KT_ProcessDate, KT_FailDate, 
+    KT_RetryTimes, KT_ErrorLog, MSS_ProcessDate, MSS_FailDate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.AddressByDateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Address_ByDate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.AddressByDateKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from Address_ByDate
+    where ALAN8 = #{alan8,jdbcType=INTEGER}
+      and ALEFTB = #{aleftb,jdbcType=DATE}
+  </select>
+  
+  
+   <select id="selectByMapParam" resultMap="BaseResultMap" parameterType="Map" >
+    select  
+    <include refid="Base_Column_List" />
+    from Address_ByDate WHERE 1=1
+      <if test="alan8 != null" >
+         and  ALAN8 = #{alan8,jdbcType=INTEGER}
+      </if>
+      <if test="aleftb != null" >
+         and  ALEFTB = #{aleftb,jdbcType=DATE}
+      </if>
+      <if test="aleftf != null" >
+         and  ALEFTF = #{aleftf,jdbcType=DATE}
+      </if>
+      <if test="aladd1 != null" >
+         and  ALADD1 = #{aladd1,jdbcType=NVARCHAR}
+      </if>
+      <if test="aladd2 != null" >
+         and  ALADD2 = #{aladd2,jdbcType=NVARCHAR}
+      </if>
+      <if test="aladd3 != null" >
+         and  ALADD3 = #{aladd3,jdbcType=NVARCHAR}
+      </if>
+      <if test="aladd4 != null" >
+         and  ALADD4 = #{aladd4,jdbcType=NVARCHAR}
+      </if>
+      <if test="aladdz != null" >
+         and  ALADDZ = #{aladdz,jdbcType=VARCHAR}
+      </if>
+      <if test="alcty1 != null" >
+         and  ALCTY1 = #{alcty1,jdbcType=NVARCHAR}
+      </if>
+      <if test="alcoun != null" >
+         and  ALCOUN = #{alcoun,jdbcType=NVARCHAR}
+      </if>
+      <if test="aladds != null" >
+         and  ALADDS = #{aladds,jdbcType=VARCHAR}
+      </if>
+      <if test="alcrte != null" >
+         and  ALCRTE = #{alcrte,jdbcType=VARCHAR}
+      </if>
+      <if test="albkml != null" >
+         and  ALBKML = #{albkml,jdbcType=VARCHAR}
+      </if>
+      <if test="alctr != null" >
+         and  ALCTR = #{alctr,jdbcType=VARCHAR}
+      </if>
+      <if test="aluser != null" >
+         and  ALUSER = #{aluser,jdbcType=VARCHAR}
+      </if>
+      <if test="alupmj != null" >
+         and  ALUPMJ = #{alupmj,jdbcType=TIMESTAMP}
+      </if>
+      <if test="jdeUpdatedate != null" >
+         and  JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ktProcessdate != null" >
+         and  KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ktFaildate != null" >
+         and  KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ktRetrytimes != null" >
+         and  KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER}
+      </if>
+      <if test="ktErrorlog != null" >
+         and  KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR}
+      </if>
+      <if test="mssProcessdate != null" >
+         and  MSS_ProcessDate = #{mssProcessdate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="mssFaildate != null" >
+         and  MSS_FailDate = #{mssFaildate,jdbcType=TIMESTAMP}
+      </if>
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="com.tup.mssql.model.AddressByDateKey" >
+    delete from Address_ByDate
+    where ALAN8 = #{alan8,jdbcType=INTEGER}
+      and ALEFTB = #{aleftb,jdbcType=DATE}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.AddressByDateExample" >
+    delete from Address_ByDate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.AddressByDate" >
+    insert into Address_ByDate (ALAN8, ALEFTB, ALEFTF, 
+      ALADD1, ALADD2, ALADD3, 
+      ALADD4, ALADDZ, ALCTY1, 
+      ALCOUN, ALADDS, ALCRTE, 
+      ALBKML, ALCTR, ALUSER, 
+      ALUPMJ, JDE_UpdateDate, KT_ProcessDate, 
+      KT_FailDate, KT_RetryTimes, KT_ErrorLog, 
+      MSS_ProcessDate, MSS_FailDate)
+    values (#{alan8,jdbcType=INTEGER}, #{aleftb,jdbcType=DATE}, #{aleftf,jdbcType=DATE}, 
+      #{aladd1,jdbcType=NVARCHAR}, #{aladd2,jdbcType=NVARCHAR}, #{aladd3,jdbcType=NVARCHAR}, 
+      #{aladd4,jdbcType=NVARCHAR}, #{aladdz,jdbcType=VARCHAR}, #{alcty1,jdbcType=NVARCHAR}, 
+      #{alcoun,jdbcType=NVARCHAR}, #{aladds,jdbcType=VARCHAR}, #{alcrte,jdbcType=VARCHAR}, 
+      #{albkml,jdbcType=VARCHAR}, #{alctr,jdbcType=VARCHAR}, #{aluser,jdbcType=VARCHAR}, 
+      #{alupmj,jdbcType=TIMESTAMP}, #{jdeUpdatedate,jdbcType=TIMESTAMP}, #{ktProcessdate,jdbcType=TIMESTAMP}, 
+      #{ktFaildate,jdbcType=TIMESTAMP}, #{ktRetrytimes,jdbcType=INTEGER}, #{ktErrorlog,jdbcType=VARCHAR}, 
+      #{mssProcessdate,jdbcType=TIMESTAMP}, #{mssFaildate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.AddressByDate" >
+    insert into Address_ByDate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="alan8 != null" >
+        ALAN8,
+      </if>
+      <if test="aleftb != null" >
+        ALEFTB,
+      </if>
+      <if test="aleftf != null" >
+        ALEFTF,
+      </if>
+      <if test="aladd1 != null" >
+        ALADD1,
+      </if>
+      <if test="aladd2 != null" >
+        ALADD2,
+      </if>
+      <if test="aladd3 != null" >
+        ALADD3,
+      </if>
+      <if test="aladd4 != null" >
+        ALADD4,
+      </if>
+      <if test="aladdz != null" >
+        ALADDZ,
+      </if>
+      <if test="alcty1 != null" >
+        ALCTY1,
+      </if>
+      <if test="alcoun != null" >
+        ALCOUN,
+      </if>
+      <if test="aladds != null" >
+        ALADDS,
+      </if>
+      <if test="alcrte != null" >
+        ALCRTE,
+      </if>
+      <if test="albkml != null" >
+        ALBKML,
+      </if>
+      <if test="alctr != null" >
+        ALCTR,
+      </if>
+      <if test="aluser != null" >
+        ALUSER,
+      </if>
+      <if test="alupmj != null" >
+        ALUPMJ,
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate,
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate,
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate,
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes,
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog,
+      </if>
+      <if test="mssProcessdate != null" >
+        MSS_ProcessDate,
+      </if>
+      <if test="mssFaildate != null" >
+        MSS_FailDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="alan8 != null" >
+        #{alan8,jdbcType=INTEGER},
+      </if>
+      <if test="aleftb != null" >
+        #{aleftb,jdbcType=DATE},
+      </if>
+      <if test="aleftf != null" >
+        #{aleftf,jdbcType=DATE},
+      </if>
+      <if test="aladd1 != null" >
+        #{aladd1,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd2 != null" >
+        #{aladd2,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd3 != null" >
+        #{aladd3,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd4 != null" >
+        #{aladd4,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladdz != null" >
+        #{aladdz,jdbcType=VARCHAR},
+      </if>
+      <if test="alcty1 != null" >
+        #{alcty1,jdbcType=NVARCHAR},
+      </if>
+      <if test="alcoun != null" >
+        #{alcoun,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladds != null" >
+        #{aladds,jdbcType=VARCHAR},
+      </if>
+      <if test="alcrte != null" >
+        #{alcrte,jdbcType=VARCHAR},
+      </if>
+      <if test="albkml != null" >
+        #{albkml,jdbcType=VARCHAR},
+      </if>
+      <if test="alctr != null" >
+        #{alctr,jdbcType=VARCHAR},
+      </if>
+      <if test="aluser != null" >
+        #{aluser,jdbcType=VARCHAR},
+      </if>
+      <if test="alupmj != null" >
+        #{alupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktProcessdate != null" >
+        #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="mssProcessdate != null" >
+        #{mssProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mssFaildate != null" >
+        #{mssFaildate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.AddressByDateExample" resultType="java.lang.Integer" >
+    select count(*) from Address_ByDate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update Address_ByDate
+    <set >
+      <if test="record.alan8 != null" >
+        ALAN8 = #{record.alan8,jdbcType=INTEGER},
+      </if>
+      <if test="record.aleftb != null" >
+        ALEFTB = #{record.aleftb,jdbcType=DATE},
+      </if>
+      <if test="record.aleftf != null" >
+        ALEFTF = #{record.aleftf,jdbcType=DATE},
+      </if>
+      <if test="record.aladd1 != null" >
+        ALADD1 = #{record.aladd1,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.aladd2 != null" >
+        ALADD2 = #{record.aladd2,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.aladd3 != null" >
+        ALADD3 = #{record.aladd3,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.aladd4 != null" >
+        ALADD4 = #{record.aladd4,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.aladdz != null" >
+        ALADDZ = #{record.aladdz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.alcty1 != null" >
+        ALCTY1 = #{record.alcty1,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.alcoun != null" >
+        ALCOUN = #{record.alcoun,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.aladds != null" >
+        ALADDS = #{record.aladds,jdbcType=VARCHAR},
+      </if>
+      <if test="record.alcrte != null" >
+        ALCRTE = #{record.alcrte,jdbcType=VARCHAR},
+      </if>
+      <if test="record.albkml != null" >
+        ALBKML = #{record.albkml,jdbcType=VARCHAR},
+      </if>
+      <if test="record.alctr != null" >
+        ALCTR = #{record.alctr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aluser != null" >
+        ALUSER = #{record.aluser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.alupmj != null" >
+        ALUPMJ = #{record.alupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.jdeUpdatedate != null" >
+        JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktProcessdate != null" >
+        KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktFaildate != null" >
+        KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktRetrytimes != null" >
+        KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.ktErrorlog != null" >
+        KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mssProcessdate != null" >
+        MSS_ProcessDate = #{record.mssProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mssFaildate != null" >
+        MSS_FailDate = #{record.mssFaildate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update Address_ByDate
+    set ALAN8 = #{record.alan8,jdbcType=INTEGER},
+      ALEFTB = #{record.aleftb,jdbcType=DATE},
+      ALEFTF = #{record.aleftf,jdbcType=DATE},
+      ALADD1 = #{record.aladd1,jdbcType=NVARCHAR},
+      ALADD2 = #{record.aladd2,jdbcType=NVARCHAR},
+      ALADD3 = #{record.aladd3,jdbcType=NVARCHAR},
+      ALADD4 = #{record.aladd4,jdbcType=NVARCHAR},
+      ALADDZ = #{record.aladdz,jdbcType=VARCHAR},
+      ALCTY1 = #{record.alcty1,jdbcType=NVARCHAR},
+      ALCOUN = #{record.alcoun,jdbcType=NVARCHAR},
+      ALADDS = #{record.aladds,jdbcType=VARCHAR},
+      ALCRTE = #{record.alcrte,jdbcType=VARCHAR},
+      ALBKML = #{record.albkml,jdbcType=VARCHAR},
+      ALCTR = #{record.alctr,jdbcType=VARCHAR},
+      ALUSER = #{record.aluser,jdbcType=VARCHAR},
+      ALUPMJ = #{record.alupmj,jdbcType=TIMESTAMP},
+      JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR},
+      MSS_ProcessDate = #{record.mssProcessdate,jdbcType=TIMESTAMP},
+      MSS_FailDate = #{record.mssFaildate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.AddressByDate" >
+    update Address_ByDate
+    <set >
+      <if test="aleftf != null" >
+        ALEFTF = #{aleftf,jdbcType=DATE},
+      </if>
+      <if test="aladd1 != null" >
+        ALADD1 = #{aladd1,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd2 != null" >
+        ALADD2 = #{aladd2,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd3 != null" >
+        ALADD3 = #{aladd3,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladd4 != null" >
+        ALADD4 = #{aladd4,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladdz != null" >
+        ALADDZ = #{aladdz,jdbcType=VARCHAR},
+      </if>
+      <if test="alcty1 != null" >
+        ALCTY1 = #{alcty1,jdbcType=NVARCHAR},
+      </if>
+      <if test="alcoun != null" >
+        ALCOUN = #{alcoun,jdbcType=NVARCHAR},
+      </if>
+      <if test="aladds != null" >
+        ALADDS = #{aladds,jdbcType=VARCHAR},
+      </if>
+      <if test="alcrte != null" >
+        ALCRTE = #{alcrte,jdbcType=VARCHAR},
+      </if>
+      <if test="albkml != null" >
+        ALBKML = #{albkml,jdbcType=VARCHAR},
+      </if>
+      <if test="alctr != null" >
+        ALCTR = #{alctr,jdbcType=VARCHAR},
+      </if>
+      <if test="aluser != null" >
+        ALUSER = #{aluser,jdbcType=VARCHAR},
+      </if>
+      <if test="alupmj != null" >
+        ALUPMJ = #{alupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="mssProcessdate != null" >
+        MSS_ProcessDate = #{mssProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mssFaildate != null" >
+        MSS_FailDate = #{mssFaildate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ALAN8 = #{alan8,jdbcType=INTEGER}
+      and ALEFTB = #{aleftb,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.AddressByDate" >
+    update Address_ByDate
+    set ALEFTF = #{aleftf,jdbcType=DATE},
+      ALADD1 = #{aladd1,jdbcType=NVARCHAR},
+      ALADD2 = #{aladd2,jdbcType=NVARCHAR},
+      ALADD3 = #{aladd3,jdbcType=NVARCHAR},
+      ALADD4 = #{aladd4,jdbcType=NVARCHAR},
+      ALADDZ = #{aladdz,jdbcType=VARCHAR},
+      ALCTY1 = #{alcty1,jdbcType=NVARCHAR},
+      ALCOUN = #{alcoun,jdbcType=NVARCHAR},
+      ALADDS = #{aladds,jdbcType=VARCHAR},
+      ALCRTE = #{alcrte,jdbcType=VARCHAR},
+      ALBKML = #{albkml,jdbcType=VARCHAR},
+      ALCTR = #{alctr,jdbcType=VARCHAR},
+      ALUSER = #{aluser,jdbcType=VARCHAR},
+      ALUPMJ = #{alupmj,jdbcType=TIMESTAMP},
+      JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR},
+      MSS_ProcessDate = #{mssProcessdate,jdbcType=TIMESTAMP},
+      MSS_FailDate = #{mssFaildate,jdbcType=TIMESTAMP}
+    where ALAN8 = #{alan8,jdbcType=INTEGER}
+      and ALEFTB = #{aleftb,jdbcType=DATE}
+  </update>
+</mapper>

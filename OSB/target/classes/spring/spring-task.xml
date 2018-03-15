@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/task
+       http://www.springframework.org/schema/task/spring-task.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 扫描 event包
+	<context:component-scan base-package="com.tup.event;com.tup.task" />
+ -->
+    <!-- my slave  -->
+	<bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<!-- 核心线程数 -->
+		<property name="corePoolSize" value="${task.core_pool_size}" />
+		<!-- 最大线程数 -->
+		<property name="maxPoolSize" value="${task.max_pool_size}" />
+		<!-- 队列最大长度 -->
+		<property name="queueCapacity" value="${task.queue_capacity}" />
+		<!-- 线程池维护线程所允许的空闲时间，默认为60s -->
+		<property name="keepAliveSeconds" value="${task.keep_alive_seconds}" />
+		<property name="rejectedExecutionHandler">
+			<bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
+		</property>
+		<!-- (1)ThreadPoolExecutor.AbortPolicy策略，是默认的策略,处理程序遭到拒绝将抛出运行时 RejectedExecutionException。 
+			(2)ThreadPoolExecutor.CallerRunsPolicy策略 ,调用者的线程会执行该任务,如果执行器已关闭,则丢弃. (3)ThreadPoolExecutor.DiscardPolicy策略，不能执行的任务将被丢弃. 
+			(4)ThreadPoolExecutor.DiscardOldestPolicy策略，如果执行程序尚未关闭，则位于工作队列头部的任务将被删除，然后重试执行程序（如果再次失败，则重复此过程） -->
+	</bean>
+	<!-- 线程池（执行器） -->
+	<!-- 处理接口 -->
+	<!-- email inject -->
+	<bean id="service" class="com.tup.service.impl.TaskServiceImpl"/>
+	<bean id="processor" class="com.tup.service.impl.ProcessorImpl">
+		<property name="service" ref="service" />
+		<property name="taskExecutor">
+			<ref bean="taskExecutor" />
+		</property>
+	</bean>	
+	
+	<bean id="mailSenderService" class="com.tup.service.impl.MailSenderService">
+		<property name="mailSender" ref="mailSender" />		
+		<property name="size" value="1" />
+	</bean>
+	
+	<bean id="emailprocessor" class="com.tup.service.impl.EmailRunnable">
+		<property name="taskExecutor" ref="taskExecutor" />
+		<property name="mailSenderService">
+			<ref bean="mailSenderService" />
+		</property>
+	</bean>
+	<!-- kettle inject -->
+	<bean id="kettleexecutor" class="com.tup.service.impl.KettleTasksExecutorService">
+		<property name="size" value="50" />
+		<property name="kettleconfig">
+			<ref bean="kettleconfig" />
+		</property>
+		<property name="taskExecutor">
+			<ref bean="taskExecutor" />
+		</property>
+	</bean>
+
+	<!--email task -->
+<!--
+	<task:scheduled-tasks scheduler="myScheduler">
+
+		<task:scheduled ref="emailprocessor" method="process"
+			cron="*/20 * * * * MON" />
+	</task:scheduled-tasks>
+	<task:scheduler id="myScheduler" pool-size="10" />
+-->
+
+	<!-- kettle task -->
+<!--
+	<task:scheduled-tasks scheduler="kettleScheduler">
+		<task:scheduled ref="kettleexecutor" method="init"
+			cron="*/20 * * * * MON" />
+	</task:scheduled-tasks>
+
+	<task:scheduler id="kettleScheduler" pool-size="10" />
+	
+		-->
+	
+	
+	
+	<!-- 注解式 -->
+	<!-- <task:annotation-driven executor="taskExecutor" proxy-target-class="true" 	/> -->
+	<!-- 
+	 "30 * * * * ?" 每半分钟触发任务
+	"30 10 * * * ?" 每小时的10分30秒触发任务
+	"30 10 1 * * ?" 每天1点10分30秒触发任务
+	"30 10 1 20 * ?" 每月20号1点10分30秒触发任务
+	"30 10 1 20 10 ? *" 每年10月20号1点10分30秒触发任务
+	"30 10 1 20 10 ? 2011" 2011年10月20号1点10分30秒触发任务
+	"30 10 1 ? 10 * 2011" 2011年10月每天1点10分30秒触发任务
+	"30 10 1 ? 10 SUN 2011" 2011年10月每周日1点10分30秒触发任务
+	"15,30,45 * * * * ?" 每15秒，30秒，45秒时触发任务
+	"15-45 * * * * ?" 15到45秒内，每秒都触发任务
+	"15/5 * * * * ?" 每分钟的每15秒开始触发，每隔5秒触发一次
+	"15-30/5 * * * * ?" 每分钟的15秒到30秒之间开始触发，每隔5秒触发一次
+	"0 0/3 * * * ?" 每小时的第0分0秒开始，每三分钟触发一次
+	"0 15 10 ? * MON-FRI" 星期一到星期五的10点15分0秒触发任务
+	"0 15 10 L * ?" 每个月最后一天的10点15分0秒触发任务
+	"0 15 10 LW * ?" 每个月最后一个工作日的10点15分0秒触发任务
+	"0 15 10 ? * 5L" 每个月最后一个星期四的10点15分0秒触发任务
+	"0 15 10 ? * 5#3" 每个月第三周的星期四的10点15分0秒触发任务
+	 -->
+</beans>

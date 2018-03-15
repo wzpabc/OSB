@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.ItemPRP2Mapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.ItemPRP2" >
+    <id column="item_clsno" property="itemClsno" jdbcType="CHAR" />
+    <result column="item_clsname" property="itemClsname" jdbcType="VARCHAR" />
+    <result column="p_item_clsno" property="pItemClsno" jdbcType="CHAR" />
+    <result column="manager_no" property="managerNo" jdbcType="CHAR" />
+    <result column="level" property="level" jdbcType="CHAR" />
+    <result column="profit_range1" property="profitRange1" jdbcType="NUMERIC" />
+    <result column="profit_range2" property="profitRange2" jdbcType="NUMERIC" />
+    <result column="max_no" property="maxNo" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    item_clsno, item_clsname, p_item_clsno, manager_no, level, profit_range1, profit_range2, 
+    max_no
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.ItemPRP2Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Item_PRP2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Item_PRP2
+    where item_clsno = #{itemClsno,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Item_PRP2
+    where item_clsno = #{itemClsno,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.ItemPRP2Example" >
+    delete from Item_PRP2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.ItemPRP2" >
+    insert into Item_PRP2 (item_clsno, item_clsname, p_item_clsno, 
+      manager_no, level, profit_range1, 
+      profit_range2, max_no)
+    values (#{itemClsno,jdbcType=CHAR}, #{itemClsname,jdbcType=VARCHAR}, #{pItemClsno,jdbcType=CHAR}, 
+      #{managerNo,jdbcType=CHAR}, #{level,jdbcType=CHAR}, #{profitRange1,jdbcType=NUMERIC}, 
+      #{profitRange2,jdbcType=NUMERIC}, #{maxNo,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.ItemPRP2" >
+    insert into Item_PRP2
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemClsno != null" >
+        item_clsno,
+      </if>
+      <if test="itemClsname != null" >
+        item_clsname,
+      </if>
+      <if test="pItemClsno != null" >
+        p_item_clsno,
+      </if>
+      <if test="managerNo != null" >
+        manager_no,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="profitRange1 != null" >
+        profit_range1,
+      </if>
+      <if test="profitRange2 != null" >
+        profit_range2,
+      </if>
+      <if test="maxNo != null" >
+        max_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemClsno != null" >
+        #{itemClsno,jdbcType=CHAR},
+      </if>
+      <if test="itemClsname != null" >
+        #{itemClsname,jdbcType=VARCHAR},
+      </if>
+      <if test="pItemClsno != null" >
+        #{pItemClsno,jdbcType=CHAR},
+      </if>
+      <if test="managerNo != null" >
+        #{managerNo,jdbcType=CHAR},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=CHAR},
+      </if>
+      <if test="profitRange1 != null" >
+        #{profitRange1,jdbcType=NUMERIC},
+      </if>
+      <if test="profitRange2 != null" >
+        #{profitRange2,jdbcType=NUMERIC},
+      </if>
+      <if test="maxNo != null" >
+        #{maxNo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.ItemPRP2Example" resultType="java.lang.Integer" >
+    select count(*) from Item_PRP2
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update Item_PRP2
+    <set >
+      <if test="record.itemClsno != null" >
+        item_clsno = #{record.itemClsno,jdbcType=CHAR},
+      </if>
+      <if test="record.itemClsname != null" >
+        item_clsname = #{record.itemClsname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pItemClsno != null" >
+        p_item_clsno = #{record.pItemClsno,jdbcType=CHAR},
+      </if>
+      <if test="record.managerNo != null" >
+        manager_no = #{record.managerNo,jdbcType=CHAR},
+      </if>
+      <if test="record.level != null" >
+        level = #{record.level,jdbcType=CHAR},
+      </if>
+      <if test="record.profitRange1 != null" >
+        profit_range1 = #{record.profitRange1,jdbcType=NUMERIC},
+      </if>
+      <if test="record.profitRange2 != null" >
+        profit_range2 = #{record.profitRange2,jdbcType=NUMERIC},
+      </if>
+      <if test="record.maxNo != null" >
+        max_no = #{record.maxNo,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update Item_PRP2
+    set item_clsno = #{record.itemClsno,jdbcType=CHAR},
+      item_clsname = #{record.itemClsname,jdbcType=VARCHAR},
+      p_item_clsno = #{record.pItemClsno,jdbcType=CHAR},
+      manager_no = #{record.managerNo,jdbcType=CHAR},
+      level = #{record.level,jdbcType=CHAR},
+      profit_range1 = #{record.profitRange1,jdbcType=NUMERIC},
+      profit_range2 = #{record.profitRange2,jdbcType=NUMERIC},
+      max_no = #{record.maxNo,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.ItemPRP2" >
+    update Item_PRP2
+    <set >
+      <if test="itemClsname != null" >
+        item_clsname = #{itemClsname,jdbcType=VARCHAR},
+      </if>
+      <if test="pItemClsno != null" >
+        p_item_clsno = #{pItemClsno,jdbcType=CHAR},
+      </if>
+      <if test="managerNo != null" >
+        manager_no = #{managerNo,jdbcType=CHAR},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=CHAR},
+      </if>
+      <if test="profitRange1 != null" >
+        profit_range1 = #{profitRange1,jdbcType=NUMERIC},
+      </if>
+      <if test="profitRange2 != null" >
+        profit_range2 = #{profitRange2,jdbcType=NUMERIC},
+      </if>
+      <if test="maxNo != null" >
+        max_no = #{maxNo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where item_clsno = #{itemClsno,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.ItemPRP2" >
+    update Item_PRP2
+    set item_clsname = #{itemClsname,jdbcType=VARCHAR},
+      p_item_clsno = #{pItemClsno,jdbcType=CHAR},
+      manager_no = #{managerNo,jdbcType=CHAR},
+      level = #{level,jdbcType=CHAR},
+      profit_range1 = #{profitRange1,jdbcType=NUMERIC},
+      profit_range2 = #{profitRange2,jdbcType=NUMERIC},
+      max_no = #{maxNo,jdbcType=INTEGER}
+    where item_clsno = #{itemClsno,jdbcType=CHAR}
+  </update>
+</mapper>

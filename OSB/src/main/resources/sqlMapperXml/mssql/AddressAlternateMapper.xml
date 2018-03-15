@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.AddressAlternateMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.AddressAlternate" >
+    <result column="WLIDLN" property="wlidln" jdbcType="INTEGER" />
+    <result column="ATAN8" property="atan8" jdbcType="INTEGER" />
+    <result column="EFTB" property="eftb" jdbcType="TIMESTAMP" />
+    <result column="ATYPE" property="atype" jdbcType="NVARCHAR" />
+    <result column="ADD1" property="add1" jdbcType="NVARCHAR" />
+    <result column="ADD2" property="add2" jdbcType="NVARCHAR" />
+    <result column="ADD3" property="add3" jdbcType="NVARCHAR" />
+    <result column="ADD4" property="add4" jdbcType="NVARCHAR" />
+    <result column="CTY1" property="cty1" jdbcType="NVARCHAR" />
+    <result column="ADDS" property="adds" jdbcType="NVARCHAR" />
+    <result column="COUN" property="coun" jdbcType="NVARCHAR" />
+    <result column="CTR" property="ctr" jdbcType="NVARCHAR" />
+    <result column="ADDZ" property="addz" jdbcType="NVARCHAR" />
+    <result column="MAINA" property="maina" jdbcType="INTEGER" />
+    <result column="JDE_UpdateDate" property="jdeUpdatedate" jdbcType="TIMESTAMP" />
+    <result column="fms_process_date" property="fmsProcessDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    WLIDLN, ATAN8, EFTB, ATYPE, ADD1, ADD2, ADD3, ADD4, CTY1, ADDS, COUN, CTR, ADDZ, 
+    MAINA, JDE_UpdateDate, fms_process_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.AddressAlternateExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Address_Alternate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.AddressAlternateExample" >
+    delete from Address_Alternate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.AddressAlternate" >
+    insert into Address_Alternate (WLIDLN, ATAN8, EFTB, 
+      ATYPE, ADD1, ADD2, 
+      ADD3, ADD4, CTY1, 
+      ADDS, COUN, CTR, 
+      ADDZ, MAINA, JDE_UpdateDate, 
+      fms_process_date)
+    values (#{wlidln,jdbcType=INTEGER}, #{atan8,jdbcType=INTEGER}, #{eftb,jdbcType=TIMESTAMP}, 
+      #{atype,jdbcType=NVARCHAR}, #{add1,jdbcType=NVARCHAR}, #{add2,jdbcType=NVARCHAR}, 
+      #{add3,jdbcType=NVARCHAR}, #{add4,jdbcType=NVARCHAR}, #{cty1,jdbcType=NVARCHAR}, 
+      #{adds,jdbcType=NVARCHAR}, #{coun,jdbcType=NVARCHAR}, #{ctr,jdbcType=NVARCHAR}, 
+      #{addz,jdbcType=NVARCHAR}, #{maina,jdbcType=INTEGER}, #{jdeUpdatedate,jdbcType=TIMESTAMP}, 
+      #{fmsProcessDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.AddressAlternate" >
+    insert into Address_Alternate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wlidln != null" >
+        WLIDLN,
+      </if>
+      <if test="atan8 != null" >
+        ATAN8,
+      </if>
+      <if test="eftb != null" >
+        EFTB,
+      </if>
+      <if test="atype != null" >
+        ATYPE,
+      </if>
+      <if test="add1 != null" >
+        ADD1,
+      </if>
+      <if test="add2 != null" >
+        ADD2,
+      </if>
+      <if test="add3 != null" >
+        ADD3,
+      </if>
+      <if test="add4 != null" >
+        ADD4,
+      </if>
+      <if test="cty1 != null" >
+        CTY1,
+      </if>
+      <if test="adds != null" >
+        ADDS,
+      </if>
+      <if test="coun != null" >
+        COUN,
+      </if>
+      <if test="ctr != null" >
+        CTR,
+      </if>
+      <if test="addz != null" >
+        ADDZ,
+      </if>
+      <if test="maina != null" >
+        MAINA,
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate,
+      </if>
+      <if test="fmsProcessDate != null" >
+        fms_process_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wlidln != null" >
+        #{wlidln,jdbcType=INTEGER},
+      </if>
+      <if test="atan8 != null" >
+        #{atan8,jdbcType=INTEGER},
+      </if>
+      <if test="eftb != null" >
+        #{eftb,jdbcType=TIMESTAMP},
+      </if>
+      <if test="atype != null" >
+        #{atype,jdbcType=NVARCHAR},
+      </if>
+      <if test="add1 != null" >
+        #{add1,jdbcType=NVARCHAR},
+      </if>
+      <if test="add2 != null" >
+        #{add2,jdbcType=NVARCHAR},
+      </if>
+      <if test="add3 != null" >
+        #{add3,jdbcType=NVARCHAR},
+      </if>
+      <if test="add4 != null" >
+        #{add4,jdbcType=NVARCHAR},
+      </if>
+      <if test="cty1 != null" >
+        #{cty1,jdbcType=NVARCHAR},
+      </if>
+      <if test="adds != null" >
+        #{adds,jdbcType=NVARCHAR},
+      </if>
+      <if test="coun != null" >
+        #{coun,jdbcType=NVARCHAR},
+      </if>
+      <if test="ctr != null" >
+        #{ctr,jdbcType=NVARCHAR},
+      </if>
+      <if test="addz != null" >
+        #{addz,jdbcType=NVARCHAR},
+      </if>
+      <if test="maina != null" >
+        #{maina,jdbcType=INTEGER},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fmsProcessDate != null" >
+        #{fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.AddressAlternateExample" resultType="java.lang.Integer" >
+    select count(*) from Address_Alternate
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update Address_Alternate
+    <set >
+      <if test="record.wlidln != null" >
+        WLIDLN = #{record.wlidln,jdbcType=INTEGER},
+      </if>
+      <if test="record.atan8 != null" >
+        ATAN8 = #{record.atan8,jdbcType=INTEGER},
+      </if>
+      <if test="record.eftb != null" >
+        EFTB = #{record.eftb,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.atype != null" >
+        ATYPE = #{record.atype,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.add1 != null" >
+        ADD1 = #{record.add1,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.add2 != null" >
+        ADD2 = #{record.add2,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.add3 != null" >
+        ADD3 = #{record.add3,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.add4 != null" >
+        ADD4 = #{record.add4,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.cty1 != null" >
+        CTY1 = #{record.cty1,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.adds != null" >
+        ADDS = #{record.adds,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.coun != null" >
+        COUN = #{record.coun,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.ctr != null" >
+        CTR = #{record.ctr,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.addz != null" >
+        ADDZ = #{record.addz,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.maina != null" >
+        MAINA = #{record.maina,jdbcType=INTEGER},
+      </if>
+      <if test="record.jdeUpdatedate != null" >
+        JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.fmsProcessDate != null" >
+        fms_process_date = #{record.fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update Address_Alternate
+    set WLIDLN = #{record.wlidln,jdbcType=INTEGER},
+      ATAN8 = #{record.atan8,jdbcType=INTEGER},
+      EFTB = #{record.eftb,jdbcType=TIMESTAMP},
+      ATYPE = #{record.atype,jdbcType=NVARCHAR},
+      ADD1 = #{record.add1,jdbcType=NVARCHAR},
+      ADD2 = #{record.add2,jdbcType=NVARCHAR},
+      ADD3 = #{record.add3,jdbcType=NVARCHAR},
+      ADD4 = #{record.add4,jdbcType=NVARCHAR},
+      CTY1 = #{record.cty1,jdbcType=NVARCHAR},
+      ADDS = #{record.adds,jdbcType=NVARCHAR},
+      COUN = #{record.coun,jdbcType=NVARCHAR},
+      CTR = #{record.ctr,jdbcType=NVARCHAR},
+      ADDZ = #{record.addz,jdbcType=NVARCHAR},
+      MAINA = #{record.maina,jdbcType=INTEGER},
+      JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      fms_process_date = #{record.fmsProcessDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

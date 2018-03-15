@@ -1,0 +1,985 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.InventoryJDEMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.InventoryJDE" >
+    <id column="LIITM" property="liitm" jdbcType="NUMERIC" />
+    <id column="LIMCU" property="limcu" jdbcType="VARCHAR" />
+    <id column="LILOCN" property="lilocn" jdbcType="VARCHAR" />
+    <id column="LILOTN" property="lilotn" jdbcType="VARCHAR" />
+    <result column="LIPBIN" property="lipbin" jdbcType="VARCHAR" />
+    <result column="LIGLPT" property="liglpt" jdbcType="VARCHAR" />
+    <result column="LILOTS" property="lilots" jdbcType="VARCHAR" />
+    <result column="LILRCJ" property="lilrcj" jdbcType="NUMERIC" />
+    <result column="LIPQOH" property="lipqoh" jdbcType="NUMERIC" />
+    <result column="LIPBCK" property="lipbck" jdbcType="NUMERIC" />
+    <result column="LIPREQ" property="lipreq" jdbcType="NUMERIC" />
+    <result column="LIQWBO" property="liqwbo" jdbcType="NUMERIC" />
+    <result column="LIOT1P" property="liot1p" jdbcType="NUMERIC" />
+    <result column="LIOT2P" property="liot2p" jdbcType="NUMERIC" />
+    <result column="LIOT1A" property="liot1a" jdbcType="NUMERIC" />
+    <result column="LIHCOM" property="lihcom" jdbcType="NUMERIC" />
+    <result column="LIPCOM" property="lipcom" jdbcType="NUMERIC" />
+    <result column="LIFCOM" property="lifcom" jdbcType="NUMERIC" />
+    <result column="LIFUN1" property="lifun1" jdbcType="NUMERIC" />
+    <result column="LIQOWO" property="liqowo" jdbcType="NUMERIC" />
+    <result column="LIQTTR" property="liqttr" jdbcType="NUMERIC" />
+    <result column="LIQTIN" property="liqtin" jdbcType="NUMERIC" />
+    <result column="LIQONL" property="liqonl" jdbcType="NUMERIC" />
+    <result column="LIQTRI" property="liqtri" jdbcType="NUMERIC" />
+    <result column="LIQTRO" property="liqtro" jdbcType="NUMERIC" />
+    <result column="LINCDJ" property="lincdj" jdbcType="NUMERIC" />
+    <result column="LIQTY1" property="liqty1" jdbcType="NUMERIC" />
+    <result column="LIQTY2" property="liqty2" jdbcType="NUMERIC" />
+    <result column="LIURAB" property="liurab" jdbcType="NUMERIC" />
+    <result column="LIURRF" property="liurrf" jdbcType="VARCHAR" />
+    <result column="LIURAT" property="liurat" jdbcType="NUMERIC" />
+    <result column="LIURCD" property="liurcd" jdbcType="VARCHAR" />
+    <result column="LIJOBN" property="lijobn" jdbcType="VARCHAR" />
+    <result column="LIPID" property="lipid" jdbcType="VARCHAR" />
+    <result column="LIUPMJ" property="liupmj" jdbcType="NUMERIC" />
+    <result column="LIUSER" property="liuser" jdbcType="VARCHAR" />
+    <result column="LITDAY" property="litday" jdbcType="NUMERIC" />
+    <result column="LIURDT" property="liurdt" jdbcType="NUMERIC" />
+    <result column="LIQTO1" property="liqto1" jdbcType="NUMERIC" />
+    <result column="LIQTO2" property="liqto2" jdbcType="NUMERIC" />
+    <result column="LIHCMS" property="lihcms" jdbcType="NUMERIC" />
+    <result column="LIPJCM" property="lipjcm" jdbcType="NUMERIC" />
+    <result column="LIPJDM" property="lipjdm" jdbcType="NUMERIC" />
+    <result column="LISCMS" property="liscms" jdbcType="NUMERIC" />
+    <result column="LISIBW" property="lisibw" jdbcType="NUMERIC" />
+    <result column="LISOBW" property="lisobw" jdbcType="NUMERIC" />
+    <result column="LISQOH" property="lisqoh" jdbcType="NUMERIC" />
+    <result column="LISQWO" property="lisqwo" jdbcType="NUMERIC" />
+    <result column="LISREQ" property="lisreq" jdbcType="NUMERIC" />
+    <result column="LISWHC" property="liswhc" jdbcType="NUMERIC" />
+    <result column="LISWSC" property="liswsc" jdbcType="NUMERIC" />
+    <result column="LICHDF" property="lichdf" jdbcType="VARCHAR" />
+    <result column="LIWPDF" property="liwpdf" jdbcType="VARCHAR" />
+    <result column="LICFGSID" property="licfgsid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    LIITM, LIMCU, LILOCN, LILOTN, LIPBIN, LIGLPT, LILOTS, LILRCJ, LIPQOH, LIPBCK, LIPREQ, 
+    LIQWBO, LIOT1P, LIOT2P, LIOT1A, LIHCOM, LIPCOM, LIFCOM, LIFUN1, LIQOWO, LIQTTR, LIQTIN, 
+    LIQONL, LIQTRI, LIQTRO, LINCDJ, LIQTY1, LIQTY2, LIURAB, LIURRF, LIURAT, LIURCD, LIJOBN, 
+    LIPID, LIUPMJ, LIUSER, LITDAY, LIURDT, LIQTO1, LIQTO2, LIHCMS, LIPJCM, LIPJDM, LISCMS, 
+    LISIBW, LISOBW, LISQOH, LISQWO, LISREQ, LISWHC, LISWSC, LICHDF, LIWPDF, LICFGSID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.InventoryJDEExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Inventory_JDE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.InventoryJDEKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from Inventory_JDE
+    where LIITM = #{liitm,jdbcType=NUMERIC}
+      and LIMCU = #{limcu,jdbcType=VARCHAR}
+      and LILOCN = #{lilocn,jdbcType=VARCHAR}
+      and LILOTN = #{lilotn,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.tup.mssql.model.InventoryJDEKey" >
+    delete from Inventory_JDE
+    where LIITM = #{liitm,jdbcType=NUMERIC}
+      and LIMCU = #{limcu,jdbcType=VARCHAR}
+      and LILOCN = #{lilocn,jdbcType=VARCHAR}
+      and LILOTN = #{lilotn,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.InventoryJDEExample" >
+    delete from Inventory_JDE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.InventoryJDE" >
+    insert into Inventory_JDE (LIITM, LIMCU, LILOCN, 
+      LILOTN, LIPBIN, LIGLPT, 
+      LILOTS, LILRCJ, LIPQOH, 
+      LIPBCK, LIPREQ, LIQWBO, 
+      LIOT1P, LIOT2P, LIOT1A, 
+      LIHCOM, LIPCOM, LIFCOM, 
+      LIFUN1, LIQOWO, LIQTTR, 
+      LIQTIN, LIQONL, LIQTRI, 
+      LIQTRO, LINCDJ, LIQTY1, 
+      LIQTY2, LIURAB, LIURRF, 
+      LIURAT, LIURCD, LIJOBN, 
+      LIPID, LIUPMJ, LIUSER, 
+      LITDAY, LIURDT, LIQTO1, 
+      LIQTO2, LIHCMS, LIPJCM, 
+      LIPJDM, LISCMS, LISIBW, 
+      LISOBW, LISQOH, LISQWO, 
+      LISREQ, LISWHC, LISWSC, 
+      LICHDF, LIWPDF, LICFGSID
+      )
+    values (#{liitm,jdbcType=NUMERIC}, #{limcu,jdbcType=VARCHAR}, #{lilocn,jdbcType=VARCHAR}, 
+      #{lilotn,jdbcType=VARCHAR}, #{lipbin,jdbcType=VARCHAR}, #{liglpt,jdbcType=VARCHAR}, 
+      #{lilots,jdbcType=VARCHAR}, #{lilrcj,jdbcType=NUMERIC}, #{lipqoh,jdbcType=NUMERIC}, 
+      #{lipbck,jdbcType=NUMERIC}, #{lipreq,jdbcType=NUMERIC}, #{liqwbo,jdbcType=NUMERIC}, 
+      #{liot1p,jdbcType=NUMERIC}, #{liot2p,jdbcType=NUMERIC}, #{liot1a,jdbcType=NUMERIC}, 
+      #{lihcom,jdbcType=NUMERIC}, #{lipcom,jdbcType=NUMERIC}, #{lifcom,jdbcType=NUMERIC}, 
+      #{lifun1,jdbcType=NUMERIC}, #{liqowo,jdbcType=NUMERIC}, #{liqttr,jdbcType=NUMERIC}, 
+      #{liqtin,jdbcType=NUMERIC}, #{liqonl,jdbcType=NUMERIC}, #{liqtri,jdbcType=NUMERIC}, 
+      #{liqtro,jdbcType=NUMERIC}, #{lincdj,jdbcType=NUMERIC}, #{liqty1,jdbcType=NUMERIC}, 
+      #{liqty2,jdbcType=NUMERIC}, #{liurab,jdbcType=NUMERIC}, #{liurrf,jdbcType=VARCHAR}, 
+      #{liurat,jdbcType=NUMERIC}, #{liurcd,jdbcType=VARCHAR}, #{lijobn,jdbcType=VARCHAR}, 
+      #{lipid,jdbcType=VARCHAR}, #{liupmj,jdbcType=NUMERIC}, #{liuser,jdbcType=VARCHAR}, 
+      #{litday,jdbcType=NUMERIC}, #{liurdt,jdbcType=NUMERIC}, #{liqto1,jdbcType=NUMERIC}, 
+      #{liqto2,jdbcType=NUMERIC}, #{lihcms,jdbcType=NUMERIC}, #{lipjcm,jdbcType=NUMERIC}, 
+      #{lipjdm,jdbcType=NUMERIC}, #{liscms,jdbcType=NUMERIC}, #{lisibw,jdbcType=NUMERIC}, 
+      #{lisobw,jdbcType=NUMERIC}, #{lisqoh,jdbcType=NUMERIC}, #{lisqwo,jdbcType=NUMERIC}, 
+      #{lisreq,jdbcType=NUMERIC}, #{liswhc,jdbcType=NUMERIC}, #{liswsc,jdbcType=NUMERIC}, 
+      #{lichdf,jdbcType=VARCHAR}, #{liwpdf,jdbcType=VARCHAR}, #{licfgsid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.InventoryJDE" >
+    insert into Inventory_JDE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="liitm != null" >
+        LIITM,
+      </if>
+      <if test="limcu != null" >
+        LIMCU,
+      </if>
+      <if test="lilocn != null" >
+        LILOCN,
+      </if>
+      <if test="lilotn != null" >
+        LILOTN,
+      </if>
+      <if test="lipbin != null" >
+        LIPBIN,
+      </if>
+      <if test="liglpt != null" >
+        LIGLPT,
+      </if>
+      <if test="lilots != null" >
+        LILOTS,
+      </if>
+      <if test="lilrcj != null" >
+        LILRCJ,
+      </if>
+      <if test="lipqoh != null" >
+        LIPQOH,
+      </if>
+      <if test="lipbck != null" >
+        LIPBCK,
+      </if>
+      <if test="lipreq != null" >
+        LIPREQ,
+      </if>
+      <if test="liqwbo != null" >
+        LIQWBO,
+      </if>
+      <if test="liot1p != null" >
+        LIOT1P,
+      </if>
+      <if test="liot2p != null" >
+        LIOT2P,
+      </if>
+      <if test="liot1a != null" >
+        LIOT1A,
+      </if>
+      <if test="lihcom != null" >
+        LIHCOM,
+      </if>
+      <if test="lipcom != null" >
+        LIPCOM,
+      </if>
+      <if test="lifcom != null" >
+        LIFCOM,
+      </if>
+      <if test="lifun1 != null" >
+        LIFUN1,
+      </if>
+      <if test="liqowo != null" >
+        LIQOWO,
+      </if>
+      <if test="liqttr != null" >
+        LIQTTR,
+      </if>
+      <if test="liqtin != null" >
+        LIQTIN,
+      </if>
+      <if test="liqonl != null" >
+        LIQONL,
+      </if>
+      <if test="liqtri != null" >
+        LIQTRI,
+      </if>
+      <if test="liqtro != null" >
+        LIQTRO,
+      </if>
+      <if test="lincdj != null" >
+        LINCDJ,
+      </if>
+      <if test="liqty1 != null" >
+        LIQTY1,
+      </if>
+      <if test="liqty2 != null" >
+        LIQTY2,
+      </if>
+      <if test="liurab != null" >
+        LIURAB,
+      </if>
+      <if test="liurrf != null" >
+        LIURRF,
+      </if>
+      <if test="liurat != null" >
+        LIURAT,
+      </if>
+      <if test="liurcd != null" >
+        LIURCD,
+      </if>
+      <if test="lijobn != null" >
+        LIJOBN,
+      </if>
+      <if test="lipid != null" >
+        LIPID,
+      </if>
+      <if test="liupmj != null" >
+        LIUPMJ,
+      </if>
+      <if test="liuser != null" >
+        LIUSER,
+      </if>
+      <if test="litday != null" >
+        LITDAY,
+      </if>
+      <if test="liurdt != null" >
+        LIURDT,
+      </if>
+      <if test="liqto1 != null" >
+        LIQTO1,
+      </if>
+      <if test="liqto2 != null" >
+        LIQTO2,
+      </if>
+      <if test="lihcms != null" >
+        LIHCMS,
+      </if>
+      <if test="lipjcm != null" >
+        LIPJCM,
+      </if>
+      <if test="lipjdm != null" >
+        LIPJDM,
+      </if>
+      <if test="liscms != null" >
+        LISCMS,
+      </if>
+      <if test="lisibw != null" >
+        LISIBW,
+      </if>
+      <if test="lisobw != null" >
+        LISOBW,
+      </if>
+      <if test="lisqoh != null" >
+        LISQOH,
+      </if>
+      <if test="lisqwo != null" >
+        LISQWO,
+      </if>
+      <if test="lisreq != null" >
+        LISREQ,
+      </if>
+      <if test="liswhc != null" >
+        LISWHC,
+      </if>
+      <if test="liswsc != null" >
+        LISWSC,
+      </if>
+      <if test="lichdf != null" >
+        LICHDF,
+      </if>
+      <if test="liwpdf != null" >
+        LIWPDF,
+      </if>
+      <if test="licfgsid != null" >
+        LICFGSID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="liitm != null" >
+        #{liitm,jdbcType=NUMERIC},
+      </if>
+      <if test="limcu != null" >
+        #{limcu,jdbcType=VARCHAR},
+      </if>
+      <if test="lilocn != null" >
+        #{lilocn,jdbcType=VARCHAR},
+      </if>
+      <if test="lilotn != null" >
+        #{lilotn,jdbcType=VARCHAR},
+      </if>
+      <if test="lipbin != null" >
+        #{lipbin,jdbcType=VARCHAR},
+      </if>
+      <if test="liglpt != null" >
+        #{liglpt,jdbcType=VARCHAR},
+      </if>
+      <if test="lilots != null" >
+        #{lilots,jdbcType=VARCHAR},
+      </if>
+      <if test="lilrcj != null" >
+        #{lilrcj,jdbcType=NUMERIC},
+      </if>
+      <if test="lipqoh != null" >
+        #{lipqoh,jdbcType=NUMERIC},
+      </if>
+      <if test="lipbck != null" >
+        #{lipbck,jdbcType=NUMERIC},
+      </if>
+      <if test="lipreq != null" >
+        #{lipreq,jdbcType=NUMERIC},
+      </if>
+      <if test="liqwbo != null" >
+        #{liqwbo,jdbcType=NUMERIC},
+      </if>
+      <if test="liot1p != null" >
+        #{liot1p,jdbcType=NUMERIC},
+      </if>
+      <if test="liot2p != null" >
+        #{liot2p,jdbcType=NUMERIC},
+      </if>
+      <if test="liot1a != null" >
+        #{liot1a,jdbcType=NUMERIC},
+      </if>
+      <if test="lihcom != null" >
+        #{lihcom,jdbcType=NUMERIC},
+      </if>
+      <if test="lipcom != null" >
+        #{lipcom,jdbcType=NUMERIC},
+      </if>
+      <if test="lifcom != null" >
+        #{lifcom,jdbcType=NUMERIC},
+      </if>
+      <if test="lifun1 != null" >
+        #{lifun1,jdbcType=NUMERIC},
+      </if>
+      <if test="liqowo != null" >
+        #{liqowo,jdbcType=NUMERIC},
+      </if>
+      <if test="liqttr != null" >
+        #{liqttr,jdbcType=NUMERIC},
+      </if>
+      <if test="liqtin != null" >
+        #{liqtin,jdbcType=NUMERIC},
+      </if>
+      <if test="liqonl != null" >
+        #{liqonl,jdbcType=NUMERIC},
+      </if>
+      <if test="liqtri != null" >
+        #{liqtri,jdbcType=NUMERIC},
+      </if>
+      <if test="liqtro != null" >
+        #{liqtro,jdbcType=NUMERIC},
+      </if>
+      <if test="lincdj != null" >
+        #{lincdj,jdbcType=NUMERIC},
+      </if>
+      <if test="liqty1 != null" >
+        #{liqty1,jdbcType=NUMERIC},
+      </if>
+      <if test="liqty2 != null" >
+        #{liqty2,jdbcType=NUMERIC},
+      </if>
+      <if test="liurab != null" >
+        #{liurab,jdbcType=NUMERIC},
+      </if>
+      <if test="liurrf != null" >
+        #{liurrf,jdbcType=VARCHAR},
+      </if>
+      <if test="liurat != null" >
+        #{liurat,jdbcType=NUMERIC},
+      </if>
+      <if test="liurcd != null" >
+        #{liurcd,jdbcType=VARCHAR},
+      </if>
+      <if test="lijobn != null" >
+        #{lijobn,jdbcType=VARCHAR},
+      </if>
+      <if test="lipid != null" >
+        #{lipid,jdbcType=VARCHAR},
+      </if>
+      <if test="liupmj != null" >
+        #{liupmj,jdbcType=NUMERIC},
+      </if>
+      <if test="liuser != null" >
+        #{liuser,jdbcType=VARCHAR},
+      </if>
+      <if test="litday != null" >
+        #{litday,jdbcType=NUMERIC},
+      </if>
+      <if test="liurdt != null" >
+        #{liurdt,jdbcType=NUMERIC},
+      </if>
+      <if test="liqto1 != null" >
+        #{liqto1,jdbcType=NUMERIC},
+      </if>
+      <if test="liqto2 != null" >
+        #{liqto2,jdbcType=NUMERIC},
+      </if>
+      <if test="lihcms != null" >
+        #{lihcms,jdbcType=NUMERIC},
+      </if>
+      <if test="lipjcm != null" >
+        #{lipjcm,jdbcType=NUMERIC},
+      </if>
+      <if test="lipjdm != null" >
+        #{lipjdm,jdbcType=NUMERIC},
+      </if>
+      <if test="liscms != null" >
+        #{liscms,jdbcType=NUMERIC},
+      </if>
+      <if test="lisibw != null" >
+        #{lisibw,jdbcType=NUMERIC},
+      </if>
+      <if test="lisobw != null" >
+        #{lisobw,jdbcType=NUMERIC},
+      </if>
+      <if test="lisqoh != null" >
+        #{lisqoh,jdbcType=NUMERIC},
+      </if>
+      <if test="lisqwo != null" >
+        #{lisqwo,jdbcType=NUMERIC},
+      </if>
+      <if test="lisreq != null" >
+        #{lisreq,jdbcType=NUMERIC},
+      </if>
+      <if test="liswhc != null" >
+        #{liswhc,jdbcType=NUMERIC},
+      </if>
+      <if test="liswsc != null" >
+        #{liswsc,jdbcType=NUMERIC},
+      </if>
+      <if test="lichdf != null" >
+        #{lichdf,jdbcType=VARCHAR},
+      </if>
+      <if test="liwpdf != null" >
+        #{liwpdf,jdbcType=VARCHAR},
+      </if>
+      <if test="licfgsid != null" >
+        #{licfgsid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.InventoryJDEExample" resultType="java.lang.Integer" >
+    select count(*) from Inventory_JDE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update Inventory_JDE
+    <set >
+      <if test="record.liitm != null" >
+        LIITM = #{record.liitm,jdbcType=NUMERIC},
+      </if>
+      <if test="record.limcu != null" >
+        LIMCU = #{record.limcu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lilocn != null" >
+        LILOCN = #{record.lilocn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lilotn != null" >
+        LILOTN = #{record.lilotn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lipbin != null" >
+        LIPBIN = #{record.lipbin,jdbcType=VARCHAR},
+      </if>
+      <if test="record.liglpt != null" >
+        LIGLPT = #{record.liglpt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lilots != null" >
+        LILOTS = #{record.lilots,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lilrcj != null" >
+        LILRCJ = #{record.lilrcj,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lipqoh != null" >
+        LIPQOH = #{record.lipqoh,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lipbck != null" >
+        LIPBCK = #{record.lipbck,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lipreq != null" >
+        LIPREQ = #{record.lipreq,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liqwbo != null" >
+        LIQWBO = #{record.liqwbo,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liot1p != null" >
+        LIOT1P = #{record.liot1p,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liot2p != null" >
+        LIOT2P = #{record.liot2p,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liot1a != null" >
+        LIOT1A = #{record.liot1a,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lihcom != null" >
+        LIHCOM = #{record.lihcom,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lipcom != null" >
+        LIPCOM = #{record.lipcom,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lifcom != null" >
+        LIFCOM = #{record.lifcom,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lifun1 != null" >
+        LIFUN1 = #{record.lifun1,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liqowo != null" >
+        LIQOWO = #{record.liqowo,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liqttr != null" >
+        LIQTTR = #{record.liqttr,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liqtin != null" >
+        LIQTIN = #{record.liqtin,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liqonl != null" >
+        LIQONL = #{record.liqonl,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liqtri != null" >
+        LIQTRI = #{record.liqtri,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liqtro != null" >
+        LIQTRO = #{record.liqtro,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lincdj != null" >
+        LINCDJ = #{record.lincdj,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liqty1 != null" >
+        LIQTY1 = #{record.liqty1,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liqty2 != null" >
+        LIQTY2 = #{record.liqty2,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liurab != null" >
+        LIURAB = #{record.liurab,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liurrf != null" >
+        LIURRF = #{record.liurrf,jdbcType=VARCHAR},
+      </if>
+      <if test="record.liurat != null" >
+        LIURAT = #{record.liurat,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liurcd != null" >
+        LIURCD = #{record.liurcd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lijobn != null" >
+        LIJOBN = #{record.lijobn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lipid != null" >
+        LIPID = #{record.lipid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.liupmj != null" >
+        LIUPMJ = #{record.liupmj,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liuser != null" >
+        LIUSER = #{record.liuser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.litday != null" >
+        LITDAY = #{record.litday,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liurdt != null" >
+        LIURDT = #{record.liurdt,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liqto1 != null" >
+        LIQTO1 = #{record.liqto1,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liqto2 != null" >
+        LIQTO2 = #{record.liqto2,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lihcms != null" >
+        LIHCMS = #{record.lihcms,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lipjcm != null" >
+        LIPJCM = #{record.lipjcm,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lipjdm != null" >
+        LIPJDM = #{record.lipjdm,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liscms != null" >
+        LISCMS = #{record.liscms,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lisibw != null" >
+        LISIBW = #{record.lisibw,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lisobw != null" >
+        LISOBW = #{record.lisobw,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lisqoh != null" >
+        LISQOH = #{record.lisqoh,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lisqwo != null" >
+        LISQWO = #{record.lisqwo,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lisreq != null" >
+        LISREQ = #{record.lisreq,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liswhc != null" >
+        LISWHC = #{record.liswhc,jdbcType=NUMERIC},
+      </if>
+      <if test="record.liswsc != null" >
+        LISWSC = #{record.liswsc,jdbcType=NUMERIC},
+      </if>
+      <if test="record.lichdf != null" >
+        LICHDF = #{record.lichdf,jdbcType=VARCHAR},
+      </if>
+      <if test="record.liwpdf != null" >
+        LIWPDF = #{record.liwpdf,jdbcType=VARCHAR},
+      </if>
+      <if test="record.licfgsid != null" >
+        LICFGSID = #{record.licfgsid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update Inventory_JDE
+    set LIITM = #{record.liitm,jdbcType=NUMERIC},
+      LIMCU = #{record.limcu,jdbcType=VARCHAR},
+      LILOCN = #{record.lilocn,jdbcType=VARCHAR},
+      LILOTN = #{record.lilotn,jdbcType=VARCHAR},
+      LIPBIN = #{record.lipbin,jdbcType=VARCHAR},
+      LIGLPT = #{record.liglpt,jdbcType=VARCHAR},
+      LILOTS = #{record.lilots,jdbcType=VARCHAR},
+      LILRCJ = #{record.lilrcj,jdbcType=NUMERIC},
+      LIPQOH = #{record.lipqoh,jdbcType=NUMERIC},
+      LIPBCK = #{record.lipbck,jdbcType=NUMERIC},
+      LIPREQ = #{record.lipreq,jdbcType=NUMERIC},
+      LIQWBO = #{record.liqwbo,jdbcType=NUMERIC},
+      LIOT1P = #{record.liot1p,jdbcType=NUMERIC},
+      LIOT2P = #{record.liot2p,jdbcType=NUMERIC},
+      LIOT1A = #{record.liot1a,jdbcType=NUMERIC},
+      LIHCOM = #{record.lihcom,jdbcType=NUMERIC},
+      LIPCOM = #{record.lipcom,jdbcType=NUMERIC},
+      LIFCOM = #{record.lifcom,jdbcType=NUMERIC},
+      LIFUN1 = #{record.lifun1,jdbcType=NUMERIC},
+      LIQOWO = #{record.liqowo,jdbcType=NUMERIC},
+      LIQTTR = #{record.liqttr,jdbcType=NUMERIC},
+      LIQTIN = #{record.liqtin,jdbcType=NUMERIC},
+      LIQONL = #{record.liqonl,jdbcType=NUMERIC},
+      LIQTRI = #{record.liqtri,jdbcType=NUMERIC},
+      LIQTRO = #{record.liqtro,jdbcType=NUMERIC},
+      LINCDJ = #{record.lincdj,jdbcType=NUMERIC},
+      LIQTY1 = #{record.liqty1,jdbcType=NUMERIC},
+      LIQTY2 = #{record.liqty2,jdbcType=NUMERIC},
+      LIURAB = #{record.liurab,jdbcType=NUMERIC},
+      LIURRF = #{record.liurrf,jdbcType=VARCHAR},
+      LIURAT = #{record.liurat,jdbcType=NUMERIC},
+      LIURCD = #{record.liurcd,jdbcType=VARCHAR},
+      LIJOBN = #{record.lijobn,jdbcType=VARCHAR},
+      LIPID = #{record.lipid,jdbcType=VARCHAR},
+      LIUPMJ = #{record.liupmj,jdbcType=NUMERIC},
+      LIUSER = #{record.liuser,jdbcType=VARCHAR},
+      LITDAY = #{record.litday,jdbcType=NUMERIC},
+      LIURDT = #{record.liurdt,jdbcType=NUMERIC},
+      LIQTO1 = #{record.liqto1,jdbcType=NUMERIC},
+      LIQTO2 = #{record.liqto2,jdbcType=NUMERIC},
+      LIHCMS = #{record.lihcms,jdbcType=NUMERIC},
+      LIPJCM = #{record.lipjcm,jdbcType=NUMERIC},
+      LIPJDM = #{record.lipjdm,jdbcType=NUMERIC},
+      LISCMS = #{record.liscms,jdbcType=NUMERIC},
+      LISIBW = #{record.lisibw,jdbcType=NUMERIC},
+      LISOBW = #{record.lisobw,jdbcType=NUMERIC},
+      LISQOH = #{record.lisqoh,jdbcType=NUMERIC},
+      LISQWO = #{record.lisqwo,jdbcType=NUMERIC},
+      LISREQ = #{record.lisreq,jdbcType=NUMERIC},
+      LISWHC = #{record.liswhc,jdbcType=NUMERIC},
+      LISWSC = #{record.liswsc,jdbcType=NUMERIC},
+      LICHDF = #{record.lichdf,jdbcType=VARCHAR},
+      LIWPDF = #{record.liwpdf,jdbcType=VARCHAR},
+      LICFGSID = #{record.licfgsid,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.InventoryJDE" >
+    update Inventory_JDE
+    <set >
+      <if test="lipbin != null" >
+        LIPBIN = #{lipbin,jdbcType=VARCHAR},
+      </if>
+      <if test="liglpt != null" >
+        LIGLPT = #{liglpt,jdbcType=VARCHAR},
+      </if>
+      <if test="lilots != null" >
+        LILOTS = #{lilots,jdbcType=VARCHAR},
+      </if>
+      <if test="lilrcj != null" >
+        LILRCJ = #{lilrcj,jdbcType=NUMERIC},
+      </if>
+      <if test="lipqoh != null" >
+        LIPQOH = #{lipqoh,jdbcType=NUMERIC},
+      </if>
+      <if test="lipbck != null" >
+        LIPBCK = #{lipbck,jdbcType=NUMERIC},
+      </if>
+      <if test="lipreq != null" >
+        LIPREQ = #{lipreq,jdbcType=NUMERIC},
+      </if>
+      <if test="liqwbo != null" >
+        LIQWBO = #{liqwbo,jdbcType=NUMERIC},
+      </if>
+      <if test="liot1p != null" >
+        LIOT1P = #{liot1p,jdbcType=NUMERIC},
+      </if>
+      <if test="liot2p != null" >
+        LIOT2P = #{liot2p,jdbcType=NUMERIC},
+      </if>
+      <if test="liot1a != null" >
+        LIOT1A = #{liot1a,jdbcType=NUMERIC},
+      </if>
+      <if test="lihcom != null" >
+        LIHCOM = #{lihcom,jdbcType=NUMERIC},
+      </if>
+      <if test="lipcom != null" >
+        LIPCOM = #{lipcom,jdbcType=NUMERIC},
+      </if>
+      <if test="lifcom != null" >
+        LIFCOM = #{lifcom,jdbcType=NUMERIC},
+      </if>
+      <if test="lifun1 != null" >
+        LIFUN1 = #{lifun1,jdbcType=NUMERIC},
+      </if>
+      <if test="liqowo != null" >
+        LIQOWO = #{liqowo,jdbcType=NUMERIC},
+      </if>
+      <if test="liqttr != null" >
+        LIQTTR = #{liqttr,jdbcType=NUMERIC},
+      </if>
+      <if test="liqtin != null" >
+        LIQTIN = #{liqtin,jdbcType=NUMERIC},
+      </if>
+      <if test="liqonl != null" >
+        LIQONL = #{liqonl,jdbcType=NUMERIC},
+      </if>
+      <if test="liqtri != null" >
+        LIQTRI = #{liqtri,jdbcType=NUMERIC},
+      </if>
+      <if test="liqtro != null" >
+        LIQTRO = #{liqtro,jdbcType=NUMERIC},
+      </if>
+      <if test="lincdj != null" >
+        LINCDJ = #{lincdj,jdbcType=NUMERIC},
+      </if>
+      <if test="liqty1 != null" >
+        LIQTY1 = #{liqty1,jdbcType=NUMERIC},
+      </if>
+      <if test="liqty2 != null" >
+        LIQTY2 = #{liqty2,jdbcType=NUMERIC},
+      </if>
+      <if test="liurab != null" >
+        LIURAB = #{liurab,jdbcType=NUMERIC},
+      </if>
+      <if test="liurrf != null" >
+        LIURRF = #{liurrf,jdbcType=VARCHAR},
+      </if>
+      <if test="liurat != null" >
+        LIURAT = #{liurat,jdbcType=NUMERIC},
+      </if>
+      <if test="liurcd != null" >
+        LIURCD = #{liurcd,jdbcType=VARCHAR},
+      </if>
+      <if test="lijobn != null" >
+        LIJOBN = #{lijobn,jdbcType=VARCHAR},
+      </if>
+      <if test="lipid != null" >
+        LIPID = #{lipid,jdbcType=VARCHAR},
+      </if>
+      <if test="liupmj != null" >
+        LIUPMJ = #{liupmj,jdbcType=NUMERIC},
+      </if>
+      <if test="liuser != null" >
+        LIUSER = #{liuser,jdbcType=VARCHAR},
+      </if>
+      <if test="litday != null" >
+        LITDAY = #{litday,jdbcType=NUMERIC},
+      </if>
+      <if test="liurdt != null" >
+        LIURDT = #{liurdt,jdbcType=NUMERIC},
+      </if>
+      <if test="liqto1 != null" >
+        LIQTO1 = #{liqto1,jdbcType=NUMERIC},
+      </if>
+      <if test="liqto2 != null" >
+        LIQTO2 = #{liqto2,jdbcType=NUMERIC},
+      </if>
+      <if test="lihcms != null" >
+        LIHCMS = #{lihcms,jdbcType=NUMERIC},
+      </if>
+      <if test="lipjcm != null" >
+        LIPJCM = #{lipjcm,jdbcType=NUMERIC},
+      </if>
+      <if test="lipjdm != null" >
+        LIPJDM = #{lipjdm,jdbcType=NUMERIC},
+      </if>
+      <if test="liscms != null" >
+        LISCMS = #{liscms,jdbcType=NUMERIC},
+      </if>
+      <if test="lisibw != null" >
+        LISIBW = #{lisibw,jdbcType=NUMERIC},
+      </if>
+      <if test="lisobw != null" >
+        LISOBW = #{lisobw,jdbcType=NUMERIC},
+      </if>
+      <if test="lisqoh != null" >
+        LISQOH = #{lisqoh,jdbcType=NUMERIC},
+      </if>
+      <if test="lisqwo != null" >
+        LISQWO = #{lisqwo,jdbcType=NUMERIC},
+      </if>
+      <if test="lisreq != null" >
+        LISREQ = #{lisreq,jdbcType=NUMERIC},
+      </if>
+      <if test="liswhc != null" >
+        LISWHC = #{liswhc,jdbcType=NUMERIC},
+      </if>
+      <if test="liswsc != null" >
+        LISWSC = #{liswsc,jdbcType=NUMERIC},
+      </if>
+      <if test="lichdf != null" >
+        LICHDF = #{lichdf,jdbcType=VARCHAR},
+      </if>
+      <if test="liwpdf != null" >
+        LIWPDF = #{liwpdf,jdbcType=VARCHAR},
+      </if>
+      <if test="licfgsid != null" >
+        LICFGSID = #{licfgsid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where LIITM = #{liitm,jdbcType=NUMERIC}
+      and LIMCU = #{limcu,jdbcType=VARCHAR}
+      and LILOCN = #{lilocn,jdbcType=VARCHAR}
+      and LILOTN = #{lilotn,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.InventoryJDE" >
+    update Inventory_JDE
+    set LIPBIN = #{lipbin,jdbcType=VARCHAR},
+      LIGLPT = #{liglpt,jdbcType=VARCHAR},
+      LILOTS = #{lilots,jdbcType=VARCHAR},
+      LILRCJ = #{lilrcj,jdbcType=NUMERIC},
+      LIPQOH = #{lipqoh,jdbcType=NUMERIC},
+      LIPBCK = #{lipbck,jdbcType=NUMERIC},
+      LIPREQ = #{lipreq,jdbcType=NUMERIC},
+      LIQWBO = #{liqwbo,jdbcType=NUMERIC},
+      LIOT1P = #{liot1p,jdbcType=NUMERIC},
+      LIOT2P = #{liot2p,jdbcType=NUMERIC},
+      LIOT1A = #{liot1a,jdbcType=NUMERIC},
+      LIHCOM = #{lihcom,jdbcType=NUMERIC},
+      LIPCOM = #{lipcom,jdbcType=NUMERIC},
+      LIFCOM = #{lifcom,jdbcType=NUMERIC},
+      LIFUN1 = #{lifun1,jdbcType=NUMERIC},
+      LIQOWO = #{liqowo,jdbcType=NUMERIC},
+      LIQTTR = #{liqttr,jdbcType=NUMERIC},
+      LIQTIN = #{liqtin,jdbcType=NUMERIC},
+      LIQONL = #{liqonl,jdbcType=NUMERIC},
+      LIQTRI = #{liqtri,jdbcType=NUMERIC},
+      LIQTRO = #{liqtro,jdbcType=NUMERIC},
+      LINCDJ = #{lincdj,jdbcType=NUMERIC},
+      LIQTY1 = #{liqty1,jdbcType=NUMERIC},
+      LIQTY2 = #{liqty2,jdbcType=NUMERIC},
+      LIURAB = #{liurab,jdbcType=NUMERIC},
+      LIURRF = #{liurrf,jdbcType=VARCHAR},
+      LIURAT = #{liurat,jdbcType=NUMERIC},
+      LIURCD = #{liurcd,jdbcType=VARCHAR},
+      LIJOBN = #{lijobn,jdbcType=VARCHAR},
+      LIPID = #{lipid,jdbcType=VARCHAR},
+      LIUPMJ = #{liupmj,jdbcType=NUMERIC},
+      LIUSER = #{liuser,jdbcType=VARCHAR},
+      LITDAY = #{litday,jdbcType=NUMERIC},
+      LIURDT = #{liurdt,jdbcType=NUMERIC},
+      LIQTO1 = #{liqto1,jdbcType=NUMERIC},
+      LIQTO2 = #{liqto2,jdbcType=NUMERIC},
+      LIHCMS = #{lihcms,jdbcType=NUMERIC},
+      LIPJCM = #{lipjcm,jdbcType=NUMERIC},
+      LIPJDM = #{lipjdm,jdbcType=NUMERIC},
+      LISCMS = #{liscms,jdbcType=NUMERIC},
+      LISIBW = #{lisibw,jdbcType=NUMERIC},
+      LISOBW = #{lisobw,jdbcType=NUMERIC},
+      LISQOH = #{lisqoh,jdbcType=NUMERIC},
+      LISQWO = #{lisqwo,jdbcType=NUMERIC},
+      LISREQ = #{lisreq,jdbcType=NUMERIC},
+      LISWHC = #{liswhc,jdbcType=NUMERIC},
+      LISWSC = #{liswsc,jdbcType=NUMERIC},
+      LICHDF = #{lichdf,jdbcType=VARCHAR},
+      LIWPDF = #{liwpdf,jdbcType=VARCHAR},
+      LICFGSID = #{licfgsid,jdbcType=VARCHAR}
+    where LIITM = #{liitm,jdbcType=NUMERIC}
+      and LIMCU = #{limcu,jdbcType=VARCHAR}
+      and LILOCN = #{lilocn,jdbcType=VARCHAR}
+      and LILOTN = #{lilotn,jdbcType=VARCHAR}
+  </update>
+</mapper>

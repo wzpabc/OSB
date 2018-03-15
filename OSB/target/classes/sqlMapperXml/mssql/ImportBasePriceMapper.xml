@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.ImportBasePriceMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.ImportBasePrice" >
+    <result column="BPITM" property="bpitm" jdbcType="DOUBLE" />
+    <result column="BPLITM" property="bplitm" jdbcType="NVARCHAR" />
+    <result column="BPAITM" property="bpaitm" jdbcType="NVARCHAR" />
+    <result column="BPMCU" property="bpmcu" jdbcType="NVARCHAR" />
+    <result column="BPLOCN" property="bplocn" jdbcType="NVARCHAR" />
+    <result column="BPLOTN" property="bplotn" jdbcType="NVARCHAR" />
+    <result column="BPAN8" property="bpan8" jdbcType="DOUBLE" />
+    <result column="BPIGID" property="bpigid" jdbcType="DOUBLE" />
+    <result column="BPCGID" property="bpcgid" jdbcType="DOUBLE" />
+    <result column="BPLOTG" property="bplotg" jdbcType="NVARCHAR" />
+    <result column="BPFRMP" property="bpfrmp" jdbcType="DOUBLE" />
+    <result column="BPCRCD" property="bpcrcd" jdbcType="NVARCHAR" />
+    <result column="BPUOM" property="bpuom" jdbcType="NVARCHAR" />
+    <result column="BPEFTJ" property="bpeftj" jdbcType="DOUBLE" />
+    <result column="BPEXDJ" property="bpexdj" jdbcType="DOUBLE" />
+    <result column="BPUPRC" property="bpuprc" jdbcType="DOUBLE" />
+    <result column="BPACRD" property="bpacrd" jdbcType="DOUBLE" />
+    <result column="BPBSCD" property="bpbscd" jdbcType="NVARCHAR" />
+    <result column="BPLEDG" property="bpledg" jdbcType="NVARCHAR" />
+    <result column="BPFVTR" property="bpfvtr" jdbcType="DOUBLE" />
+    <result column="BPFRMN" property="bpfrmn" jdbcType="NVARCHAR" />
+    <result column="BPURCD" property="bpurcd" jdbcType="NVARCHAR" />
+    <result column="BPURDT" property="bpurdt" jdbcType="DOUBLE" />
+    <result column="BPURAT" property="bpurat" jdbcType="DOUBLE" />
+    <result column="BPURAB" property="bpurab" jdbcType="DOUBLE" />
+    <result column="BPURRF" property="bpurrf" jdbcType="NVARCHAR" />
+    <result column="BPAPRS" property="bpaprs" jdbcType="NVARCHAR" />
+    <result column="BPUSER" property="bpuser" jdbcType="NVARCHAR" />
+    <result column="BPPID" property="bppid" jdbcType="NVARCHAR" />
+    <result column="BPJOBN" property="bpjobn" jdbcType="NVARCHAR" />
+    <result column="BPUPMJ" property="bpupmj" jdbcType="DOUBLE" />
+    <result column="BPTDAY" property="bptday" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    BPITM, BPLITM, BPAITM, BPMCU, BPLOCN, BPLOTN, BPAN8, BPIGID, BPCGID, BPLOTG, BPFRMP, 
+    BPCRCD, BPUOM, BPEFTJ, BPEXDJ, BPUPRC, BPACRD, BPBSCD, BPLEDG, BPFVTR, BPFRMN, BPURCD, 
+    BPURDT, BPURAT, BPURAB, BPURRF, BPAPRS, BPUSER, BPPID, BPJOBN, BPUPMJ, BPTDAY
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.ImportBasePriceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Import_BasePrice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.ImportBasePriceExample" >
+    delete from Import_BasePrice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.ImportBasePrice" >
+    insert into Import_BasePrice (BPITM, BPLITM, BPAITM, 
+      BPMCU, BPLOCN, BPLOTN, 
+      BPAN8, BPIGID, BPCGID, 
+      BPLOTG, BPFRMP, BPCRCD, 
+      BPUOM, BPEFTJ, BPEXDJ, 
+      BPUPRC, BPACRD, BPBSCD, 
+      BPLEDG, BPFVTR, BPFRMN, 
+      BPURCD, BPURDT, BPURAT, 
+      BPURAB, BPURRF, BPAPRS, 
+      BPUSER, BPPID, BPJOBN, 
+      BPUPMJ, BPTDAY)
+    values (#{bpitm,jdbcType=DOUBLE}, #{bplitm,jdbcType=NVARCHAR}, #{bpaitm,jdbcType=NVARCHAR}, 
+      #{bpmcu,jdbcType=NVARCHAR}, #{bplocn,jdbcType=NVARCHAR}, #{bplotn,jdbcType=NVARCHAR}, 
+      #{bpan8,jdbcType=DOUBLE}, #{bpigid,jdbcType=DOUBLE}, #{bpcgid,jdbcType=DOUBLE}, 
+      #{bplotg,jdbcType=NVARCHAR}, #{bpfrmp,jdbcType=DOUBLE}, #{bpcrcd,jdbcType=NVARCHAR}, 
+      #{bpuom,jdbcType=NVARCHAR}, #{bpeftj,jdbcType=DOUBLE}, #{bpexdj,jdbcType=DOUBLE}, 
+      #{bpuprc,jdbcType=DOUBLE}, #{bpacrd,jdbcType=DOUBLE}, #{bpbscd,jdbcType=NVARCHAR}, 
+      #{bpledg,jdbcType=NVARCHAR}, #{bpfvtr,jdbcType=DOUBLE}, #{bpfrmn,jdbcType=NVARCHAR}, 
+      #{bpurcd,jdbcType=NVARCHAR}, #{bpurdt,jdbcType=DOUBLE}, #{bpurat,jdbcType=DOUBLE}, 
+      #{bpurab,jdbcType=DOUBLE}, #{bpurrf,jdbcType=NVARCHAR}, #{bpaprs,jdbcType=NVARCHAR}, 
+      #{bpuser,jdbcType=NVARCHAR}, #{bppid,jdbcType=NVARCHAR}, #{bpjobn,jdbcType=NVARCHAR}, 
+      #{bpupmj,jdbcType=DOUBLE}, #{bptday,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.ImportBasePrice" >
+    insert into Import_BasePrice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bpitm != null" >
+        BPITM,
+      </if>
+      <if test="bplitm != null" >
+        BPLITM,
+      </if>
+      <if test="bpaitm != null" >
+        BPAITM,
+      </if>
+      <if test="bpmcu != null" >
+        BPMCU,
+      </if>
+      <if test="bplocn != null" >
+        BPLOCN,
+      </if>
+      <if test="bplotn != null" >
+        BPLOTN,
+      </if>
+      <if test="bpan8 != null" >
+        BPAN8,
+      </if>
+      <if test="bpigid != null" >
+        BPIGID,
+      </if>
+      <if test="bpcgid != null" >
+        BPCGID,
+      </if>
+      <if test="bplotg != null" >
+        BPLOTG,
+      </if>
+      <if test="bpfrmp != null" >
+        BPFRMP,
+      </if>
+      <if test="bpcrcd != null" >
+        BPCRCD,
+      </if>
+      <if test="bpuom != null" >
+        BPUOM,
+      </if>
+      <if test="bpeftj != null" >
+        BPEFTJ,
+      </if>
+      <if test="bpexdj != null" >
+        BPEXDJ,
+      </if>
+      <if test="bpuprc != null" >
+        BPUPRC,
+      </if>
+      <if test="bpacrd != null" >
+        BPACRD,
+      </if>
+      <if test="bpbscd != null" >
+        BPBSCD,
+      </if>
+      <if test="bpledg != null" >
+        BPLEDG,
+      </if>
+      <if test="bpfvtr != null" >
+        BPFVTR,
+      </if>
+      <if test="bpfrmn != null" >
+        BPFRMN,
+      </if>
+      <if test="bpurcd != null" >
+        BPURCD,
+      </if>
+      <if test="bpurdt != null" >
+        BPURDT,
+      </if>
+      <if test="bpurat != null" >
+        BPURAT,
+      </if>
+      <if test="bpurab != null" >
+        BPURAB,
+      </if>
+      <if test="bpurrf != null" >
+        BPURRF,
+      </if>
+      <if test="bpaprs != null" >
+        BPAPRS,
+      </if>
+      <if test="bpuser != null" >
+        BPUSER,
+      </if>
+      <if test="bppid != null" >
+        BPPID,
+      </if>
+      <if test="bpjobn != null" >
+        BPJOBN,
+      </if>
+      <if test="bpupmj != null" >
+        BPUPMJ,
+      </if>
+      <if test="bptday != null" >
+        BPTDAY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bpitm != null" >
+        #{bpitm,jdbcType=DOUBLE},
+      </if>
+      <if test="bplitm != null" >
+        #{bplitm,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpaitm != null" >
+        #{bpaitm,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpmcu != null" >
+        #{bpmcu,jdbcType=NVARCHAR},
+      </if>
+      <if test="bplocn != null" >
+        #{bplocn,jdbcType=NVARCHAR},
+      </if>
+      <if test="bplotn != null" >
+        #{bplotn,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpan8 != null" >
+        #{bpan8,jdbcType=DOUBLE},
+      </if>
+      <if test="bpigid != null" >
+        #{bpigid,jdbcType=DOUBLE},
+      </if>
+      <if test="bpcgid != null" >
+        #{bpcgid,jdbcType=DOUBLE},
+      </if>
+      <if test="bplotg != null" >
+        #{bplotg,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpfrmp != null" >
+        #{bpfrmp,jdbcType=DOUBLE},
+      </if>
+      <if test="bpcrcd != null" >
+        #{bpcrcd,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpuom != null" >
+        #{bpuom,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpeftj != null" >
+        #{bpeftj,jdbcType=DOUBLE},
+      </if>
+      <if test="bpexdj != null" >
+        #{bpexdj,jdbcType=DOUBLE},
+      </if>
+      <if test="bpuprc != null" >
+        #{bpuprc,jdbcType=DOUBLE},
+      </if>
+      <if test="bpacrd != null" >
+        #{bpacrd,jdbcType=DOUBLE},
+      </if>
+      <if test="bpbscd != null" >
+        #{bpbscd,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpledg != null" >
+        #{bpledg,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpfvtr != null" >
+        #{bpfvtr,jdbcType=DOUBLE},
+      </if>
+      <if test="bpfrmn != null" >
+        #{bpfrmn,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpurcd != null" >
+        #{bpurcd,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpurdt != null" >
+        #{bpurdt,jdbcType=DOUBLE},
+      </if>
+      <if test="bpurat != null" >
+        #{bpurat,jdbcType=DOUBLE},
+      </if>
+      <if test="bpurab != null" >
+        #{bpurab,jdbcType=DOUBLE},
+      </if>
+      <if test="bpurrf != null" >
+        #{bpurrf,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpaprs != null" >
+        #{bpaprs,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpuser != null" >
+        #{bpuser,jdbcType=NVARCHAR},
+      </if>
+      <if test="bppid != null" >
+        #{bppid,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpjobn != null" >
+        #{bpjobn,jdbcType=NVARCHAR},
+      </if>
+      <if test="bpupmj != null" >
+        #{bpupmj,jdbcType=DOUBLE},
+      </if>
+      <if test="bptday != null" >
+        #{bptday,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.ImportBasePriceExample" resultType="java.lang.Integer" >
+    select count(*) from Import_BasePrice
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update Import_BasePrice
+    <set >
+      <if test="record.bpitm != null" >
+        BPITM = #{record.bpitm,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bplitm != null" >
+        BPLITM = #{record.bplitm,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpaitm != null" >
+        BPAITM = #{record.bpaitm,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpmcu != null" >
+        BPMCU = #{record.bpmcu,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bplocn != null" >
+        BPLOCN = #{record.bplocn,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bplotn != null" >
+        BPLOTN = #{record.bplotn,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpan8 != null" >
+        BPAN8 = #{record.bpan8,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bpigid != null" >
+        BPIGID = #{record.bpigid,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bpcgid != null" >
+        BPCGID = #{record.bpcgid,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bplotg != null" >
+        BPLOTG = #{record.bplotg,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpfrmp != null" >
+        BPFRMP = #{record.bpfrmp,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bpcrcd != null" >
+        BPCRCD = #{record.bpcrcd,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpuom != null" >
+        BPUOM = #{record.bpuom,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpeftj != null" >
+        BPEFTJ = #{record.bpeftj,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bpexdj != null" >
+        BPEXDJ = #{record.bpexdj,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bpuprc != null" >
+        BPUPRC = #{record.bpuprc,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bpacrd != null" >
+        BPACRD = #{record.bpacrd,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bpbscd != null" >
+        BPBSCD = #{record.bpbscd,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpledg != null" >
+        BPLEDG = #{record.bpledg,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpfvtr != null" >
+        BPFVTR = #{record.bpfvtr,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bpfrmn != null" >
+        BPFRMN = #{record.bpfrmn,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpurcd != null" >
+        BPURCD = #{record.bpurcd,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpurdt != null" >
+        BPURDT = #{record.bpurdt,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bpurat != null" >
+        BPURAT = #{record.bpurat,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bpurab != null" >
+        BPURAB = #{record.bpurab,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bpurrf != null" >
+        BPURRF = #{record.bpurrf,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpaprs != null" >
+        BPAPRS = #{record.bpaprs,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpuser != null" >
+        BPUSER = #{record.bpuser,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bppid != null" >
+        BPPID = #{record.bppid,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpjobn != null" >
+        BPJOBN = #{record.bpjobn,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.bpupmj != null" >
+        BPUPMJ = #{record.bpupmj,jdbcType=DOUBLE},
+      </if>
+      <if test="record.bptday != null" >
+        BPTDAY = #{record.bptday,jdbcType=DOUBLE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update Import_BasePrice
+    set BPITM = #{record.bpitm,jdbcType=DOUBLE},
+      BPLITM = #{record.bplitm,jdbcType=NVARCHAR},
+      BPAITM = #{record.bpaitm,jdbcType=NVARCHAR},
+      BPMCU = #{record.bpmcu,jdbcType=NVARCHAR},
+      BPLOCN = #{record.bplocn,jdbcType=NVARCHAR},
+      BPLOTN = #{record.bplotn,jdbcType=NVARCHAR},
+      BPAN8 = #{record.bpan8,jdbcType=DOUBLE},
+      BPIGID = #{record.bpigid,jdbcType=DOUBLE},
+      BPCGID = #{record.bpcgid,jdbcType=DOUBLE},
+      BPLOTG = #{record.bplotg,jdbcType=NVARCHAR},
+      BPFRMP = #{record.bpfrmp,jdbcType=DOUBLE},
+      BPCRCD = #{record.bpcrcd,jdbcType=NVARCHAR},
+      BPUOM = #{record.bpuom,jdbcType=NVARCHAR},
+      BPEFTJ = #{record.bpeftj,jdbcType=DOUBLE},
+      BPEXDJ = #{record.bpexdj,jdbcType=DOUBLE},
+      BPUPRC = #{record.bpuprc,jdbcType=DOUBLE},
+      BPACRD = #{record.bpacrd,jdbcType=DOUBLE},
+      BPBSCD = #{record.bpbscd,jdbcType=NVARCHAR},
+      BPLEDG = #{record.bpledg,jdbcType=NVARCHAR},
+      BPFVTR = #{record.bpfvtr,jdbcType=DOUBLE},
+      BPFRMN = #{record.bpfrmn,jdbcType=NVARCHAR},
+      BPURCD = #{record.bpurcd,jdbcType=NVARCHAR},
+      BPURDT = #{record.bpurdt,jdbcType=DOUBLE},
+      BPURAT = #{record.bpurat,jdbcType=DOUBLE},
+      BPURAB = #{record.bpurab,jdbcType=DOUBLE},
+      BPURRF = #{record.bpurrf,jdbcType=NVARCHAR},
+      BPAPRS = #{record.bpaprs,jdbcType=NVARCHAR},
+      BPUSER = #{record.bpuser,jdbcType=NVARCHAR},
+      BPPID = #{record.bppid,jdbcType=NVARCHAR},
+      BPJOBN = #{record.bpjobn,jdbcType=NVARCHAR},
+      BPUPMJ = #{record.bpupmj,jdbcType=DOUBLE},
+      BPTDAY = #{record.bptday,jdbcType=DOUBLE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

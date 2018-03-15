@@ -1,0 +1,310 @@
+2018-03-15 11:47:59,543 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2018-03-15 11:47:59,547 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2018-03-15 11:47:59,548 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2018-03-15 11:47:59,550 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2018-03-15 11:47:59,551 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2018-03-15 11:47:59,551 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2018-03-15 11:47:59,553 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2018-03-15 11:47:59,555 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2018-03-15 11:47:59,556 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2018-03-15 11:47:59,558 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2018-03-15 11:47:59,604 - Created '20' parsers.
+2018-03-15 11:47:59,609 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2018-03-15 11:47:59,610 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2018-03-15 11:47:59,610 - Velocimacro : Default library not found.
+2018-03-15 11:47:59,610 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2018-03-15 11:47:59,610 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2018-03-15 11:47:59,610 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2018-03-15 11:47:59,610 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2018-03-15 11:47:59,639 - ResourceManager : found /template/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 11:47:59,653 - Null reference [template '/template/entity.java.vm', line 20, column 4] : ${table.comment} cannot be resolved.
+2018-03-15 11:47:59,668 - ResourceManager : found /template/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 11:47:59,675 - ResourceManager : found /template/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 11:47:59,686 - Null reference [template '/template/mapper.xml.vm', line 44, column 18] : ${sort} cannot be resolved.
+2018-03-15 11:47:59,687 - Null reference [template '/template/mapper.xml.vm', line 44, column 26] : ${order} cannot be resolved.
+2018-03-15 11:47:59,689 - ResourceManager : found /template/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 11:47:59,691 - Null reference [template '/template/service.java.vm', line 14, column 4] : ${table.comment} cannot be resolved.
+2018-03-15 11:47:59,694 - ResourceManager : found /template/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 11:47:59,695 - Null reference [template '/template/serviceImpl.java.vm', line 22, column 4] : ${table.comment} cannot be resolved.
+2018-03-15 11:47:59,701 - ResourceManager : found /template/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 11:47:59,702 - Null reference [template '/template/controller.java.vm', line 27, column 4] : ${table.comment} cannot be resolved.
+2018-03-15 11:47:59,709 - ResourceManager : found /template/list.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 11:47:59,710 - Null reference [template '/template/list.jsp.vm', line 7, column 16] : ${path} cannot be resolved.
+2018-03-15 11:47:59,717 - Null reference [template '/template/list.jsp.vm', line 55, column 17] : ${path} cannot be resolved.
+2018-03-15 11:47:59,718 - Null reference [template '/template/list.jsp.vm', line 94, column 18] : ${path} cannot be resolved.
+2018-03-15 11:47:59,718 - Null reference [template '/template/list.jsp.vm', line 132, column 22] : ${path} cannot be resolved.
+2018-03-15 11:47:59,721 - ResourceManager : found /template/add.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 11:47:59,722 - Null reference [template '/template/add.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 11:47:59,726 - ResourceManager : found /template/edit.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 11:47:59,727 - Null reference [template '/template/edit.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 11:47:59,729 - ResourceManager : found /template/form.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:29,994 - Log4JLogChute initialized using file 'velocity.log'
+2018-03-15 13:44:30,000 - Initializing Velocity, Calling init()...
+2018-03-15 13:44:30,000 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2018-03-15 13:44:30,000 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2018-03-15 13:44:30,000 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2018-03-15 13:44:30,000 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2018-03-15 13:44:30,000 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-15 13:44:30,001 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-15 13:44:30,007 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,028 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2018-03-15 13:44:30,030 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2018-03-15 13:44:30,032 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2018-03-15 13:44:30,033 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2018-03-15 13:44:30,034 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2018-03-15 13:44:30,036 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2018-03-15 13:44:30,038 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2018-03-15 13:44:30,040 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2018-03-15 13:44:30,043 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2018-03-15 13:44:30,044 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2018-03-15 13:44:30,100 - Created '20' parsers.
+2018-03-15 13:44:30,111 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2018-03-15 13:44:30,111 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2018-03-15 13:44:30,111 - Velocimacro : Default library not found.
+2018-03-15 13:44:30,112 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2018-03-15 13:44:30,112 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2018-03-15 13:44:30,112 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2018-03-15 13:44:30,112 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2018-03-15 13:44:30,158 - ResourceManager : found /template/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,201 - ResourceManager : found /template/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,207 - ResourceManager : found /template/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,208 - Null reference [template '/template/mapper.xml.vm', line 44, column 18] : ${sort} cannot be resolved.
+2018-03-15 13:44:30,208 - Null reference [template '/template/mapper.xml.vm', line 44, column 26] : ${order} cannot be resolved.
+2018-03-15 13:44:30,211 - ResourceManager : found /template/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,217 - ResourceManager : found /template/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,224 - ResourceManager : found /template/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,257 - ResourceManager : found /template/list.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,258 - Null reference [template '/template/list.jsp.vm', line 7, column 16] : ${path} cannot be resolved.
+2018-03-15 13:44:30,264 - Null reference [template '/template/list.jsp.vm', line 55, column 17] : ${path} cannot be resolved.
+2018-03-15 13:44:30,264 - Null reference [template '/template/list.jsp.vm', line 94, column 18] : ${path} cannot be resolved.
+2018-03-15 13:44:30,264 - Null reference [template '/template/list.jsp.vm', line 132, column 22] : ${path} cannot be resolved.
+2018-03-15 13:44:30,268 - ResourceManager : found /template/add.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,270 - Null reference [template '/template/add.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:44:30,274 - ResourceManager : found /template/edit.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,275 - Null reference [template '/template/edit.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:44:30,278 - ResourceManager : found /template/form.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,286 - ResourceManager : found /template/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,294 - ResourceManager : found /template/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,297 - ResourceManager : found /template/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,299 - Null reference [template '/template/mapper.xml.vm', line 44, column 18] : ${sort} cannot be resolved.
+2018-03-15 13:44:30,299 - Null reference [template '/template/mapper.xml.vm', line 44, column 26] : ${order} cannot be resolved.
+2018-03-15 13:44:30,301 - ResourceManager : found /template/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,305 - ResourceManager : found /template/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,311 - ResourceManager : found /template/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,318 - ResourceManager : found /template/list.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,319 - Null reference [template '/template/list.jsp.vm', line 7, column 16] : ${path} cannot be resolved.
+2018-03-15 13:44:30,320 - Null reference [template '/template/list.jsp.vm', line 55, column 17] : ${path} cannot be resolved.
+2018-03-15 13:44:30,320 - Null reference [template '/template/list.jsp.vm', line 94, column 18] : ${path} cannot be resolved.
+2018-03-15 13:44:30,320 - Null reference [template '/template/list.jsp.vm', line 132, column 22] : ${path} cannot be resolved.
+2018-03-15 13:44:30,323 - ResourceManager : found /template/add.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,326 - Null reference [template '/template/add.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:44:30,331 - ResourceManager : found /template/edit.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,332 - Null reference [template '/template/edit.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:44:30,335 - ResourceManager : found /template/form.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,343 - ResourceManager : found /template/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,348 - ResourceManager : found /template/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,352 - ResourceManager : found /template/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,355 - Null reference [template '/template/mapper.xml.vm', line 44, column 18] : ${sort} cannot be resolved.
+2018-03-15 13:44:30,355 - Null reference [template '/template/mapper.xml.vm', line 44, column 26] : ${order} cannot be resolved.
+2018-03-15 13:44:30,356 - ResourceManager : found /template/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,359 - ResourceManager : found /template/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,363 - ResourceManager : found /template/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,370 - ResourceManager : found /template/list.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,373 - Null reference [template '/template/list.jsp.vm', line 7, column 16] : ${path} cannot be resolved.
+2018-03-15 13:44:30,374 - Null reference [template '/template/list.jsp.vm', line 55, column 17] : ${path} cannot be resolved.
+2018-03-15 13:44:30,374 - Null reference [template '/template/list.jsp.vm', line 94, column 18] : ${path} cannot be resolved.
+2018-03-15 13:44:30,374 - Null reference [template '/template/list.jsp.vm', line 132, column 22] : ${path} cannot be resolved.
+2018-03-15 13:44:30,376 - ResourceManager : found /template/add.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,377 - Null reference [template '/template/add.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:44:30,380 - ResourceManager : found /template/edit.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,381 - Null reference [template '/template/edit.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:44:30,382 - ResourceManager : found /template/form.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,387 - ResourceManager : found /template/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,392 - ResourceManager : found /template/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,396 - ResourceManager : found /template/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,397 - Null reference [template '/template/mapper.xml.vm', line 44, column 18] : ${sort} cannot be resolved.
+2018-03-15 13:44:30,397 - Null reference [template '/template/mapper.xml.vm', line 44, column 26] : ${order} cannot be resolved.
+2018-03-15 13:44:30,399 - ResourceManager : found /template/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,403 - ResourceManager : found /template/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,408 - ResourceManager : found /template/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,415 - ResourceManager : found /template/list.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,417 - Null reference [template '/template/list.jsp.vm', line 7, column 16] : ${path} cannot be resolved.
+2018-03-15 13:44:30,417 - Null reference [template '/template/list.jsp.vm', line 55, column 17] : ${path} cannot be resolved.
+2018-03-15 13:44:30,418 - Null reference [template '/template/list.jsp.vm', line 94, column 18] : ${path} cannot be resolved.
+2018-03-15 13:44:30,418 - Null reference [template '/template/list.jsp.vm', line 132, column 22] : ${path} cannot be resolved.
+2018-03-15 13:44:30,420 - ResourceManager : found /template/add.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,421 - Null reference [template '/template/add.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:44:30,424 - ResourceManager : found /template/edit.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,425 - Null reference [template '/template/edit.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:44:30,427 - ResourceManager : found /template/form.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,432 - ResourceManager : found /template/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,436 - ResourceManager : found /template/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,440 - ResourceManager : found /template/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,442 - Null reference [template '/template/mapper.xml.vm', line 44, column 18] : ${sort} cannot be resolved.
+2018-03-15 13:44:30,442 - Null reference [template '/template/mapper.xml.vm', line 44, column 26] : ${order} cannot be resolved.
+2018-03-15 13:44:30,444 - ResourceManager : found /template/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,448 - ResourceManager : found /template/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,471 - ResourceManager : found /template/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,476 - ResourceManager : found /template/list.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,488 - Null reference [template '/template/list.jsp.vm', line 7, column 16] : ${path} cannot be resolved.
+2018-03-15 13:44:30,492 - Null reference [template '/template/list.jsp.vm', line 55, column 17] : ${path} cannot be resolved.
+2018-03-15 13:44:30,492 - Null reference [template '/template/list.jsp.vm', line 94, column 18] : ${path} cannot be resolved.
+2018-03-15 13:44:30,492 - Null reference [template '/template/list.jsp.vm', line 132, column 22] : ${path} cannot be resolved.
+2018-03-15 13:44:30,496 - ResourceManager : found /template/add.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,500 - Null reference [template '/template/add.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:44:30,506 - ResourceManager : found /template/edit.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,507 - Null reference [template '/template/edit.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:44:30,509 - ResourceManager : found /template/form.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,513 - ResourceManager : found /template/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,519 - ResourceManager : found /template/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,524 - ResourceManager : found /template/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,531 - Null reference [template '/template/mapper.xml.vm', line 44, column 18] : ${sort} cannot be resolved.
+2018-03-15 13:44:30,531 - Null reference [template '/template/mapper.xml.vm', line 44, column 26] : ${order} cannot be resolved.
+2018-03-15 13:44:30,533 - ResourceManager : found /template/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,536 - ResourceManager : found /template/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,545 - ResourceManager : found /template/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,563 - ResourceManager : found /template/list.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,567 - Null reference [template '/template/list.jsp.vm', line 7, column 16] : ${path} cannot be resolved.
+2018-03-15 13:44:30,567 - Null reference [template '/template/list.jsp.vm', line 55, column 17] : ${path} cannot be resolved.
+2018-03-15 13:44:30,567 - Null reference [template '/template/list.jsp.vm', line 94, column 18] : ${path} cannot be resolved.
+2018-03-15 13:44:30,567 - Null reference [template '/template/list.jsp.vm', line 132, column 22] : ${path} cannot be resolved.
+2018-03-15 13:44:30,570 - ResourceManager : found /template/add.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,571 - Null reference [template '/template/add.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:44:30,574 - ResourceManager : found /template/edit.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:44:30,575 - Null reference [template '/template/edit.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:44:30,577 - ResourceManager : found /template/form.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,402 - Log4JLogChute initialized using file 'velocity.log'
+2018-03-15 13:59:42,403 - Initializing Velocity, Calling init()...
+2018-03-15 13:59:42,403 - Starting Apache Velocity v1.7 (compiled: 2010-11-19 12:14:37)
+2018-03-15 13:59:42,403 - Default Properties File: org\apache\velocity\runtime\defaults\velocity.properties
+2018-03-15 13:59:42,403 - Trying to use logger class org.apache.velocity.runtime.log.AvalonLogChute
+2018-03-15 13:59:42,403 - Target log system for org.apache.velocity.runtime.log.AvalonLogChute is not available (java.lang.NoClassDefFoundError: org/apache/log/format/Formatter).  Falling back to next log system...
+2018-03-15 13:59:42,403 - Trying to use logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-15 13:59:42,403 - Using logger class org.apache.velocity.runtime.log.Log4JLogChute
+2018-03-15 13:59:42,409 - ResourceLoader instantiated: org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,428 - ResourceCache: initialized (class org.apache.velocity.runtime.resource.ResourceCacheImpl) with class java.util.Collections$SynchronizedMap cache map.
+2018-03-15 13:59:42,431 - Loaded System Directive: org.apache.velocity.runtime.directive.Stop
+2018-03-15 13:59:42,433 - Loaded System Directive: org.apache.velocity.runtime.directive.Define
+2018-03-15 13:59:42,434 - Loaded System Directive: org.apache.velocity.runtime.directive.Break
+2018-03-15 13:59:42,435 - Loaded System Directive: org.apache.velocity.runtime.directive.Evaluate
+2018-03-15 13:59:42,436 - Loaded System Directive: org.apache.velocity.runtime.directive.Literal
+2018-03-15 13:59:42,439 - Loaded System Directive: org.apache.velocity.runtime.directive.Macro
+2018-03-15 13:59:42,441 - Loaded System Directive: org.apache.velocity.runtime.directive.Parse
+2018-03-15 13:59:42,443 - Loaded System Directive: org.apache.velocity.runtime.directive.Include
+2018-03-15 13:59:42,445 - Loaded System Directive: org.apache.velocity.runtime.directive.Foreach
+2018-03-15 13:59:42,500 - Created '20' parsers.
+2018-03-15 13:59:42,512 - Velocimacro : "velocimacro.library" is not set.  Trying default library: VM_global_library.vm
+2018-03-15 13:59:42,512 - Could not load resource 'VM_global_library.vm' from ResourceLoader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader: ClasspathResourceLoader Error: cannot find resource VM_global_library.vm
+2018-03-15 13:59:42,512 - Velocimacro : Default library not found.
+2018-03-15 13:59:42,513 - Velocimacro : allowInline = true : VMs can be defined inline in templates
+2018-03-15 13:59:42,513 - Velocimacro : allowInlineToOverride = false : VMs defined inline may NOT replace previous VM definitions
+2018-03-15 13:59:42,513 - Velocimacro : allowInlineLocal = false : VMs defined inline will be global in scope if allowed.
+2018-03-15 13:59:42,513 - Velocimacro : autoload off : VM system will not automatically reload global library macros
+2018-03-15 13:59:42,543 - ResourceManager : found /template/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,572 - ResourceManager : found /template/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,578 - ResourceManager : found /template/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,579 - Null reference [template '/template/mapper.xml.vm', line 44, column 18] : ${sort} cannot be resolved.
+2018-03-15 13:59:42,580 - Null reference [template '/template/mapper.xml.vm', line 44, column 26] : ${order} cannot be resolved.
+2018-03-15 13:59:42,584 - ResourceManager : found /template/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,589 - ResourceManager : found /template/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,596 - ResourceManager : found /template/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,604 - ResourceManager : found /template/list.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,606 - Null reference [template '/template/list.jsp.vm', line 7, column 16] : ${path} cannot be resolved.
+2018-03-15 13:59:42,612 - Null reference [template '/template/list.jsp.vm', line 55, column 17] : ${path} cannot be resolved.
+2018-03-15 13:59:42,612 - Null reference [template '/template/list.jsp.vm', line 94, column 18] : ${path} cannot be resolved.
+2018-03-15 13:59:42,613 - Null reference [template '/template/list.jsp.vm', line 132, column 22] : ${path} cannot be resolved.
+2018-03-15 13:59:42,616 - ResourceManager : found /template/add.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,617 - Null reference [template '/template/add.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:59:42,621 - ResourceManager : found /template/edit.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,623 - Null reference [template '/template/edit.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:59:42,625 - ResourceManager : found /template/form.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,633 - ResourceManager : found /template/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,642 - ResourceManager : found /template/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,646 - ResourceManager : found /template/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,648 - Null reference [template '/template/mapper.xml.vm', line 44, column 18] : ${sort} cannot be resolved.
+2018-03-15 13:59:42,648 - Null reference [template '/template/mapper.xml.vm', line 44, column 26] : ${order} cannot be resolved.
+2018-03-15 13:59:42,650 - ResourceManager : found /template/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,654 - ResourceManager : found /template/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,660 - ResourceManager : found /template/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,668 - ResourceManager : found /template/list.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,669 - Null reference [template '/template/list.jsp.vm', line 7, column 16] : ${path} cannot be resolved.
+2018-03-15 13:59:42,670 - Null reference [template '/template/list.jsp.vm', line 55, column 17] : ${path} cannot be resolved.
+2018-03-15 13:59:42,670 - Null reference [template '/template/list.jsp.vm', line 94, column 18] : ${path} cannot be resolved.
+2018-03-15 13:59:42,670 - Null reference [template '/template/list.jsp.vm', line 132, column 22] : ${path} cannot be resolved.
+2018-03-15 13:59:42,673 - ResourceManager : found /template/add.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,675 - Null reference [template '/template/add.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:59:42,677 - ResourceManager : found /template/edit.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,679 - Null reference [template '/template/edit.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:59:42,681 - ResourceManager : found /template/form.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,701 - ResourceManager : found /template/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,707 - ResourceManager : found /template/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,711 - ResourceManager : found /template/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,713 - Null reference [template '/template/mapper.xml.vm', line 44, column 18] : ${sort} cannot be resolved.
+2018-03-15 13:59:42,713 - Null reference [template '/template/mapper.xml.vm', line 44, column 26] : ${order} cannot be resolved.
+2018-03-15 13:59:42,715 - ResourceManager : found /template/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,719 - ResourceManager : found /template/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,723 - ResourceManager : found /template/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,732 - ResourceManager : found /template/list.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,733 - Null reference [template '/template/list.jsp.vm', line 7, column 16] : ${path} cannot be resolved.
+2018-03-15 13:59:42,734 - Null reference [template '/template/list.jsp.vm', line 55, column 17] : ${path} cannot be resolved.
+2018-03-15 13:59:42,734 - Null reference [template '/template/list.jsp.vm', line 94, column 18] : ${path} cannot be resolved.
+2018-03-15 13:59:42,734 - Null reference [template '/template/list.jsp.vm', line 132, column 22] : ${path} cannot be resolved.
+2018-03-15 13:59:42,737 - ResourceManager : found /template/add.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,738 - Null reference [template '/template/add.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:59:42,740 - ResourceManager : found /template/edit.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,742 - Null reference [template '/template/edit.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:59:42,743 - ResourceManager : found /template/form.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,750 - ResourceManager : found /template/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,757 - ResourceManager : found /template/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,760 - ResourceManager : found /template/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,762 - Null reference [template '/template/mapper.xml.vm', line 44, column 18] : ${sort} cannot be resolved.
+2018-03-15 13:59:42,762 - Null reference [template '/template/mapper.xml.vm', line 44, column 26] : ${order} cannot be resolved.
+2018-03-15 13:59:42,764 - ResourceManager : found /template/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,767 - ResourceManager : found /template/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,774 - ResourceManager : found /template/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,788 - ResourceManager : found /template/list.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,790 - Null reference [template '/template/list.jsp.vm', line 7, column 16] : ${path} cannot be resolved.
+2018-03-15 13:59:42,793 - Null reference [template '/template/list.jsp.vm', line 55, column 17] : ${path} cannot be resolved.
+2018-03-15 13:59:42,793 - Null reference [template '/template/list.jsp.vm', line 94, column 18] : ${path} cannot be resolved.
+2018-03-15 13:59:42,794 - Null reference [template '/template/list.jsp.vm', line 132, column 22] : ${path} cannot be resolved.
+2018-03-15 13:59:42,798 - ResourceManager : found /template/add.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,800 - Null reference [template '/template/add.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:59:42,804 - ResourceManager : found /template/edit.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,805 - Null reference [template '/template/edit.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:59:42,807 - ResourceManager : found /template/form.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,812 - ResourceManager : found /template/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,816 - ResourceManager : found /template/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,819 - ResourceManager : found /template/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,821 - Null reference [template '/template/mapper.xml.vm', line 44, column 18] : ${sort} cannot be resolved.
+2018-03-15 13:59:42,821 - Null reference [template '/template/mapper.xml.vm', line 44, column 26] : ${order} cannot be resolved.
+2018-03-15 13:59:42,823 - ResourceManager : found /template/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,826 - ResourceManager : found /template/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,830 - ResourceManager : found /template/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,834 - ResourceManager : found /template/list.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,836 - Null reference [template '/template/list.jsp.vm', line 7, column 16] : ${path} cannot be resolved.
+2018-03-15 13:59:42,836 - Null reference [template '/template/list.jsp.vm', line 55, column 17] : ${path} cannot be resolved.
+2018-03-15 13:59:42,836 - Null reference [template '/template/list.jsp.vm', line 94, column 18] : ${path} cannot be resolved.
+2018-03-15 13:59:42,836 - Null reference [template '/template/list.jsp.vm', line 132, column 22] : ${path} cannot be resolved.
+2018-03-15 13:59:42,839 - ResourceManager : found /template/add.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,840 - Null reference [template '/template/add.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:59:42,843 - ResourceManager : found /template/edit.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,845 - Null reference [template '/template/edit.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:59:42,847 - ResourceManager : found /template/form.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,851 - ResourceManager : found /template/entity.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,858 - ResourceManager : found /template/mapper.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,863 - ResourceManager : found /template/mapper.xml.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,864 - Null reference [template '/template/mapper.xml.vm', line 44, column 18] : ${sort} cannot be resolved.
+2018-03-15 13:59:42,864 - Null reference [template '/template/mapper.xml.vm', line 44, column 26] : ${order} cannot be resolved.
+2018-03-15 13:59:42,866 - ResourceManager : found /template/service.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,869 - ResourceManager : found /template/serviceImpl.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,873 - ResourceManager : found /template/controller.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,877 - ResourceManager : found /template/list.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,878 - Null reference [template '/template/list.jsp.vm', line 7, column 16] : ${path} cannot be resolved.
+2018-03-15 13:59:42,879 - Null reference [template '/template/list.jsp.vm', line 55, column 17] : ${path} cannot be resolved.
+2018-03-15 13:59:42,879 - Null reference [template '/template/list.jsp.vm', line 94, column 18] : ${path} cannot be resolved.
+2018-03-15 13:59:42,879 - Null reference [template '/template/list.jsp.vm', line 132, column 22] : ${path} cannot be resolved.
+2018-03-15 13:59:42,881 - ResourceManager : found /template/add.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,882 - Null reference [template '/template/add.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:59:42,884 - ResourceManager : found /template/edit.jsp.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+2018-03-15 13:59:42,886 - Null reference [template '/template/edit.jsp.vm', line 6, column 20] : ${path} cannot be resolved.
+2018-03-15 13:59:42,887 - ResourceManager : found /template/form.java.vm with loader org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader

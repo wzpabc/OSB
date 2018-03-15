@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.StockAdjustMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.StockAdjust" >
+    <id column="Autonumber" property="autonumber" jdbcType="INTEGER" />
+    <result column="MCU" property="mcu" jdbcType="NCHAR" />
+    <result column="DCT" property="dct" jdbcType="NCHAR" />
+    <result column="EXP" property="exp" jdbcType="NVARCHAR" />
+    <result column="GLC" property="glc" jdbcType="NCHAR" />
+    <result column="LITM" property="litm" jdbcType="NCHAR" />
+    <result column="LOCN" property="locn" jdbcType="NCHAR" />
+    <result column="LOTN" property="lotn" jdbcType="NCHAR" />
+    <result column="QTY" property="qty" jdbcType="NUMERIC" />
+    <result column="TRANDTAE" property="trandtae" jdbcType="TIMESTAMP" />
+    <result column="TRANTYPE" property="trantype" jdbcType="NCHAR" />
+    <result column="JDE_Status" property="jdeStatus" jdbcType="VARCHAR" />
+    <result column="JDE_InsertDate" property="jdeInsertdate" jdbcType="TIMESTAMP" />
+    <result column="JDE_UpdateDate" property="jdeUpdatedate" jdbcType="TIMESTAMP" />
+    <result column="JDE_ProccessLog" property="jdeProccesslog" jdbcType="VARCHAR" />
+    <result column="KT_ProcessDate" property="ktProcessdate" jdbcType="TIMESTAMP" />
+    <result column="KT_FailDate" property="ktFaildate" jdbcType="TIMESTAMP" />
+    <result column="KT_RetryTimes" property="ktRetrytimes" jdbcType="INTEGER" />
+    <result column="KT_ErrorLog" property="ktErrorlog" jdbcType="VARCHAR" />
+    <result column="FMS_Process_Date" property="fmsProcessDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Autonumber, MCU, DCT, EXP, GLC, LITM, LOCN, LOTN, QTY, TRANDTAE, TRANTYPE, JDE_Status, 
+    JDE_InsertDate, JDE_UpdateDate, JDE_ProccessLog, KT_ProcessDate, KT_FailDate, KT_RetryTimes, 
+    KT_ErrorLog, FMS_Process_Date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.StockAdjustExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from StockAdjust
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from StockAdjust
+    where Autonumber = #{autonumber,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from StockAdjust
+    where Autonumber = #{autonumber,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.StockAdjustExample" >
+    delete from StockAdjust
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.StockAdjust" >
+    insert into StockAdjust (Autonumber, MCU, DCT, 
+      EXP, GLC, LITM, LOCN, 
+      LOTN, QTY, TRANDTAE, 
+      TRANTYPE, JDE_Status, JDE_InsertDate, 
+      JDE_UpdateDate, JDE_ProccessLog, KT_ProcessDate, 
+      KT_FailDate, KT_RetryTimes, KT_ErrorLog, 
+      FMS_Process_Date)
+    values (#{autonumber,jdbcType=INTEGER}, #{mcu,jdbcType=NCHAR}, #{dct,jdbcType=NCHAR}, 
+      #{exp,jdbcType=NVARCHAR}, #{glc,jdbcType=NCHAR}, #{litm,jdbcType=NCHAR}, #{locn,jdbcType=NCHAR}, 
+      #{lotn,jdbcType=NCHAR}, #{qty,jdbcType=NUMERIC}, #{trandtae,jdbcType=TIMESTAMP}, 
+      #{trantype,jdbcType=NCHAR}, #{jdeStatus,jdbcType=VARCHAR}, #{jdeInsertdate,jdbcType=TIMESTAMP}, 
+      #{jdeUpdatedate,jdbcType=TIMESTAMP}, #{jdeProccesslog,jdbcType=VARCHAR}, #{ktProcessdate,jdbcType=TIMESTAMP}, 
+      #{ktFaildate,jdbcType=TIMESTAMP}, #{ktRetrytimes,jdbcType=INTEGER}, #{ktErrorlog,jdbcType=VARCHAR}, 
+      #{fmsProcessDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.StockAdjust" >
+    insert into StockAdjust
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="autonumber != null" >
+        Autonumber,
+      </if>
+      <if test="mcu != null" >
+        MCU,
+      </if>
+      <if test="dct != null" >
+        DCT,
+      </if>
+      <if test="exp != null" >
+        EXP,
+      </if>
+      <if test="glc != null" >
+        GLC,
+      </if>
+      <if test="litm != null" >
+        LITM,
+      </if>
+      <if test="locn != null" >
+        LOCN,
+      </if>
+      <if test="lotn != null" >
+        LOTN,
+      </if>
+      <if test="qty != null" >
+        QTY,
+      </if>
+      <if test="trandtae != null" >
+        TRANDTAE,
+      </if>
+      <if test="trantype != null" >
+        TRANTYPE,
+      </if>
+      <if test="jdeStatus != null" >
+        JDE_Status,
+      </if>
+      <if test="jdeInsertdate != null" >
+        JDE_InsertDate,
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate,
+      </if>
+      <if test="jdeProccesslog != null" >
+        JDE_ProccessLog,
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate,
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate,
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes,
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog,
+      </if>
+      <if test="fmsProcessDate != null" >
+        FMS_Process_Date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="autonumber != null" >
+        #{autonumber,jdbcType=INTEGER},
+      </if>
+      <if test="mcu != null" >
+        #{mcu,jdbcType=NCHAR},
+      </if>
+      <if test="dct != null" >
+        #{dct,jdbcType=NCHAR},
+      </if>
+      <if test="exp != null" >
+        #{exp,jdbcType=NVARCHAR},
+      </if>
+      <if test="glc != null" >
+        #{glc,jdbcType=NCHAR},
+      </if>
+      <if test="litm != null" >
+        #{litm,jdbcType=NCHAR},
+      </if>
+      <if test="locn != null" >
+        #{locn,jdbcType=NCHAR},
+      </if>
+      <if test="lotn != null" >
+        #{lotn,jdbcType=NCHAR},
+      </if>
+      <if test="qty != null" >
+        #{qty,jdbcType=NUMERIC},
+      </if>
+      <if test="trandtae != null" >
+        #{trandtae,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trantype != null" >
+        #{trantype,jdbcType=NCHAR},
+      </if>
+      <if test="jdeStatus != null" >
+        #{jdeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="jdeInsertdate != null" >
+        #{jdeInsertdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeProccesslog != null" >
+        #{jdeProccesslog,jdbcType=VARCHAR},
+      </if>
+      <if test="ktProcessdate != null" >
+        #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="fmsProcessDate != null" >
+        #{fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.StockAdjustExample" resultType="java.lang.Integer" >
+    select count(*) from StockAdjust
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update StockAdjust
+    <set >
+      <if test="record.autonumber != null" >
+        Autonumber = #{record.autonumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.mcu != null" >
+        MCU = #{record.mcu,jdbcType=NCHAR},
+      </if>
+      <if test="record.dct != null" >
+        DCT = #{record.dct,jdbcType=NCHAR},
+      </if>
+      <if test="record.exp != null" >
+        EXP = #{record.exp,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.glc != null" >
+        GLC = #{record.glc,jdbcType=NCHAR},
+      </if>
+      <if test="record.litm != null" >
+        LITM = #{record.litm,jdbcType=NCHAR},
+      </if>
+      <if test="record.locn != null" >
+        LOCN = #{record.locn,jdbcType=NCHAR},
+      </if>
+      <if test="record.lotn != null" >
+        LOTN = #{record.lotn,jdbcType=NCHAR},
+      </if>
+      <if test="record.qty != null" >
+        QTY = #{record.qty,jdbcType=NUMERIC},
+      </if>
+      <if test="record.trandtae != null" >
+        TRANDTAE = #{record.trandtae,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.trantype != null" >
+        TRANTYPE = #{record.trantype,jdbcType=NCHAR},
+      </if>
+      <if test="record.jdeStatus != null" >
+        JDE_Status = #{record.jdeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jdeInsertdate != null" >
+        JDE_InsertDate = #{record.jdeInsertdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.jdeUpdatedate != null" >
+        JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.jdeProccesslog != null" >
+        JDE_ProccessLog = #{record.jdeProccesslog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ktProcessdate != null" >
+        KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktFaildate != null" >
+        KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktRetrytimes != null" >
+        KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.ktErrorlog != null" >
+        KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fmsProcessDate != null" >
+        FMS_Process_Date = #{record.fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update StockAdjust
+    set Autonumber = #{record.autonumber,jdbcType=INTEGER},
+      MCU = #{record.mcu,jdbcType=NCHAR},
+      DCT = #{record.dct,jdbcType=NCHAR},
+      EXP = #{record.exp,jdbcType=NVARCHAR},
+      GLC = #{record.glc,jdbcType=NCHAR},
+      LITM = #{record.litm,jdbcType=NCHAR},
+      LOCN = #{record.locn,jdbcType=NCHAR},
+      LOTN = #{record.lotn,jdbcType=NCHAR},
+      QTY = #{record.qty,jdbcType=NUMERIC},
+      TRANDTAE = #{record.trandtae,jdbcType=TIMESTAMP},
+      TRANTYPE = #{record.trantype,jdbcType=NCHAR},
+      JDE_Status = #{record.jdeStatus,jdbcType=VARCHAR},
+      JDE_InsertDate = #{record.jdeInsertdate,jdbcType=TIMESTAMP},
+      JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      JDE_ProccessLog = #{record.jdeProccesslog,jdbcType=VARCHAR},
+      KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR},
+      FMS_Process_Date = #{record.fmsProcessDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.StockAdjust" >
+    update StockAdjust
+    <set >
+      <if test="mcu != null" >
+        MCU = #{mcu,jdbcType=NCHAR},
+      </if>
+      <if test="dct != null" >
+        DCT = #{dct,jdbcType=NCHAR},
+      </if>
+      <if test="exp != null" >
+        EXP = #{exp,jdbcType=NVARCHAR},
+      </if>
+      <if test="glc != null" >
+        GLC = #{glc,jdbcType=NCHAR},
+      </if>
+      <if test="litm != null" >
+        LITM = #{litm,jdbcType=NCHAR},
+      </if>
+      <if test="locn != null" >
+        LOCN = #{locn,jdbcType=NCHAR},
+      </if>
+      <if test="lotn != null" >
+        LOTN = #{lotn,jdbcType=NCHAR},
+      </if>
+      <if test="qty != null" >
+        QTY = #{qty,jdbcType=NUMERIC},
+      </if>
+      <if test="trandtae != null" >
+        TRANDTAE = #{trandtae,jdbcType=TIMESTAMP},
+      </if>
+      <if test="trantype != null" >
+        TRANTYPE = #{trantype,jdbcType=NCHAR},
+      </if>
+      <if test="jdeStatus != null" >
+        JDE_Status = #{jdeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="jdeInsertdate != null" >
+        JDE_InsertDate = #{jdeInsertdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeProccesslog != null" >
+        JDE_ProccessLog = #{jdeProccesslog,jdbcType=VARCHAR},
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="fmsProcessDate != null" >
+        FMS_Process_Date = #{fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Autonumber = #{autonumber,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.StockAdjust" >
+    update StockAdjust
+    set MCU = #{mcu,jdbcType=NCHAR},
+      DCT = #{dct,jdbcType=NCHAR},
+      EXP = #{exp,jdbcType=NVARCHAR},
+      GLC = #{glc,jdbcType=NCHAR},
+      LITM = #{litm,jdbcType=NCHAR},
+      LOCN = #{locn,jdbcType=NCHAR},
+      LOTN = #{lotn,jdbcType=NCHAR},
+      QTY = #{qty,jdbcType=NUMERIC},
+      TRANDTAE = #{trandtae,jdbcType=TIMESTAMP},
+      TRANTYPE = #{trantype,jdbcType=NCHAR},
+      JDE_Status = #{jdeStatus,jdbcType=VARCHAR},
+      JDE_InsertDate = #{jdeInsertdate,jdbcType=TIMESTAMP},
+      JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      JDE_ProccessLog = #{jdeProccesslog,jdbcType=VARCHAR},
+      KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR},
+      FMS_Process_Date = #{fmsProcessDate,jdbcType=TIMESTAMP}
+    where Autonumber = #{autonumber,jdbcType=INTEGER}
+  </update>
+</mapper>

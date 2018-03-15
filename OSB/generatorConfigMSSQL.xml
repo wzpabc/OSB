@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--数据库驱动-->
+    <classPathEntry    location="D:/mssql/sqljdbc4.jar"/>
+    <context id="DB2Tables"    targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--数据库链接地址账号密码-->
+        <jdbcConnection driverClass="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
+        connectionURL="jdbc:sqlserver://192.168.10.99;DatabaseName=pd_osb" 
+        userId="sa" password="TuPPerWare2202">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!--生成Model类存放位置-->
+        <javaModelGenerator targetPackage="com.tup.mssql.model" targetProject="OSB/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator targetPackage="sqlMapperXml.mssql" targetProject="OSB/src/main/resources/">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.tup.mssql.mapper" targetProject="OSB/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!--生成对应表及类名-->
+        <!-- 
+        <table tableName="OrderHeader" domainObjectName="OrderHeader" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table tableName="Inventory" domainObjectName="Inventory" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		<table tableName="OrderDetail" domainObjectName="OrderDetail" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		
+		<table tableName="orderdetail_In" domainObjectName='OrderDetailIn' enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		
+		<table tableName="orderheader_In" domainObjectName='OrderHeaderInVo' enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+		
+		  <table schema="member"  tableName="T_OUTLET_ITEM_CHART" domainObjectName="OutletItemChart" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+      
+         
+         <table   tableName="v_outlet_sales_trend" domainObjectName="OutletSalesTrend" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+       
+	
+<table   tableName="dw_region_sales_week" domainObjectName="DwRegionSalesWeek" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="dw_sales_day" domainObjectName="DwSalesDay" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="v_payment_settlement" domainObjectName="VPaymentSettlement" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="dw_result_summary" domainObjectName="DwResultSummary" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="dw_success_report_week" domainObjectName="DwSuccessReportWeek" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="t_Organ_Region" domainObjectName="TOrganRegion" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="t_Organ_Province" domainObjectName="TOrganProvince" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="t_Organ_Outlet_weekly_report" domainObjectName="TOrganOutletWeeklyReport" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+ 
+<table   tableName="OrderHeader_In" domainObjectName="OrderHeaderIn" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderHeader" domainObjectName="OrderHeader" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Inventory" domainObjectName="Inventory" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderConfirm" domainObjectName="OrderConfirm" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Item" domainObjectName="Item" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Address_Phone" domainObjectName="AddressPhone" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Orderback_RD" domainObjectName="OrderbackRD" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Item_PRP2" domainObjectName="ItemPRP2" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="orderDetail_in_temp" domainObjectName="OrderDetailintemp" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderDetail_KIT" domainObjectName="OrderDetailKIT" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="orderheader_in_temp" domainObjectName="Orderheaderintemp" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Item_PRP3" domainObjectName="ItemPRP3" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderHeader_In_EDI" domainObjectName="OrderHeaderInEDI" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Item_UOMMap" domainObjectName="ItemUOMMap" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Address_ByDate" domainObjectName="AddressByDate" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="ItemPrice" domainObjectName="ItemPrice" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderDetail_JDE" domainObjectName="OrderDetailJDE" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderDetail_In_EDI" domainObjectName="OrderDetailInEDI" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="orderheader_in_temp_fms" domainObjectName="Orderheaderintempfms" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="reports_by_time" domainObjectName="Reportsbytime" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderCancel" domainObjectName="OrderCancel" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="StockAdjust" domainObjectName="StockAdjust" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="orderDetail_in_temp_fms" domainObjectName="OrderDetailintempfms" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Import_BasePrice" domainObjectName="ImportBasePrice" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="TRAN_LOG" domainObjectName="TRANLOG" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="ERROR_DATA" domainObjectName="ERRORDATA" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="JOB_CONFIG" domainObjectName="JOBCONFIG" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderDetail" domainObjectName="OrderDetail" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="DMLSOURCE" domainObjectName="DMLSOURCE" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Address_Alternate" domainObjectName="AddressAlternate" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Inventory_JDE" domainObjectName="InventoryJDE" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderHeader_JDE_new" domainObjectName="OrderHeaderJDEnew" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Item_GLClass_Override" domainObjectName="ItemGLClassOverride" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderDetail_In" domainObjectName="OrderDetailIn" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderHeader_JDE" domainObjectName="OrderHeaderJDE" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="BOM" domainObjectName="BOM" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Account_Calendar" domainObjectName="AccountCalendar" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderDetail_JDE_new" domainObjectName="OrderDetailJDEnew" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Address_RegionMap" domainObjectName="AddressRegionMap" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="ADDRESS" domainObjectName="ADDRESS" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+ 
+--> 
+
+<table   tableName="OrderHeader_In" domainObjectName="OrderHeaderIn" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderHeader" domainObjectName="OrderHeader" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Inventory" domainObjectName="Inventory" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderConfirm" domainObjectName="OrderConfirm" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Item" domainObjectName="Item" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Address_Phone" domainObjectName="AddressPhone" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Orderback_RD" domainObjectName="OrderbackRD" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Item_PRP2" domainObjectName="ItemPRP2" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="orderDetail_in_temp" domainObjectName="OrderDetailintemp" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderDetail_KIT" domainObjectName="OrderDetailKIT" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="orderheader_in_temp" domainObjectName="Orderheaderintemp" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Item_PRP3" domainObjectName="ItemPRP3" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderHeader_In_EDI" domainObjectName="OrderHeaderInEDI" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Item_UOMMap" domainObjectName="ItemUOMMap" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Address_ByDate" domainObjectName="AddressByDate" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="ItemPrice" domainObjectName="ItemPrice" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderDetail_JDE" domainObjectName="OrderDetailJDE" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderDetail_In_EDI" domainObjectName="OrderDetailInEDI" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="orderheader_in_temp_fms" domainObjectName="Orderheaderintempfms" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="reports_by_time" domainObjectName="Reportsbytime" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderCancel" domainObjectName="OrderCancel" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="StockAdjust" domainObjectName="StockAdjust" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="orderDetail_in_temp_fms" domainObjectName="OrderDetailintempfms" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Import_BasePrice" domainObjectName="ImportBasePrice" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="TRAN_LOG" domainObjectName="TRANLOG" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="ERROR_DATA" domainObjectName="ERRORDATA" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="JOB_CONFIG" domainObjectName="JOBCONFIG" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderDetail" domainObjectName="OrderDetail" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="DMLSOURCE" domainObjectName="DMLSOURCE" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Address_Alternate" domainObjectName="AddressAlternate" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Inventory_JDE" domainObjectName="InventoryJDE" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderHeader_JDE_new" domainObjectName="OrderHeaderJDEnew" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Item_GLClass_Override" domainObjectName="ItemGLClassOverride" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderDetail_In" domainObjectName="OrderDetailIn" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderHeader_JDE" domainObjectName="OrderHeaderJDE" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="BOM" domainObjectName="BOM" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Account_Calendar" domainObjectName="AccountCalendar" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="OrderDetail_JDE_new" domainObjectName="OrderDetailJDEnew" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="Address_RegionMap" domainObjectName="AddressRegionMap" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+<table   tableName="ADDRESS" domainObjectName="ADDRESS" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"></table>
+ 
+ <!--
+OrderHeader_In
+OrderHeader
+Inventory
+OrderConfirm
+Item
+Address_Phone
+Orderback_RD
+Item_PRP2
+orderDetail_in_temp
+OrderDetail_KIT
+orderheader_in_temp
+Item_PRP3 
+OrderHeader_In_EDI
+Item_UOMMap
+Address_ByDate
+ItemPrice
+OrderDetail_JDE
+OrderDetail_In_EDI
+orderheader_in_temp_fms
+reports_by_time
+OrderCancel
+StockAdjust
+orderDetail_in_temp_fms
+Import_BasePrice
+TRAN_LOG
+ERROR_DATA
+JOB_CONFIG
+OrderDetail
+DMLSOURCE
+Address_Alternate 
+Inventory_JDE
+OrderHeader_JDE_new 
+Item_GLClass_Override
+OrderDetail_In
+OrderHeader_JDE
+BOM
+Account_Calendar
+OrderDetail_JDE_new
+Address_RegionMap 
+ADDRESS 
+-->
+   
+   
+  </context>
+</generatorConfiguration>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.ItemGLClassOverrideMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.ItemGLClassOverride" >
+    <id column="ID" property="id" jdbcType="CHAR" />
+    <result column="IBLITM" property="iblitm" jdbcType="VARCHAR" />
+    <result column="IBGLPT" property="ibglpt" jdbcType="VARCHAR" />
+    <result column="Member_Level" property="memberLevel" jdbcType="VARCHAR" />
+    <result column="lastupdate" property="lastupdate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, IBLITM, IBGLPT, Member_Level, lastupdate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.ItemGLClassOverrideExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Item_GLClass_Override
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from Item_GLClass_Override
+    where ID = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from Item_GLClass_Override
+    where ID = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.ItemGLClassOverrideExample" >
+    delete from Item_GLClass_Override
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.ItemGLClassOverride" >
+    insert into Item_GLClass_Override (ID, IBLITM, IBGLPT, 
+      Member_Level, lastupdate)
+    values (#{id,jdbcType=CHAR}, #{iblitm,jdbcType=VARCHAR}, #{ibglpt,jdbcType=VARCHAR}, 
+      #{memberLevel,jdbcType=VARCHAR}, #{lastupdate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.ItemGLClassOverride" >
+    insert into Item_GLClass_Override
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="iblitm != null" >
+        IBLITM,
+      </if>
+      <if test="ibglpt != null" >
+        IBGLPT,
+      </if>
+      <if test="memberLevel != null" >
+        Member_Level,
+      </if>
+      <if test="lastupdate != null" >
+        lastupdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="iblitm != null" >
+        #{iblitm,jdbcType=VARCHAR},
+      </if>
+      <if test="ibglpt != null" >
+        #{ibglpt,jdbcType=VARCHAR},
+      </if>
+      <if test="memberLevel != null" >
+        #{memberLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdate != null" >
+        #{lastupdate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.ItemGLClassOverrideExample" resultType="java.lang.Integer" >
+    select count(*) from Item_GLClass_Override
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update Item_GLClass_Override
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=CHAR},
+      </if>
+      <if test="record.iblitm != null" >
+        IBLITM = #{record.iblitm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibglpt != null" >
+        IBGLPT = #{record.ibglpt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberLevel != null" >
+        Member_Level = #{record.memberLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastupdate != null" >
+        lastupdate = #{record.lastupdate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update Item_GLClass_Override
+    set ID = #{record.id,jdbcType=CHAR},
+      IBLITM = #{record.iblitm,jdbcType=VARCHAR},
+      IBGLPT = #{record.ibglpt,jdbcType=VARCHAR},
+      Member_Level = #{record.memberLevel,jdbcType=VARCHAR},
+      lastupdate = #{record.lastupdate,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.ItemGLClassOverride" >
+    update Item_GLClass_Override
+    <set >
+      <if test="iblitm != null" >
+        IBLITM = #{iblitm,jdbcType=VARCHAR},
+      </if>
+      <if test="ibglpt != null" >
+        IBGLPT = #{ibglpt,jdbcType=VARCHAR},
+      </if>
+      <if test="memberLevel != null" >
+        Member_Level = #{memberLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdate != null" >
+        lastupdate = #{lastupdate,jdbcType=DATE},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.ItemGLClassOverride" >
+    update Item_GLClass_Override
+    set IBLITM = #{iblitm,jdbcType=VARCHAR},
+      IBGLPT = #{ibglpt,jdbcType=VARCHAR},
+      Member_Level = #{memberLevel,jdbcType=VARCHAR},
+      lastupdate = #{lastupdate,jdbcType=DATE}
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

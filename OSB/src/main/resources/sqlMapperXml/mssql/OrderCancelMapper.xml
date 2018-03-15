@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.OrderCancelMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.OrderCancel" >
+    <id column="ID" property="id" jdbcType="CHAR" />
+    <result column="SHKCOO" property="shkcoo" jdbcType="VARCHAR" />
+    <result column="SHDCTO" property="shdcto" jdbcType="VARCHAR" />
+    <result column="SHDOCO" property="shdoco" jdbcType="BIGINT" />
+    <result column="JDE_Status" property="jdeStatus" jdbcType="VARCHAR" />
+    <result column="JDE_UpdateDate" property="jdeUpdatedate" jdbcType="TIMESTAMP" />
+    <result column="JDE_ProccessLog" property="jdeProccesslog" jdbcType="VARCHAR" />
+    <result column="JDE_InsertDate" property="jdeInsertdate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, SHKCOO, SHDCTO, SHDOCO, JDE_Status, JDE_UpdateDate, JDE_ProccessLog, JDE_InsertDate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.OrderCancelExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from OrderCancel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from OrderCancel
+    where ID = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from OrderCancel
+    where ID = #{id,jdbcType=CHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.OrderCancelExample" >
+    delete from OrderCancel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.OrderCancel" >
+    insert into OrderCancel (ID, SHKCOO, SHDCTO, 
+      SHDOCO, JDE_Status, JDE_UpdateDate, 
+      JDE_ProccessLog, JDE_InsertDate)
+    values (#{id,jdbcType=CHAR}, #{shkcoo,jdbcType=VARCHAR}, #{shdcto,jdbcType=VARCHAR}, 
+      #{shdoco,jdbcType=BIGINT}, #{jdeStatus,jdbcType=VARCHAR}, #{jdeUpdatedate,jdbcType=TIMESTAMP}, 
+      #{jdeProccesslog,jdbcType=VARCHAR}, #{jdeInsertdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.OrderCancel" >
+    insert into OrderCancel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="shkcoo != null" >
+        SHKCOO,
+      </if>
+      <if test="shdcto != null" >
+        SHDCTO,
+      </if>
+      <if test="shdoco != null" >
+        SHDOCO,
+      </if>
+      <if test="jdeStatus != null" >
+        JDE_Status,
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate,
+      </if>
+      <if test="jdeProccesslog != null" >
+        JDE_ProccessLog,
+      </if>
+      <if test="jdeInsertdate != null" >
+        JDE_InsertDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="shkcoo != null" >
+        #{shkcoo,jdbcType=VARCHAR},
+      </if>
+      <if test="shdcto != null" >
+        #{shdcto,jdbcType=VARCHAR},
+      </if>
+      <if test="shdoco != null" >
+        #{shdoco,jdbcType=BIGINT},
+      </if>
+      <if test="jdeStatus != null" >
+        #{jdeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeProccesslog != null" >
+        #{jdeProccesslog,jdbcType=VARCHAR},
+      </if>
+      <if test="jdeInsertdate != null" >
+        #{jdeInsertdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.OrderCancelExample" resultType="java.lang.Integer" >
+    select count(*) from OrderCancel
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update OrderCancel
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=CHAR},
+      </if>
+      <if test="record.shkcoo != null" >
+        SHKCOO = #{record.shkcoo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shdcto != null" >
+        SHDCTO = #{record.shdcto,jdbcType=VARCHAR},
+      </if>
+      <if test="record.shdoco != null" >
+        SHDOCO = #{record.shdoco,jdbcType=BIGINT},
+      </if>
+      <if test="record.jdeStatus != null" >
+        JDE_Status = #{record.jdeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jdeUpdatedate != null" >
+        JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.jdeProccesslog != null" >
+        JDE_ProccessLog = #{record.jdeProccesslog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jdeInsertdate != null" >
+        JDE_InsertDate = #{record.jdeInsertdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update OrderCancel
+    set ID = #{record.id,jdbcType=CHAR},
+      SHKCOO = #{record.shkcoo,jdbcType=VARCHAR},
+      SHDCTO = #{record.shdcto,jdbcType=VARCHAR},
+      SHDOCO = #{record.shdoco,jdbcType=BIGINT},
+      JDE_Status = #{record.jdeStatus,jdbcType=VARCHAR},
+      JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      JDE_ProccessLog = #{record.jdeProccesslog,jdbcType=VARCHAR},
+      JDE_InsertDate = #{record.jdeInsertdate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.OrderCancel" >
+    update OrderCancel
+    <set >
+      <if test="shkcoo != null" >
+        SHKCOO = #{shkcoo,jdbcType=VARCHAR},
+      </if>
+      <if test="shdcto != null" >
+        SHDCTO = #{shdcto,jdbcType=VARCHAR},
+      </if>
+      <if test="shdoco != null" >
+        SHDOCO = #{shdoco,jdbcType=BIGINT},
+      </if>
+      <if test="jdeStatus != null" >
+        JDE_Status = #{jdeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jdeProccesslog != null" >
+        JDE_ProccessLog = #{jdeProccesslog,jdbcType=VARCHAR},
+      </if>
+      <if test="jdeInsertdate != null" >
+        JDE_InsertDate = #{jdeInsertdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.OrderCancel" >
+    update OrderCancel
+    set SHKCOO = #{shkcoo,jdbcType=VARCHAR},
+      SHDCTO = #{shdcto,jdbcType=VARCHAR},
+      SHDOCO = #{shdoco,jdbcType=BIGINT},
+      JDE_Status = #{jdeStatus,jdbcType=VARCHAR},
+      JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      JDE_ProccessLog = #{jdeProccesslog,jdbcType=VARCHAR},
+      JDE_InsertDate = #{jdeInsertdate,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

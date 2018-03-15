@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.TRANLOGMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.TRANLOG" >
+    <result column="ID_BATCH" property="idBatch" jdbcType="INTEGER" />
+    <result column="CHANNEL_ID" property="channelId" jdbcType="VARCHAR" />
+    <result column="TRANSNAME" property="transname" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="LINES_READ" property="linesRead" jdbcType="BIGINT" />
+    <result column="LINES_WRITTEN" property="linesWritten" jdbcType="BIGINT" />
+    <result column="LINES_UPDATED" property="linesUpdated" jdbcType="BIGINT" />
+    <result column="LINES_INPUT" property="linesInput" jdbcType="BIGINT" />
+    <result column="LINES_OUTPUT" property="linesOutput" jdbcType="BIGINT" />
+    <result column="LINES_REJECTED" property="linesRejected" jdbcType="BIGINT" />
+    <result column="ERRORS" property="errors" jdbcType="BIGINT" />
+    <result column="STARTDATE" property="startdate" jdbcType="TIMESTAMP" />
+    <result column="ENDDATE" property="enddate" jdbcType="TIMESTAMP" />
+    <result column="LOGDATE" property="logdate" jdbcType="TIMESTAMP" />
+    <result column="DEPDATE" property="depdate" jdbcType="TIMESTAMP" />
+    <result column="REPLAYDATE" property="replaydate" jdbcType="TIMESTAMP" />
+    <result column="EXECUTING_SERVER" property="executingServer" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.tup.mssql.model.TRANLOG" extends="BaseResultMap" >
+    <result column="LOG_FIELD" property="logField" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID_BATCH, CHANNEL_ID, TRANSNAME, STATUS, LINES_READ, LINES_WRITTEN, LINES_UPDATED, 
+    LINES_INPUT, LINES_OUTPUT, LINES_REJECTED, ERRORS, STARTDATE, ENDDATE, LOGDATE, DEPDATE, 
+    REPLAYDATE, EXECUTING_SERVER
+  </sql>
+  <sql id="Blob_Column_List" >
+    LOG_FIELD
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.tup.mssql.model.TRANLOGExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from TRAN_LOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.TRANLOGExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from TRAN_LOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.TRANLOGExample" >
+    delete from TRAN_LOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.TRANLOG" >
+    insert into TRAN_LOG (ID_BATCH, CHANNEL_ID, TRANSNAME, 
+      STATUS, LINES_READ, LINES_WRITTEN, 
+      LINES_UPDATED, LINES_INPUT, LINES_OUTPUT, 
+      LINES_REJECTED, ERRORS, STARTDATE, 
+      ENDDATE, LOGDATE, DEPDATE, 
+      REPLAYDATE, EXECUTING_SERVER, LOG_FIELD
+      )
+    values (#{idBatch,jdbcType=INTEGER}, #{channelId,jdbcType=VARCHAR}, #{transname,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{linesRead,jdbcType=BIGINT}, #{linesWritten,jdbcType=BIGINT}, 
+      #{linesUpdated,jdbcType=BIGINT}, #{linesInput,jdbcType=BIGINT}, #{linesOutput,jdbcType=BIGINT}, 
+      #{linesRejected,jdbcType=BIGINT}, #{errors,jdbcType=BIGINT}, #{startdate,jdbcType=TIMESTAMP}, 
+      #{enddate,jdbcType=TIMESTAMP}, #{logdate,jdbcType=TIMESTAMP}, #{depdate,jdbcType=TIMESTAMP}, 
+      #{replaydate,jdbcType=TIMESTAMP}, #{executingServer,jdbcType=VARCHAR}, #{logField,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.TRANLOG" >
+    insert into TRAN_LOG
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idBatch != null" >
+        ID_BATCH,
+      </if>
+      <if test="channelId != null" >
+        CHANNEL_ID,
+      </if>
+      <if test="transname != null" >
+        TRANSNAME,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="linesRead != null" >
+        LINES_READ,
+      </if>
+      <if test="linesWritten != null" >
+        LINES_WRITTEN,
+      </if>
+      <if test="linesUpdated != null" >
+        LINES_UPDATED,
+      </if>
+      <if test="linesInput != null" >
+        LINES_INPUT,
+      </if>
+      <if test="linesOutput != null" >
+        LINES_OUTPUT,
+      </if>
+      <if test="linesRejected != null" >
+        LINES_REJECTED,
+      </if>
+      <if test="errors != null" >
+        ERRORS,
+      </if>
+      <if test="startdate != null" >
+        STARTDATE,
+      </if>
+      <if test="enddate != null" >
+        ENDDATE,
+      </if>
+      <if test="logdate != null" >
+        LOGDATE,
+      </if>
+      <if test="depdate != null" >
+        DEPDATE,
+      </if>
+      <if test="replaydate != null" >
+        REPLAYDATE,
+      </if>
+      <if test="executingServer != null" >
+        EXECUTING_SERVER,
+      </if>
+      <if test="logField != null" >
+        LOG_FIELD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idBatch != null" >
+        #{idBatch,jdbcType=INTEGER},
+      </if>
+      <if test="channelId != null" >
+        #{channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="transname != null" >
+        #{transname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="linesRead != null" >
+        #{linesRead,jdbcType=BIGINT},
+      </if>
+      <if test="linesWritten != null" >
+        #{linesWritten,jdbcType=BIGINT},
+      </if>
+      <if test="linesUpdated != null" >
+        #{linesUpdated,jdbcType=BIGINT},
+      </if>
+      <if test="linesInput != null" >
+        #{linesInput,jdbcType=BIGINT},
+      </if>
+      <if test="linesOutput != null" >
+        #{linesOutput,jdbcType=BIGINT},
+      </if>
+      <if test="linesRejected != null" >
+        #{linesRejected,jdbcType=BIGINT},
+      </if>
+      <if test="errors != null" >
+        #{errors,jdbcType=BIGINT},
+      </if>
+      <if test="startdate != null" >
+        #{startdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logdate != null" >
+        #{logdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="depdate != null" >
+        #{depdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replaydate != null" >
+        #{replaydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="executingServer != null" >
+        #{executingServer,jdbcType=VARCHAR},
+      </if>
+      <if test="logField != null" >
+        #{logField,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.TRANLOGExample" resultType="java.lang.Integer" >
+    select count(*) from TRAN_LOG
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update TRAN_LOG
+    <set >
+      <if test="record.idBatch != null" >
+        ID_BATCH = #{record.idBatch,jdbcType=INTEGER},
+      </if>
+      <if test="record.channelId != null" >
+        CHANNEL_ID = #{record.channelId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transname != null" >
+        TRANSNAME = #{record.transname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        STATUS = #{record.status,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linesRead != null" >
+        LINES_READ = #{record.linesRead,jdbcType=BIGINT},
+      </if>
+      <if test="record.linesWritten != null" >
+        LINES_WRITTEN = #{record.linesWritten,jdbcType=BIGINT},
+      </if>
+      <if test="record.linesUpdated != null" >
+        LINES_UPDATED = #{record.linesUpdated,jdbcType=BIGINT},
+      </if>
+      <if test="record.linesInput != null" >
+        LINES_INPUT = #{record.linesInput,jdbcType=BIGINT},
+      </if>
+      <if test="record.linesOutput != null" >
+        LINES_OUTPUT = #{record.linesOutput,jdbcType=BIGINT},
+      </if>
+      <if test="record.linesRejected != null" >
+        LINES_REJECTED = #{record.linesRejected,jdbcType=BIGINT},
+      </if>
+      <if test="record.errors != null" >
+        ERRORS = #{record.errors,jdbcType=BIGINT},
+      </if>
+      <if test="record.startdate != null" >
+        STARTDATE = #{record.startdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.enddate != null" >
+        ENDDATE = #{record.enddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.logdate != null" >
+        LOGDATE = #{record.logdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.depdate != null" >
+        DEPDATE = #{record.depdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.replaydate != null" >
+        REPLAYDATE = #{record.replaydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.executingServer != null" >
+        EXECUTING_SERVER = #{record.executingServer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logField != null" >
+        LOG_FIELD = #{record.logField,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update TRAN_LOG
+    set ID_BATCH = #{record.idBatch,jdbcType=INTEGER},
+      CHANNEL_ID = #{record.channelId,jdbcType=VARCHAR},
+      TRANSNAME = #{record.transname,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      LINES_READ = #{record.linesRead,jdbcType=BIGINT},
+      LINES_WRITTEN = #{record.linesWritten,jdbcType=BIGINT},
+      LINES_UPDATED = #{record.linesUpdated,jdbcType=BIGINT},
+      LINES_INPUT = #{record.linesInput,jdbcType=BIGINT},
+      LINES_OUTPUT = #{record.linesOutput,jdbcType=BIGINT},
+      LINES_REJECTED = #{record.linesRejected,jdbcType=BIGINT},
+      ERRORS = #{record.errors,jdbcType=BIGINT},
+      STARTDATE = #{record.startdate,jdbcType=TIMESTAMP},
+      ENDDATE = #{record.enddate,jdbcType=TIMESTAMP},
+      LOGDATE = #{record.logdate,jdbcType=TIMESTAMP},
+      DEPDATE = #{record.depdate,jdbcType=TIMESTAMP},
+      REPLAYDATE = #{record.replaydate,jdbcType=TIMESTAMP},
+      EXECUTING_SERVER = #{record.executingServer,jdbcType=VARCHAR},
+      LOG_FIELD = #{record.logField,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update TRAN_LOG
+    set ID_BATCH = #{record.idBatch,jdbcType=INTEGER},
+      CHANNEL_ID = #{record.channelId,jdbcType=VARCHAR},
+      TRANSNAME = #{record.transname,jdbcType=VARCHAR},
+      STATUS = #{record.status,jdbcType=VARCHAR},
+      LINES_READ = #{record.linesRead,jdbcType=BIGINT},
+      LINES_WRITTEN = #{record.linesWritten,jdbcType=BIGINT},
+      LINES_UPDATED = #{record.linesUpdated,jdbcType=BIGINT},
+      LINES_INPUT = #{record.linesInput,jdbcType=BIGINT},
+      LINES_OUTPUT = #{record.linesOutput,jdbcType=BIGINT},
+      LINES_REJECTED = #{record.linesRejected,jdbcType=BIGINT},
+      ERRORS = #{record.errors,jdbcType=BIGINT},
+      STARTDATE = #{record.startdate,jdbcType=TIMESTAMP},
+      ENDDATE = #{record.enddate,jdbcType=TIMESTAMP},
+      LOGDATE = #{record.logdate,jdbcType=TIMESTAMP},
+      DEPDATE = #{record.depdate,jdbcType=TIMESTAMP},
+      REPLAYDATE = #{record.replaydate,jdbcType=TIMESTAMP},
+      EXECUTING_SERVER = #{record.executingServer,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.ERRORDATAMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.ERRORDATA" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="ERROR_TABLE" property="errorTable" jdbcType="VARCHAR" />
+    <result column="DATA_COL" property="dataCol" jdbcType="VARCHAR" />
+    <result column="DATA_KEY" property="dataKey" jdbcType="VARCHAR" />
+    <result column="ERROR_NUM" property="errorNum" jdbcType="INTEGER" />
+    <result column="ERROR_COL" property="errorCol" jdbcType="VARCHAR" />
+    <result column="ERROR_CODE" property="errorCode" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.tup.mssql.model.ERRORDATA" extends="BaseResultMap" >
+    <result column="ERROR_DESC" property="errorDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, ERROR_TABLE, DATA_COL, DATA_KEY, ERROR_NUM, ERROR_COL, ERROR_CODE, REMARK, CREATE_TIME, 
+    UPDATE_TIME
+  </sql>
+  <sql id="Blob_Column_List" >
+    ERROR_DESC
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.tup.mssql.model.ERRORDATAExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ERROR_DATA
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.ERRORDATAExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from ERROR_DATA
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ERROR_DATA
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ERROR_DATA
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.ERRORDATAExample" >
+    delete from ERROR_DATA
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.ERRORDATA" >
+    insert into ERROR_DATA (ID, ERROR_TABLE, DATA_COL, 
+      DATA_KEY, ERROR_NUM, ERROR_COL, 
+      ERROR_CODE, REMARK, CREATE_TIME, 
+      UPDATE_TIME, ERROR_DESC)
+    values (#{id,jdbcType=BIGINT}, #{errorTable,jdbcType=VARCHAR}, #{dataCol,jdbcType=VARCHAR}, 
+      #{dataKey,jdbcType=VARCHAR}, #{errorNum,jdbcType=INTEGER}, #{errorCol,jdbcType=VARCHAR}, 
+      #{errorCode,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{errorDesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.ERRORDATA" >
+    insert into ERROR_DATA
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="errorTable != null" >
+        ERROR_TABLE,
+      </if>
+      <if test="dataCol != null" >
+        DATA_COL,
+      </if>
+      <if test="dataKey != null" >
+        DATA_KEY,
+      </if>
+      <if test="errorNum != null" >
+        ERROR_NUM,
+      </if>
+      <if test="errorCol != null" >
+        ERROR_COL,
+      </if>
+      <if test="errorCode != null" >
+        ERROR_CODE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="errorDesc != null" >
+        ERROR_DESC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="errorTable != null" >
+        #{errorTable,jdbcType=VARCHAR},
+      </if>
+      <if test="dataCol != null" >
+        #{dataCol,jdbcType=VARCHAR},
+      </if>
+      <if test="dataKey != null" >
+        #{dataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="errorNum != null" >
+        #{errorNum,jdbcType=INTEGER},
+      </if>
+      <if test="errorCol != null" >
+        #{errorCol,jdbcType=VARCHAR},
+      </if>
+      <if test="errorCode != null" >
+        #{errorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="errorDesc != null" >
+        #{errorDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.ERRORDATAExample" resultType="java.lang.Integer" >
+    select count(*) from ERROR_DATA
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ERROR_DATA
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.errorTable != null" >
+        ERROR_TABLE = #{record.errorTable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dataCol != null" >
+        DATA_COL = #{record.dataCol,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dataKey != null" >
+        DATA_KEY = #{record.dataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.errorNum != null" >
+        ERROR_NUM = #{record.errorNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.errorCol != null" >
+        ERROR_COL = #{record.errorCol,jdbcType=VARCHAR},
+      </if>
+      <if test="record.errorCode != null" >
+        ERROR_CODE = #{record.errorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null" >
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.errorDesc != null" >
+        ERROR_DESC = #{record.errorDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update ERROR_DATA
+    set ID = #{record.id,jdbcType=BIGINT},
+      ERROR_TABLE = #{record.errorTable,jdbcType=VARCHAR},
+      DATA_COL = #{record.dataCol,jdbcType=VARCHAR},
+      DATA_KEY = #{record.dataKey,jdbcType=VARCHAR},
+      ERROR_NUM = #{record.errorNum,jdbcType=INTEGER},
+      ERROR_COL = #{record.errorCol,jdbcType=VARCHAR},
+      ERROR_CODE = #{record.errorCode,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      ERROR_DESC = #{record.errorDesc,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ERROR_DATA
+    set ID = #{record.id,jdbcType=BIGINT},
+      ERROR_TABLE = #{record.errorTable,jdbcType=VARCHAR},
+      DATA_COL = #{record.dataCol,jdbcType=VARCHAR},
+      DATA_KEY = #{record.dataKey,jdbcType=VARCHAR},
+      ERROR_NUM = #{record.errorNum,jdbcType=INTEGER},
+      ERROR_COL = #{record.errorCol,jdbcType=VARCHAR},
+      ERROR_CODE = #{record.errorCode,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.ERRORDATA" >
+    update ERROR_DATA
+    <set >
+      <if test="errorTable != null" >
+        ERROR_TABLE = #{errorTable,jdbcType=VARCHAR},
+      </if>
+      <if test="dataCol != null" >
+        DATA_COL = #{dataCol,jdbcType=VARCHAR},
+      </if>
+      <if test="dataKey != null" >
+        DATA_KEY = #{dataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="errorNum != null" >
+        ERROR_NUM = #{errorNum,jdbcType=INTEGER},
+      </if>
+      <if test="errorCol != null" >
+        ERROR_COL = #{errorCol,jdbcType=VARCHAR},
+      </if>
+      <if test="errorCode != null" >
+        ERROR_CODE = #{errorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="errorDesc != null" >
+        ERROR_DESC = #{errorDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.tup.mssql.model.ERRORDATA" >
+    update ERROR_DATA
+    set ERROR_TABLE = #{errorTable,jdbcType=VARCHAR},
+      DATA_COL = #{dataCol,jdbcType=VARCHAR},
+      DATA_KEY = #{dataKey,jdbcType=VARCHAR},
+      ERROR_NUM = #{errorNum,jdbcType=INTEGER},
+      ERROR_COL = #{errorCol,jdbcType=VARCHAR},
+      ERROR_CODE = #{errorCode,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      ERROR_DESC = #{errorDesc,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.ERRORDATA" >
+    update ERROR_DATA
+    set ERROR_TABLE = #{errorTable,jdbcType=VARCHAR},
+      DATA_COL = #{dataCol,jdbcType=VARCHAR},
+      DATA_KEY = #{dataKey,jdbcType=VARCHAR},
+      ERROR_NUM = #{errorNum,jdbcType=INTEGER},
+      ERROR_COL = #{errorCol,jdbcType=VARCHAR},
+      ERROR_CODE = #{errorCode,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

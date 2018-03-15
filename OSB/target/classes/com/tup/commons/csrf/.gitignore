@@ -1,0 +1,5 @@
+/CsrfInterceptor.class
+/CsrfToken.class
+/CsrfTokenBean.class
+/CsrfTokenRepository.class
+/HttpSessionCsrfTokenRepository.class

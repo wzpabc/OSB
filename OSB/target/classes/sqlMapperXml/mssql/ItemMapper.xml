@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tup.mssql.mapper.ItemMapper" >
+  <resultMap id="BaseResultMap" type="com.tup.mssql.model.Item" >
+    <id column="IBMCU" property="ibmcu" jdbcType="VARCHAR" />
+    <id column="IBITM" property="ibitm" jdbcType="INTEGER" />
+    <result column="IBLITM" property="iblitm" jdbcType="VARCHAR" />
+    <result column="IMDSC1" property="imdsc1" jdbcType="NVARCHAR" />
+    <result column="IMDSC2" property="imdsc2" jdbcType="NVARCHAR" />
+    <result column="IBDSC1_e" property="ibdsc1E" jdbcType="NVARCHAR" />
+    <result column="IBDSC2_e" property="ibdsc2E" jdbcType="NVARCHAR" />
+    <result column="IBSRP1" property="ibsrp1" jdbcType="VARCHAR" />
+    <result column="IBSRP2" property="ibsrp2" jdbcType="VARCHAR" />
+    <result column="IBSRP3" property="ibsrp3" jdbcType="VARCHAR" />
+    <result column="IBSRP4" property="ibsrp4" jdbcType="VARCHAR" />
+    <result column="IBSRP5" property="ibsrp5" jdbcType="VARCHAR" />
+    <result column="IBSRP6" property="ibsrp6" jdbcType="VARCHAR" />
+    <result column="IBSRP7" property="ibsrp7" jdbcType="VARCHAR" />
+    <result column="IBSRP8" property="ibsrp8" jdbcType="VARCHAR" />
+    <result column="IBSRP9" property="ibsrp9" jdbcType="VARCHAR" />
+    <result column="IBSRP0" property="ibsrp0" jdbcType="VARCHAR" />
+    <result column="IBPRP1" property="ibprp1" jdbcType="VARCHAR" />
+    <result column="IBPRP2" property="ibprp2" jdbcType="VARCHAR" />
+    <result column="IBPRP3" property="ibprp3" jdbcType="VARCHAR" />
+    <result column="IBPRP4" property="ibprp4" jdbcType="VARCHAR" />
+    <result column="IBPRP5" property="ibprp5" jdbcType="VARCHAR" />
+    <result column="IBPRP6" property="ibprp6" jdbcType="VARCHAR" />
+    <result column="IBPRP7" property="ibprp7" jdbcType="VARCHAR" />
+    <result column="IBPRP8" property="ibprp8" jdbcType="VARCHAR" />
+    <result column="IBPRP9" property="ibprp9" jdbcType="VARCHAR" />
+    <result column="IBPRP0" property="ibprp0" jdbcType="VARCHAR" />
+    <result column="UMRUM" property="umrum" jdbcType="VARCHAR" />
+    <result column="UMUM" property="umum" jdbcType="VARCHAR" />
+    <result column="UMCONV" property="umconv" jdbcType="NUMERIC" />
+    <result column="IMUSER" property="imuser" jdbcType="VARCHAR" />
+    <result column="IBUPMJ" property="ibupmj" jdbcType="TIMESTAMP" />
+    <result column="IBGLPT" property="ibglpt" jdbcType="VARCHAR" />
+    <result column="IBBACK" property="ibback" jdbcType="VARCHAR" />
+    <result column="IBAITM" property="ibaitm" jdbcType="VARCHAR" />
+    <result column="IBSTKT" property="ibstkt" jdbcType="VARCHAR" />
+    <result column="IMUOM1" property="imuom1" jdbcType="VARCHAR" />
+    <result column="IMUOM2" property="imuom2" jdbcType="VARCHAR" />
+    <result column="JDE_UpdateDate" property="jdeUpdatedate" jdbcType="TIMESTAMP" />
+    <result column="KT_ProcessDate" property="ktProcessdate" jdbcType="TIMESTAMP" />
+    <result column="KT_FailDate" property="ktFaildate" jdbcType="TIMESTAMP" />
+    <result column="KT_RetryTimes" property="ktRetrytimes" jdbcType="INTEGER" />
+    <result column="KT_ErrorLog" property="ktErrorlog" jdbcType="VARCHAR" />
+    <result column="fms_process_date" property="fmsProcessDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    IBMCU, IBITM, IBLITM, IMDSC1, IMDSC2, IBDSC1_e, IBDSC2_e, IBSRP1, IBSRP2, IBSRP3, 
+    IBSRP4, IBSRP5, IBSRP6, IBSRP7, IBSRP8, IBSRP9, IBSRP0, IBPRP1, IBPRP2, IBPRP3, IBPRP4, 
+    IBPRP5, IBPRP6, IBPRP7, IBPRP8, IBPRP9, IBPRP0, UMRUM, UMUM, UMCONV, IMUSER, IBUPMJ, 
+    IBGLPT, IBBACK, IBAITM, IBSTKT, IMUOM1, IMUOM2, JDE_UpdateDate, KT_ProcessDate, KT_FailDate, 
+    KT_RetryTimes, KT_ErrorLog, fms_process_date
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.ItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from Item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.tup.mssql.model.ItemKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from Item
+    where IBMCU = #{ibmcu,jdbcType=VARCHAR}
+      and IBITM = #{ibitm,jdbcType=INTEGER}
+  </select>
+  
+  
+   <select id="selectByMapParam" resultMap="BaseResultMap" parameterType="Map" >
+    select  
+    <include refid="Base_Column_List" />
+    from Item WHERE 1=1
+      <if test="ibmcu != null" >
+        and  IBMCU = #{ibmcu,jdbcType=VARCHAR}
+      </if>
+      <if test="ibitm != null" >
+        and  IBITM = #{ibitm,jdbcType=INTEGER}
+      </if>
+      <if test="iblitm != null" >
+        and  IBLITM = #{iblitm,jdbcType=VARCHAR}
+      </if>
+      <if test="imdsc1 != null" >
+        and  IMDSC1 = #{imdsc1,jdbcType=NVARCHAR}
+      </if>
+      <if test="imdsc2 != null" >
+        and  IMDSC2 = #{imdsc2,jdbcType=NVARCHAR}
+      </if>
+      <if test="ibdsc1E != null" >
+        and  IBDSC1_e = #{ibdsc1E,jdbcType=NVARCHAR}
+      </if>
+      <if test="ibdsc2E != null" >
+        and  IBDSC2_e = #{ibdsc2E,jdbcType=NVARCHAR}
+      </if>
+      <if test="ibsrp1 != null" >
+        and  IBSRP1 = #{ibsrp1,jdbcType=VARCHAR}
+      </if>
+      <if test="ibsrp2 != null" >
+        and  IBSRP2 = #{ibsrp2,jdbcType=VARCHAR}
+      </if>
+      <if test="ibsrp3 != null" >
+        and  IBSRP3 = #{ibsrp3,jdbcType=VARCHAR}
+      </if>
+      <if test="ibsrp4 != null" >
+        and  IBSRP4 = #{ibsrp4,jdbcType=VARCHAR}
+      </if>
+      <if test="ibsrp5 != null" >
+        and  IBSRP5 = #{ibsrp5,jdbcType=VARCHAR}
+      </if>
+      <if test="ibsrp6 != null" >
+        and  IBSRP6 = #{ibsrp6,jdbcType=VARCHAR}
+      </if>
+      <if test="ibsrp7 != null" >
+        and  IBSRP7 = #{ibsrp7,jdbcType=VARCHAR}
+      </if>
+      <if test="ibsrp8 != null" >
+        and  IBSRP8 = #{ibsrp8,jdbcType=VARCHAR}
+      </if>
+      <if test="ibsrp9 != null" >
+        and  IBSRP9 = #{ibsrp9,jdbcType=VARCHAR}
+      </if>
+      <if test="ibsrp0 != null" >
+        and  IBSRP0 = #{ibsrp0,jdbcType=VARCHAR}
+      </if>
+      <if test="ibprp1 != null" >
+        and  IBPRP1 = #{ibprp1,jdbcType=VARCHAR}
+      </if>
+      <if test="ibprp2 != null" >
+        and  IBPRP2 = #{ibprp2,jdbcType=VARCHAR}
+      </if>
+      <if test="ibprp3 != null" >
+        and  IBPRP3 = #{ibprp3,jdbcType=VARCHAR}
+      </if>
+      <if test="ibprp4 != null" >
+        and  IBPRP4 = #{ibprp4,jdbcType=VARCHAR}
+      </if>
+      <if test="ibprp5 != null" >
+        and  IBPRP5 = #{ibprp5,jdbcType=VARCHAR}
+      </if>
+      <if test="ibprp6 != null" >
+        and  IBPRP6 = #{ibprp6,jdbcType=VARCHAR}
+      </if>
+      <if test="ibprp7 != null" >
+        and  IBPRP7 = #{ibprp7,jdbcType=VARCHAR}
+      </if>
+      <if test="ibprp8 != null" >
+        and  IBPRP8 = #{ibprp8,jdbcType=VARCHAR}
+      </if>
+      <if test="ibprp9 != null" >
+        and  IBPRP9 = #{ibprp9,jdbcType=VARCHAR}
+      </if>
+      <if test="ibprp0 != null" >
+        and  IBPRP0 = #{ibprp0,jdbcType=VARCHAR}
+      </if>
+      <if test="umrum != null" >
+        and  UMRUM = #{umrum,jdbcType=VARCHAR}
+      </if>
+      <if test="umum != null" >
+        and  UMUM = #{umum,jdbcType=VARCHAR}
+      </if>
+      <if test="umconv != null" >
+        and  UMCONV = #{umconv,jdbcType=NUMERIC}
+      </if>
+      <if test="imuser != null" >
+        and  IMUSER = #{imuser,jdbcType=VARCHAR}
+      </if>
+      <if test="ibupmj != null" >
+        and  IBUPMJ = #{ibupmj,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ibglpt != null" >
+        and  IBGLPT = #{ibglpt,jdbcType=VARCHAR}
+      </if>
+      <if test="ibback != null" >
+        and  IBBACK = #{ibback,jdbcType=VARCHAR}
+      </if>
+      <if test="ibaitm != null" >
+        and  IBAITM = #{ibaitm,jdbcType=VARCHAR}
+      </if>
+      <if test="ibstkt != null" >
+        and  IBSTKT = #{ibstkt,jdbcType=VARCHAR}
+      </if>
+      <if test="imuom1 != null" >
+        and  IMUOM1 = #{imuom1,jdbcType=VARCHAR}
+      </if>
+      <if test="imuom2 != null" >
+        and  IMUOM2 = #{imuom2,jdbcType=VARCHAR}
+      </if>
+      <if test="jdeUpdatedate != null" >
+        and  JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ktProcessdate != null" >
+        and  KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ktFaildate != null" >
+        and  KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP}
+      </if>
+      <if test="ktRetrytimes != null" >
+        and  KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER}
+      </if>
+      <if test="ktErrorlog != null" >
+        and  KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR}
+      </if>
+      <if test="fmsProcessDate != null" >
+        and  fms_process_date = #{fmsProcessDate,jdbcType=TIMESTAMP}
+      </if>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="com.tup.mssql.model.ItemKey" >
+    delete from Item
+    where IBMCU = #{ibmcu,jdbcType=VARCHAR}
+      and IBITM = #{ibitm,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tup.mssql.model.ItemExample" >
+    delete from Item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tup.mssql.model.Item" >
+    insert into Item (IBMCU, IBITM, IBLITM, 
+      IMDSC1, IMDSC2, IBDSC1_e, 
+      IBDSC2_e, IBSRP1, IBSRP2, 
+      IBSRP3, IBSRP4, IBSRP5, 
+      IBSRP6, IBSRP7, IBSRP8, 
+      IBSRP9, IBSRP0, IBPRP1, 
+      IBPRP2, IBPRP3, IBPRP4, 
+      IBPRP5, IBPRP6, IBPRP7, 
+      IBPRP8, IBPRP9, IBPRP0, 
+      UMRUM, UMUM, UMCONV, 
+      IMUSER, IBUPMJ, IBGLPT, 
+      IBBACK, IBAITM, IBSTKT, 
+      IMUOM1, IMUOM2, JDE_UpdateDate, 
+      KT_ProcessDate, KT_FailDate, KT_RetryTimes, 
+      KT_ErrorLog, fms_process_date)
+    values (#{ibmcu,jdbcType=VARCHAR}, #{ibitm,jdbcType=INTEGER}, #{iblitm,jdbcType=VARCHAR}, 
+      #{imdsc1,jdbcType=NVARCHAR}, #{imdsc2,jdbcType=NVARCHAR}, #{ibdsc1E,jdbcType=NVARCHAR}, 
+      #{ibdsc2E,jdbcType=NVARCHAR}, #{ibsrp1,jdbcType=VARCHAR}, #{ibsrp2,jdbcType=VARCHAR}, 
+      #{ibsrp3,jdbcType=VARCHAR}, #{ibsrp4,jdbcType=VARCHAR}, #{ibsrp5,jdbcType=VARCHAR}, 
+      #{ibsrp6,jdbcType=VARCHAR}, #{ibsrp7,jdbcType=VARCHAR}, #{ibsrp8,jdbcType=VARCHAR}, 
+      #{ibsrp9,jdbcType=VARCHAR}, #{ibsrp0,jdbcType=VARCHAR}, #{ibprp1,jdbcType=VARCHAR}, 
+      #{ibprp2,jdbcType=VARCHAR}, #{ibprp3,jdbcType=VARCHAR}, #{ibprp4,jdbcType=VARCHAR}, 
+      #{ibprp5,jdbcType=VARCHAR}, #{ibprp6,jdbcType=VARCHAR}, #{ibprp7,jdbcType=VARCHAR}, 
+      #{ibprp8,jdbcType=VARCHAR}, #{ibprp9,jdbcType=VARCHAR}, #{ibprp0,jdbcType=VARCHAR}, 
+      #{umrum,jdbcType=VARCHAR}, #{umum,jdbcType=VARCHAR}, #{umconv,jdbcType=NUMERIC}, 
+      #{imuser,jdbcType=VARCHAR}, #{ibupmj,jdbcType=TIMESTAMP}, #{ibglpt,jdbcType=VARCHAR}, 
+      #{ibback,jdbcType=VARCHAR}, #{ibaitm,jdbcType=VARCHAR}, #{ibstkt,jdbcType=VARCHAR}, 
+      #{imuom1,jdbcType=VARCHAR}, #{imuom2,jdbcType=VARCHAR}, #{jdeUpdatedate,jdbcType=TIMESTAMP}, 
+      #{ktProcessdate,jdbcType=TIMESTAMP}, #{ktFaildate,jdbcType=TIMESTAMP}, #{ktRetrytimes,jdbcType=INTEGER}, 
+      #{ktErrorlog,jdbcType=VARCHAR}, #{fmsProcessDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tup.mssql.model.Item" >
+    insert into Item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ibmcu != null" >
+        IBMCU,
+      </if>
+      <if test="ibitm != null" >
+        IBITM,
+      </if>
+      <if test="iblitm != null" >
+        IBLITM,
+      </if>
+      <if test="imdsc1 != null" >
+        IMDSC1,
+      </if>
+      <if test="imdsc2 != null" >
+        IMDSC2,
+      </if>
+      <if test="ibdsc1E != null" >
+        IBDSC1_e,
+      </if>
+      <if test="ibdsc2E != null" >
+        IBDSC2_e,
+      </if>
+      <if test="ibsrp1 != null" >
+        IBSRP1,
+      </if>
+      <if test="ibsrp2 != null" >
+        IBSRP2,
+      </if>
+      <if test="ibsrp3 != null" >
+        IBSRP3,
+      </if>
+      <if test="ibsrp4 != null" >
+        IBSRP4,
+      </if>
+      <if test="ibsrp5 != null" >
+        IBSRP5,
+      </if>
+      <if test="ibsrp6 != null" >
+        IBSRP6,
+      </if>
+      <if test="ibsrp7 != null" >
+        IBSRP7,
+      </if>
+      <if test="ibsrp8 != null" >
+        IBSRP8,
+      </if>
+      <if test="ibsrp9 != null" >
+        IBSRP9,
+      </if>
+      <if test="ibsrp0 != null" >
+        IBSRP0,
+      </if>
+      <if test="ibprp1 != null" >
+        IBPRP1,
+      </if>
+      <if test="ibprp2 != null" >
+        IBPRP2,
+      </if>
+      <if test="ibprp3 != null" >
+        IBPRP3,
+      </if>
+      <if test="ibprp4 != null" >
+        IBPRP4,
+      </if>
+      <if test="ibprp5 != null" >
+        IBPRP5,
+      </if>
+      <if test="ibprp6 != null" >
+        IBPRP6,
+      </if>
+      <if test="ibprp7 != null" >
+        IBPRP7,
+      </if>
+      <if test="ibprp8 != null" >
+        IBPRP8,
+      </if>
+      <if test="ibprp9 != null" >
+        IBPRP9,
+      </if>
+      <if test="ibprp0 != null" >
+        IBPRP0,
+      </if>
+      <if test="umrum != null" >
+        UMRUM,
+      </if>
+      <if test="umum != null" >
+        UMUM,
+      </if>
+      <if test="umconv != null" >
+        UMCONV,
+      </if>
+      <if test="imuser != null" >
+        IMUSER,
+      </if>
+      <if test="ibupmj != null" >
+        IBUPMJ,
+      </if>
+      <if test="ibglpt != null" >
+        IBGLPT,
+      </if>
+      <if test="ibback != null" >
+        IBBACK,
+      </if>
+      <if test="ibaitm != null" >
+        IBAITM,
+      </if>
+      <if test="ibstkt != null" >
+        IBSTKT,
+      </if>
+      <if test="imuom1 != null" >
+        IMUOM1,
+      </if>
+      <if test="imuom2 != null" >
+        IMUOM2,
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate,
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate,
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate,
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes,
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog,
+      </if>
+      <if test="fmsProcessDate != null" >
+        fms_process_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ibmcu != null" >
+        #{ibmcu,jdbcType=VARCHAR},
+      </if>
+      <if test="ibitm != null" >
+        #{ibitm,jdbcType=INTEGER},
+      </if>
+      <if test="iblitm != null" >
+        #{iblitm,jdbcType=VARCHAR},
+      </if>
+      <if test="imdsc1 != null" >
+        #{imdsc1,jdbcType=NVARCHAR},
+      </if>
+      <if test="imdsc2 != null" >
+        #{imdsc2,jdbcType=NVARCHAR},
+      </if>
+      <if test="ibdsc1E != null" >
+        #{ibdsc1E,jdbcType=NVARCHAR},
+      </if>
+      <if test="ibdsc2E != null" >
+        #{ibdsc2E,jdbcType=NVARCHAR},
+      </if>
+      <if test="ibsrp1 != null" >
+        #{ibsrp1,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp2 != null" >
+        #{ibsrp2,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp3 != null" >
+        #{ibsrp3,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp4 != null" >
+        #{ibsrp4,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp5 != null" >
+        #{ibsrp5,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp6 != null" >
+        #{ibsrp6,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp7 != null" >
+        #{ibsrp7,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp8 != null" >
+        #{ibsrp8,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp9 != null" >
+        #{ibsrp9,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp0 != null" >
+        #{ibsrp0,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp1 != null" >
+        #{ibprp1,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp2 != null" >
+        #{ibprp2,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp3 != null" >
+        #{ibprp3,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp4 != null" >
+        #{ibprp4,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp5 != null" >
+        #{ibprp5,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp6 != null" >
+        #{ibprp6,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp7 != null" >
+        #{ibprp7,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp8 != null" >
+        #{ibprp8,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp9 != null" >
+        #{ibprp9,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp0 != null" >
+        #{ibprp0,jdbcType=VARCHAR},
+      </if>
+      <if test="umrum != null" >
+        #{umrum,jdbcType=VARCHAR},
+      </if>
+      <if test="umum != null" >
+        #{umum,jdbcType=VARCHAR},
+      </if>
+      <if test="umconv != null" >
+        #{umconv,jdbcType=NUMERIC},
+      </if>
+      <if test="imuser != null" >
+        #{imuser,jdbcType=VARCHAR},
+      </if>
+      <if test="ibupmj != null" >
+        #{ibupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ibglpt != null" >
+        #{ibglpt,jdbcType=VARCHAR},
+      </if>
+      <if test="ibback != null" >
+        #{ibback,jdbcType=VARCHAR},
+      </if>
+      <if test="ibaitm != null" >
+        #{ibaitm,jdbcType=VARCHAR},
+      </if>
+      <if test="ibstkt != null" >
+        #{ibstkt,jdbcType=VARCHAR},
+      </if>
+      <if test="imuom1 != null" >
+        #{imuom1,jdbcType=VARCHAR},
+      </if>
+      <if test="imuom2 != null" >
+        #{imuom2,jdbcType=VARCHAR},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktProcessdate != null" >
+        #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="fmsProcessDate != null" >
+        #{fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tup.mssql.model.ItemExample" resultType="java.lang.Integer" >
+    select count(*) from Item
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update Item
+    <set >
+      <if test="record.ibmcu != null" >
+        IBMCU = #{record.ibmcu,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibitm != null" >
+        IBITM = #{record.ibitm,jdbcType=INTEGER},
+      </if>
+      <if test="record.iblitm != null" >
+        IBLITM = #{record.iblitm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imdsc1 != null" >
+        IMDSC1 = #{record.imdsc1,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.imdsc2 != null" >
+        IMDSC2 = #{record.imdsc2,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.ibdsc1E != null" >
+        IBDSC1_e = #{record.ibdsc1E,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.ibdsc2E != null" >
+        IBDSC2_e = #{record.ibdsc2E,jdbcType=NVARCHAR},
+      </if>
+      <if test="record.ibsrp1 != null" >
+        IBSRP1 = #{record.ibsrp1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibsrp2 != null" >
+        IBSRP2 = #{record.ibsrp2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibsrp3 != null" >
+        IBSRP3 = #{record.ibsrp3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibsrp4 != null" >
+        IBSRP4 = #{record.ibsrp4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibsrp5 != null" >
+        IBSRP5 = #{record.ibsrp5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibsrp6 != null" >
+        IBSRP6 = #{record.ibsrp6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibsrp7 != null" >
+        IBSRP7 = #{record.ibsrp7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibsrp8 != null" >
+        IBSRP8 = #{record.ibsrp8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibsrp9 != null" >
+        IBSRP9 = #{record.ibsrp9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibsrp0 != null" >
+        IBSRP0 = #{record.ibsrp0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibprp1 != null" >
+        IBPRP1 = #{record.ibprp1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibprp2 != null" >
+        IBPRP2 = #{record.ibprp2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibprp3 != null" >
+        IBPRP3 = #{record.ibprp3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibprp4 != null" >
+        IBPRP4 = #{record.ibprp4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibprp5 != null" >
+        IBPRP5 = #{record.ibprp5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibprp6 != null" >
+        IBPRP6 = #{record.ibprp6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibprp7 != null" >
+        IBPRP7 = #{record.ibprp7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibprp8 != null" >
+        IBPRP8 = #{record.ibprp8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibprp9 != null" >
+        IBPRP9 = #{record.ibprp9,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibprp0 != null" >
+        IBPRP0 = #{record.ibprp0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.umrum != null" >
+        UMRUM = #{record.umrum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.umum != null" >
+        UMUM = #{record.umum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.umconv != null" >
+        UMCONV = #{record.umconv,jdbcType=NUMERIC},
+      </if>
+      <if test="record.imuser != null" >
+        IMUSER = #{record.imuser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibupmj != null" >
+        IBUPMJ = #{record.ibupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ibglpt != null" >
+        IBGLPT = #{record.ibglpt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibback != null" >
+        IBBACK = #{record.ibback,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibaitm != null" >
+        IBAITM = #{record.ibaitm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ibstkt != null" >
+        IBSTKT = #{record.ibstkt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imuom1 != null" >
+        IMUOM1 = #{record.imuom1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imuom2 != null" >
+        IMUOM2 = #{record.imuom2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jdeUpdatedate != null" >
+        JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktProcessdate != null" >
+        KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktFaildate != null" >
+        KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.ktRetrytimes != null" >
+        KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="record.ktErrorlog != null" >
+        KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fmsProcessDate != null" >
+        fms_process_date = #{record.fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update Item
+    set IBMCU = #{record.ibmcu,jdbcType=VARCHAR},
+      IBITM = #{record.ibitm,jdbcType=INTEGER},
+      IBLITM = #{record.iblitm,jdbcType=VARCHAR},
+      IMDSC1 = #{record.imdsc1,jdbcType=NVARCHAR},
+      IMDSC2 = #{record.imdsc2,jdbcType=NVARCHAR},
+      IBDSC1_e = #{record.ibdsc1E,jdbcType=NVARCHAR},
+      IBDSC2_e = #{record.ibdsc2E,jdbcType=NVARCHAR},
+      IBSRP1 = #{record.ibsrp1,jdbcType=VARCHAR},
+      IBSRP2 = #{record.ibsrp2,jdbcType=VARCHAR},
+      IBSRP3 = #{record.ibsrp3,jdbcType=VARCHAR},
+      IBSRP4 = #{record.ibsrp4,jdbcType=VARCHAR},
+      IBSRP5 = #{record.ibsrp5,jdbcType=VARCHAR},
+      IBSRP6 = #{record.ibsrp6,jdbcType=VARCHAR},
+      IBSRP7 = #{record.ibsrp7,jdbcType=VARCHAR},
+      IBSRP8 = #{record.ibsrp8,jdbcType=VARCHAR},
+      IBSRP9 = #{record.ibsrp9,jdbcType=VARCHAR},
+      IBSRP0 = #{record.ibsrp0,jdbcType=VARCHAR},
+      IBPRP1 = #{record.ibprp1,jdbcType=VARCHAR},
+      IBPRP2 = #{record.ibprp2,jdbcType=VARCHAR},
+      IBPRP3 = #{record.ibprp3,jdbcType=VARCHAR},
+      IBPRP4 = #{record.ibprp4,jdbcType=VARCHAR},
+      IBPRP5 = #{record.ibprp5,jdbcType=VARCHAR},
+      IBPRP6 = #{record.ibprp6,jdbcType=VARCHAR},
+      IBPRP7 = #{record.ibprp7,jdbcType=VARCHAR},
+      IBPRP8 = #{record.ibprp8,jdbcType=VARCHAR},
+      IBPRP9 = #{record.ibprp9,jdbcType=VARCHAR},
+      IBPRP0 = #{record.ibprp0,jdbcType=VARCHAR},
+      UMRUM = #{record.umrum,jdbcType=VARCHAR},
+      UMUM = #{record.umum,jdbcType=VARCHAR},
+      UMCONV = #{record.umconv,jdbcType=NUMERIC},
+      IMUSER = #{record.imuser,jdbcType=VARCHAR},
+      IBUPMJ = #{record.ibupmj,jdbcType=TIMESTAMP},
+      IBGLPT = #{record.ibglpt,jdbcType=VARCHAR},
+      IBBACK = #{record.ibback,jdbcType=VARCHAR},
+      IBAITM = #{record.ibaitm,jdbcType=VARCHAR},
+      IBSTKT = #{record.ibstkt,jdbcType=VARCHAR},
+      IMUOM1 = #{record.imuom1,jdbcType=VARCHAR},
+      IMUOM2 = #{record.imuom2,jdbcType=VARCHAR},
+      JDE_UpdateDate = #{record.jdeUpdatedate,jdbcType=TIMESTAMP},
+      KT_ProcessDate = #{record.ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{record.ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{record.ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{record.ktErrorlog,jdbcType=VARCHAR},
+      fms_process_date = #{record.fmsProcessDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tup.mssql.model.Item" >
+    update Item
+    <set >
+      <if test="iblitm != null" >
+        IBLITM = #{iblitm,jdbcType=VARCHAR},
+      </if>
+      <if test="imdsc1 != null" >
+        IMDSC1 = #{imdsc1,jdbcType=NVARCHAR},
+      </if>
+      <if test="imdsc2 != null" >
+        IMDSC2 = #{imdsc2,jdbcType=NVARCHAR},
+      </if>
+      <if test="ibdsc1E != null" >
+        IBDSC1_e = #{ibdsc1E,jdbcType=NVARCHAR},
+      </if>
+      <if test="ibdsc2E != null" >
+        IBDSC2_e = #{ibdsc2E,jdbcType=NVARCHAR},
+      </if>
+      <if test="ibsrp1 != null" >
+        IBSRP1 = #{ibsrp1,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp2 != null" >
+        IBSRP2 = #{ibsrp2,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp3 != null" >
+        IBSRP3 = #{ibsrp3,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp4 != null" >
+        IBSRP4 = #{ibsrp4,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp5 != null" >
+        IBSRP5 = #{ibsrp5,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp6 != null" >
+        IBSRP6 = #{ibsrp6,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp7 != null" >
+        IBSRP7 = #{ibsrp7,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp8 != null" >
+        IBSRP8 = #{ibsrp8,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp9 != null" >
+        IBSRP9 = #{ibsrp9,jdbcType=VARCHAR},
+      </if>
+      <if test="ibsrp0 != null" >
+        IBSRP0 = #{ibsrp0,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp1 != null" >
+        IBPRP1 = #{ibprp1,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp2 != null" >
+        IBPRP2 = #{ibprp2,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp3 != null" >
+        IBPRP3 = #{ibprp3,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp4 != null" >
+        IBPRP4 = #{ibprp4,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp5 != null" >
+        IBPRP5 = #{ibprp5,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp6 != null" >
+        IBPRP6 = #{ibprp6,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp7 != null" >
+        IBPRP7 = #{ibprp7,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp8 != null" >
+        IBPRP8 = #{ibprp8,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp9 != null" >
+        IBPRP9 = #{ibprp9,jdbcType=VARCHAR},
+      </if>
+      <if test="ibprp0 != null" >
+        IBPRP0 = #{ibprp0,jdbcType=VARCHAR},
+      </if>
+      <if test="umrum != null" >
+        UMRUM = #{umrum,jdbcType=VARCHAR},
+      </if>
+      <if test="umum != null" >
+        UMUM = #{umum,jdbcType=VARCHAR},
+      </if>
+      <if test="umconv != null" >
+        UMCONV = #{umconv,jdbcType=NUMERIC},
+      </if>
+      <if test="imuser != null" >
+        IMUSER = #{imuser,jdbcType=VARCHAR},
+      </if>
+      <if test="ibupmj != null" >
+        IBUPMJ = #{ibupmj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ibglpt != null" >
+        IBGLPT = #{ibglpt,jdbcType=VARCHAR},
+      </if>
+      <if test="ibback != null" >
+        IBBACK = #{ibback,jdbcType=VARCHAR},
+      </if>
+      <if test="ibaitm != null" >
+        IBAITM = #{ibaitm,jdbcType=VARCHAR},
+      </if>
+      <if test="ibstkt != null" >
+        IBSTKT = #{ibstkt,jdbcType=VARCHAR},
+      </if>
+      <if test="imuom1 != null" >
+        IMUOM1 = #{imuom1,jdbcType=VARCHAR},
+      </if>
+      <if test="imuom2 != null" >
+        IMUOM2 = #{imuom2,jdbcType=VARCHAR},
+      </if>
+      <if test="jdeUpdatedate != null" >
+        JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktProcessdate != null" >
+        KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktFaildate != null" >
+        KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ktRetrytimes != null" >
+        KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      </if>
+      <if test="ktErrorlog != null" >
+        KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR},
+      </if>
+      <if test="fmsProcessDate != null" >
+        fms_process_date = #{fmsProcessDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where IBMCU = #{ibmcu,jdbcType=VARCHAR}
+      and IBITM = #{ibitm,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tup.mssql.model.Item" >
+    update Item
+    set IBLITM = #{iblitm,jdbcType=VARCHAR},
+      IMDSC1 = #{imdsc1,jdbcType=NVARCHAR},
+      IMDSC2 = #{imdsc2,jdbcType=NVARCHAR},
+      IBDSC1_e = #{ibdsc1E,jdbcType=NVARCHAR},
+      IBDSC2_e = #{ibdsc2E,jdbcType=NVARCHAR},
+      IBSRP1 = #{ibsrp1,jdbcType=VARCHAR},
+      IBSRP2 = #{ibsrp2,jdbcType=VARCHAR},
+      IBSRP3 = #{ibsrp3,jdbcType=VARCHAR},
+      IBSRP4 = #{ibsrp4,jdbcType=VARCHAR},
+      IBSRP5 = #{ibsrp5,jdbcType=VARCHAR},
+      IBSRP6 = #{ibsrp6,jdbcType=VARCHAR},
+      IBSRP7 = #{ibsrp7,jdbcType=VARCHAR},
+      IBSRP8 = #{ibsrp8,jdbcType=VARCHAR},
+      IBSRP9 = #{ibsrp9,jdbcType=VARCHAR},
+      IBSRP0 = #{ibsrp0,jdbcType=VARCHAR},
+      IBPRP1 = #{ibprp1,jdbcType=VARCHAR},
+      IBPRP2 = #{ibprp2,jdbcType=VARCHAR},
+      IBPRP3 = #{ibprp3,jdbcType=VARCHAR},
+      IBPRP4 = #{ibprp4,jdbcType=VARCHAR},
+      IBPRP5 = #{ibprp5,jdbcType=VARCHAR},
+      IBPRP6 = #{ibprp6,jdbcType=VARCHAR},
+      IBPRP7 = #{ibprp7,jdbcType=VARCHAR},
+      IBPRP8 = #{ibprp8,jdbcType=VARCHAR},
+      IBPRP9 = #{ibprp9,jdbcType=VARCHAR},
+      IBPRP0 = #{ibprp0,jdbcType=VARCHAR},
+      UMRUM = #{umrum,jdbcType=VARCHAR},
+      UMUM = #{umum,jdbcType=VARCHAR},
+      UMCONV = #{umconv,jdbcType=NUMERIC},
+      IMUSER = #{imuser,jdbcType=VARCHAR},
+      IBUPMJ = #{ibupmj,jdbcType=TIMESTAMP},
+      IBGLPT = #{ibglpt,jdbcType=VARCHAR},
+      IBBACK = #{ibback,jdbcType=VARCHAR},
+      IBAITM = #{ibaitm,jdbcType=VARCHAR},
+      IBSTKT = #{ibstkt,jdbcType=VARCHAR},
+      IMUOM1 = #{imuom1,jdbcType=VARCHAR},
+      IMUOM2 = #{imuom2,jdbcType=VARCHAR},
+      JDE_UpdateDate = #{jdeUpdatedate,jdbcType=TIMESTAMP},
+      KT_ProcessDate = #{ktProcessdate,jdbcType=TIMESTAMP},
+      KT_FailDate = #{ktFaildate,jdbcType=TIMESTAMP},
+      KT_RetryTimes = #{ktRetrytimes,jdbcType=INTEGER},
+      KT_ErrorLog = #{ktErrorlog,jdbcType=VARCHAR},
+      fms_process_date = #{fmsProcessDate,jdbcType=TIMESTAMP}
+    where IBMCU = #{ibmcu,jdbcType=VARCHAR}
+      and IBITM = #{ibitm,jdbcType=INTEGER}
+  </update>
+</mapper>
