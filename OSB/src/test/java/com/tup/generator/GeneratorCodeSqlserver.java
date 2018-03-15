@@ -37,7 +37,7 @@ public class GeneratorCodeSqlserver {
 		AutoGenerator mpg = new AutoGenerator();
 		// 全局配置
 		GlobalConfig gc = new GlobalConfig();
-		gc.setOutputDir("E:\\java\\generator\\code");
+		gc.setOutputDir("E:\\IT\\code");
 
 		gc.setFileOverride(true);
 		gc.setActiveRecord(true);
