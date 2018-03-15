@@ -17,13 +17,13 @@
         columns : [ [ 
          
 				 { width : '60',title : 'id', field : 'id',sortable : true },
-				 { width : '60',title : 'table_catalog', field : 'table_catalog',sortable : true },
-				 { width : '60',title : 'table_catalog', field : 'table_catalog',sortable : true },
-				 { width : '60',title : 'table_schema', field : 'table_schema',sortable : true },
-				 { width : '60',title : 'table_schema', field : 'table_schema',sortable : true },
-				 { width : '60',title : 'table_name', field : 'table_name',sortable : true },
-				 { width : '60',title : 'table_name', field : 'table_name',sortable : true },
-				 { width : '60',title : 'table_type', field : 'table_type',sortable : true },
+				 { width : '60',title : 'table_catalog', field : 'tableCatalog',sortable : true },
+				 { width : '60',title : 'table_catalog', field : 'tableCatalog',sortable : true },
+				 { width : '60',title : 'table_schema', field : 'tableSchema',sortable : true },
+				 { width : '60',title : 'table_schema', field : 'tableSchema',sortable : true },
+				 { width : '60',title : 'table_name', field : 'tableName',sortable : true },
+				 { width : '60',title : 'table_name', field : 'tableName',sortable : true },
+				 { width : '60',title : 'table_type', field : 'tableType',sortable : true },
 		        {
             field : 'action',
             title : '操作',

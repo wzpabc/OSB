@@ -17,7 +17,7 @@
         columns : [ [ 
          
 		#foreach($field in ${table.fields})		 
-		 { width : '60',title : '${field.name.toLowerCase()}', field : '${field.name.toLowerCase()}',sortable : true },
+		 { width : '60',title : '${field.name.toLowerCase()}', field : '${field.propertyName}',sortable : true },
 		#end
         {
             field : 'action',
